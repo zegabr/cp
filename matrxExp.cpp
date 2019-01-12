@@ -39,13 +39,13 @@ int main(){
 	ios::sync_with_stdio(0); cin.tie(0);
 	ll ans;
 	ll base[tam] = {0,
-					1,
-					2};
-	
-	
+		1,
+		2};
+
+
 	ll Tbase[tam][tam]={ {0, 1, 0},
-						{0, 0, 1},
-						{1, 1, 1}};
+		{0, 0, 1},
+		{1, 1, 1}};
 	ll n, val,k;
 	while(cin>>n and n){
 		n--;// pois n>=1 na questao
@@ -55,7 +55,7 @@ int main(){
 		}
 		Matrix T;//T=Tbase
 		for(int i=0;i<tam;i++)for(int j=0;j<tam;j++)T.mat[i][j]=Tbase[i][j];
-		
+
 		//T=Tbase^n
 		T=fExp(T, n);
 

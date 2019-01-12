@@ -9,19 +9,19 @@ cin.ignore(150, '\n');//jump blank lines
 ///how to get non empty lines
 int main()
 {
-    string str;
-    int t = 4;
-    while (t--)
-    {
-        getline(cin, str);
+	string str;
+	int t = 4;
+	while (t--)
+	{
+		getline(cin, str);
 
-        while (str.length()==0 )
-            // Keep reading a new line while there is a blank line
-            getline(cin, str);
- 
-        cout << str << " : newline" << endl;
-    }
-    return 0;
+		while (str.length()==0 )
+			// Keep reading a new line while there is a blank line
+			getline(cin, str);
+
+		cout << str << " : newline" << endl;
+	}
+	return 0;
 }
 
 //////////////STRINGSTREAM//////////
@@ -33,12 +33,12 @@ ss>>word; //pega uma palavra de text
 vector<int> v(n);
 iota(v.begin(),v.end(),0);
 do{
-    get(v);
+	get(v);
 }while(next_permutation(v.begin(),v.end()));
 
 //////////////BITWISE OPERATIONS////////////
-1<<n //2^n
+	1<<n //2^n
 mask | (1<<n)// seta iesimo bit
-(mask>>i)&1// testa se o iesimo bit ta setado
-(1<<n)-1 // seta os n bits menos significativos
+	(mask>>i)&1// testa se o iesimo bit ta setado
+	(1<<n)-1 // seta os n bits menos significativos
 mask ^ (1<<i) //troca o iesimo bit
