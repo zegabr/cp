@@ -1,7 +1,7 @@
 typedef long long ll;
 typedef pair <ll,ll> pll;
 
-
+//////////////CONTA DIVISORES////////
 int countdiv(int n){
     int c=0, k=sqrt(n);
     for(int i=1; i<=k; i++){
@@ -13,7 +13,7 @@ int countdiv(int n){
     return c;
 }
 
-/////euclide estendido
+/////EUCLIDES ESTENDIDO//////////
 pll euclides(ll a, ll b) {
 // acha u e v da equacao:
 // u * x + v * y = gcd(x, y);
@@ -32,19 +32,16 @@ pll euclides(ll a, ll b) {
   return pll(oldu, oldv);
 }
 
-/////////////mdc
+/////////////MDC//////////////
 ll mdc(ll a, ll b) {
   while(b) a %= b, swap(a, b);
   return a;
 }
-//----------------
 
-
-//////////mmc
-inline ll lcm(const ll &a, const ll &b) {
+//////////MMC//////////////////////
+inline ll mmc(const ll &a, const ll &b) {
      return (a / mdc(a, b)) * b; 
 }
-//---------
 
 //////////sieve////////
 vector<bool> prime(maxn, 1);
@@ -57,4 +54,16 @@ void sieve (int n){
         }
     }    
 }
-///---------
+
+////////////FAST EXPONENTIATION//////
+const ll mod = 1e9+7;
+
+ll fexp(ll a, ll b) {
+  ll ans = 1;
+  while(b) {
+    if(b & 1) ans = ans * a % mod;
+    a = a * a % mod;
+    b >>= 1;
+  }
+  return ans;
+}

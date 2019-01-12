@@ -1,4 +1,4 @@
----------------------------------------getline----------------------------
+//////////////////////////GETLINE/////////////////////////////
 char str[20];
 str[0]=cin.get();//get 1 char
 cin.getline(str, 20);//get at most 20 chars 
@@ -23,21 +23,20 @@ int main()
     }
     return 0;
 }
-------------stringstream----------
+
+//////////////STRINGSTREAM//////////
 string text;
 stringstream ss = stringstream(text);
 ss>>word; //pega uma palavra de text
 
-
----------------gerar permutacoes-------
+///////////////PERMUTATIONS//////////
 vector<int> v(n);
 iota(v.begin(),v.end(),0);
 do{
     get(v);
 }while(next_permutation(v.begin(),v.end()));
 
-
-----------bitmask op----------
+//////////////BITWISE OPERATIONS////////////
 1<<n //2^n
 mask | (1<<n)// seta iesimo bit
 (mask>>i)&1// testa se o iesimo bit ta setado

@@ -42,20 +42,21 @@ int main(){
 					1,
 					2};
 	
-	//answer at T[0]
-	ll Torig[tam][tam]={ {0, 1, 0},
+	
+	ll Tbase[tam][tam]={ {0, 1, 0},
 						{0, 0, 1},
 						{1, 1, 1}};
 	ll n, val,k;
 	while(cin>>n and n){
-		n--;// pois n>=1
+		n--;// pois n>=1 na questao
 		if(n<3){
 			cout<<n<<pl;
 			continue;
 		}
-		Matrix T;
-		for(int i=0;i<tam;i++)for(int j=0;j<tam;j++)T.mat[i][j]=Torig[i][j];
-
+		Matrix T;//T=Tbase
+		for(int i=0;i<tam;i++)for(int j=0;j<tam;j++)T.mat[i][j]=Tbase[i][j];
+		
+		//T=Tbase^n
 		T=fExp(T, n);
 
 		ans=0;
