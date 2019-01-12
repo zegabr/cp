@@ -23,3 +23,23 @@ int main()
     }
     return 0;
 }
+------------stringstream----------
+string text;
+stringstream ss = stringstream(text);
+ss>>word; //pega uma palavra de text
+
+
+---------------gerar permutacoes-------
+vector<int> v(n);
+iota(v.begin(),v.end(),0);
+do{
+    get(v);
+}while(next_permutation(v.begin(),v.end()));
+
+
+----------bitmask op----------
+1<<n //2^n
+mask | (1<<n)// seta iesimo bit
+(mask>>i)&1// testa se o iesimo bit ta setado
+(1<<n)-1 // seta os n bits menos significativos
+mask ^ (1<<i) //troca o iesimo bit
