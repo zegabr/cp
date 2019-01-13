@@ -43,7 +43,7 @@ inline ll mmc(const ll &a, const ll &b) {
 	return (a / mdc(a, b)) * b; 
 }
 
-//////////sieve////////
+//////////SIEVE////////
 vector<bool> prime(maxn, 1);
 
 void sieve (int n){
