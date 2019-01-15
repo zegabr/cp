@@ -33,6 +33,18 @@ void dfs(int u){
 		dfs(v);
 	}
 }
+///dfs bipartite check
+bool dfsbicolor(int u){
+	for(int v : g[u]){
+		if(!vis[v]){
+			vis[v]=1;
+			color[v]=!color[u];
+			if(!dfsbicolor(v)) return false;
+		}else if(color[u]==color[v])
+			return false;
+	}
+	return true;
+}
 
 //////DIJKSTRA///////
 typedef pair<int,int> ii;
