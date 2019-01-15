@@ -4,29 +4,32 @@ using namespace std;
 #define sp ' '
 typedef long long ll;
 typedef pair<ll,ll> pll;
-//gopher 2
+//elementary math
+const ll maxn = 2500*5;
 
 
 
-
-char c;
-ll X1,X2,Y1,Y2;
-ll m,n,s,V;
-vector<pll> gophers;
-vector<int> g[200]; 
-vector<bool> vis(200);
-int match[200];
+ll val;
+ll n, z;
+ll match[maxn];
+ll arr[3];
+vector<ll> g[maxn]; 
+vector<bool> vis(maxn);
+vector<pll> vp;
+map<ll,ll> indof;
+map<ll,ll> valof;
+ll a,b;
 
 void clrvis(){
     fill(vis.begin(),vis.end(),0);
 }
 void clrmatch(){
-    fill(match,match+n+m,-1);
+    fill(match,match+n,-1);//limpa de 0 a n-1 (tamanho utilizado do array de match)
 }
-bool dfs(int u){
+bool dfs(ll u){
     if(vis[u]) return 0;
     vis[u]=1;
-    for(int v : g[u]){
+    for(ll v : g[u]){
         if(match[v]==-1 or dfs(match[v])){
             match[v]=u;
             return 1;
@@ -34,58 +37,57 @@ bool dfs(int u){
     }
     return 0;
 }
-int findMaxMatching(){
-    int ans=0, aux=0;
+bool findMaxMatching(){
+    ll ans=0LL, aux=0LL;
     clrmatch();//limpa array de matches
-    for(int i=n;i<n+m;i++){//dfs em todos os buracos (n...n+m-1)
+    for(ll i=n;i<z;i++){//dfs partindo de todos os valores (n...n+m-1)
         aux=0; 
         clrvis();//limpa os visitados
         dfs(i);
-        for(int j=0;j<n;j++) aux += (match[j]!=-1);//conta gophers salvos (0..n-1)
+        for(ll j=0;j<n;j++) aux += (match[j]!=-1);//conta matches feitos (0..n-1)
         ans=max(ans,aux);
     }
-return ans;
+return ans==n;
 }
 
 int main(){
-    while(cin>>n>>m>>s>>V){
-        V*=10; //em decimetros/seg
-        //cout<<s*s*V*V<<pl;
-        gophers.clear();
-        for(int i=0;i<n;i++){
-            g[i].clear();
-            cin>>X1>>c>>X2>>Y1>>c>>Y2;
-            X1=X1*10+X2; Y1=Y1*10+Y2; //em decimetros
-            //cout<<X1<<sp<<Y1<<pl;
-            gophers.emplace_back(X1,Y1);
+    ios::sync_with_stdio(0); cin.tie(0);
+    cin>>n;
+    z=n+1;
+    for(ll i=0;i<n;i++){
+        cin>>a>>b;
+        vp.push_back({a,b});
+        arr[0]=a+b , arr[1]=a-b, arr[2]=a*b;
+        for(ll val : arr){
+            if(indof.count(val)==0){//ainda nao indexado
+                indof[val]=z;
+                valof[z] = val;
+                z++;
+            } 
+            g[i].push_back(indof[val]);
+            g[indof[val]].push_back(i);
         }
-        for(int j=0+n;j<m+n;j++){
-            g[j].clear();
-            cin>>X1>>c>>X2>>Y1>>c>>Y2;
-            X1=X1*10+X2; Y1=Y1*10+Y2; //em decimetros
-            //cout<<X1<<sp<<Y1<<pl;
-            
-            for(int i =0 ; i< n; i++){
-                X2=gophers[i].first; Y2=gophers[i].second;
-                ll d2 = (X1 - X2)*(X1 - X2) + (Y1 - Y2)*(Y1 - Y2);//quadrado da distancia
-                //cout<<d2<<pl;
-                //cout<<s*s*V*V<<pl;//nao deveria dar overflow
-                if(d2 <= s*s*V*V or s*s>=INT64_MAX/V/V){
-                    g[i].push_back(j);
-                    g[j].push_back(i);
-                }
-            }
-        }
-        
-        //gophers de 0 a n-1, buracos de n a n+m-1
-        for(int i =0; i<n;i++){
-            cout<<"gopher num "<<i<<": ";
-            for(int j : g[i])cout<<j<<sp;
-            cout<<pl;
-        }
-        
-        cout<<n - findMaxMatching()<<pl;
 
+    }
+    
+    if(!findMaxMatching()) cout<<"impossible"<<pl;
+    else{
+        for(ll i=0;i<n;i++){
+            a=vp[i].first, b=vp[i].second;
+           /*
+            //printa grafo
+            printf("g[%d]=%d,%d =>> ",i,a,b);
+            for(int ind : g[i]) printf("%lld ",valof[ind]);
+            printf("\n");
+           */
+            char c;
+            val = valof[match[i]];
+            if(val==a+b) c='+';
+            else if(val==a-b) c='-';
+            else c='*';
+            //printa resposta
+            printf("%lld %c %lld = %lld\n",a,c,b,val);
 
+        }
     }
 }
