@@ -130,7 +130,7 @@ int main(){
 	return 0;
 }
 
-///////TOPOSORT////////(ITERATIVO)
+///////TOPOSORT////////(ITERATIVO e intuitivo)
 vector<int> g[maxn], vis[maxn];
 map<int,int>grau;
 
@@ -148,3 +148,38 @@ void toposort(){
 	}
 }
 
+///////KUHN'S ALGORITHM//////////////////////////////
+//bipartite unweighted graph maximum matching
+vector<int> g[200]; //grafo bipartido
+vector<bool> vis(200);
+int match[200];
+//m vertices em um grupo, n vertices em outro
+void clrvis(){
+    fill(vis.begin(),vis.end(),0);
+}
+void clrmatch(){
+    fill(match,match+n+m,-1);//só é necessario limpar o range utilizado nos matchs (m ou n)
+}
+bool kuhn(int u){//dfs based
+    if(vis[u]) return 0;
+    vis[u]=1;
+    for(int v : g[u]){
+        if(match[v]==-1 or kuhn(match[v])){
+            match[v]=u;
+            return 1;
+        }
+    }
+    return 0;
+}
+int findMaxMatching(){
+    int ans=0, aux=0;
+    clrmatch();//limpa array de matches
+    for(int i=n;i<n+m;i++){//dfs em todos os vertices do 2o grupo (n...n+m-1)
+        aux=0; 
+        clrvis();//limpa os visitados
+        kuhn(i);
+        for(int j=0;j<n;j++) aux += (match[j]!=-1);//conta os utilizados do 1o grupo (0..n-1)
+        ans=max(ans,aux);
+    }
+return ans;
+}
