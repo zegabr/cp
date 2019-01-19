@@ -1,8 +1,18 @@
+////PRINTA GRAFO////
+void pg(){
+    for(int i=0;i<ms;i++){
+        cout<<"g["<<i<<"]=> ";
+        for(int v : g[i])cout<<sp<<v;
+        cout<<pl;
+    }
+}
+
 //////BFS///////
 //BFS FOR UNWEIGHTED GRAPHS MINIMUM DISTANCE
 int V;//#vertices
 vector<int> g[V];
 int dis[V];
+
 
 int BFS(int start,int goal){
 	queue<int> q;
