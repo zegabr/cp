@@ -16,7 +16,7 @@ void ad(int i,int val){
 }
 
 //////////////RECURSIVE SEGMENT TREE /////////
-int arr[4 * ms], seg[4 * ms], n;
+int arr[4 * N], seg[4 * N], n;
 
 void build(int x = 1, int l = 0, int r = n - 1) {
 	if(l == r) {

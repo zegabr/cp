@@ -44,7 +44,7 @@ inline ll mmc(const ll &a, const ll &b) {
 }
 
 //////////SIEVE////////
-vector<bool> prime(maxn, 1);
+vector<bool> prime(N, 1);
 
 void sieve (int n){
 	for (int p=2; p*p<=n;p++){

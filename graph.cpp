@@ -6,7 +6,7 @@ int dis[V];
 
 int BFS(int start,int goal){
 	queue<int> q;
-	fill(dis,dis+V,maxn);
+	fill(dis,dis+V,inf);
 	dis[start]=0;
 	q.push(start);
 	while(q.size()){
@@ -20,7 +20,7 @@ int BFS(int start,int goal){
 	}
 }
 //retorna -1 se nao houver caminho, menor caminho caso contrario
-return dis[goal]==V ? -1 : dis[goal];  
+return dis[goal]==inf ? -1 : dis[goal];  
 }
 
 ////////DFS////////
@@ -49,14 +49,14 @@ bool dfsbicolor(int u){
 //////DIJKSTRA///////
 typedef pair<int,int> ii;
 typedef vector<ii> vii;
-int dis[maxn];
-vii g[maxn];
+int dis[N];
+vii g[N];
 priority_queue <ii,vii,greater<ii>> pq;
-const int infi = 1231231;
+const int inf = 1231231;
 
 bool dijkstra(int S, int T){
 	bool way =false;
-	fill(dis,dis+maxn,infi);
+	fill(dis,dis+N,inf);
 	dis[S]=0;
 	pq.push(ii(0,S));
 	while(pq.size()){
@@ -77,7 +77,7 @@ bool dijkstra(int S, int T){
 
 ////////FLOYD WARSHALL///////
 const int inf = 0x3f3f3f3f;
-int g[ms][ms], dis[ms][ms], n;
+int g[N][N], dis[N][N], n;
 
 void clear() {
 	for(int i = 0; i < n; i++) {
@@ -103,7 +103,7 @@ void floydWarshall() {
 }
 
 /////////KRUSKAL///////
-int ds[200000+10];
+int ds[N];
 vector <iii> edges;
 iii ed;
 //DISJOINT SET UNION FUNCTIONS
@@ -143,7 +143,7 @@ int main(){
 }
 
 ///////TOPOSORT////////(ITERATIVO e intuitivo)
-vector<int> g[maxn], vis[maxn];
+vector<int> g[N], vis[N];
 map<int,int>grau;
 
 void toposort(){

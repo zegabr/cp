@@ -1,5 +1,5 @@
 /////////TRIE////////////////
-int trie[ms][sigma], terminal[ms], z;
+int trie[N][sigma], terminal[N], z;
 //sigma eh o tamanho do alfabeto
 void init() {
 	memset(trie[0], -1, sizeof trie[0]);
@@ -33,7 +33,7 @@ int count(string &p) {
 
 ////////////KMP/////////
 string p, t;
-int b[ms], n, m; 
+int b[N], n, m; 
 
 void kmpPre() {
 	int i = 0, j = -1;
