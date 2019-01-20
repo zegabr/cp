@@ -2,9 +2,10 @@ typedef long long ll;
 typedef pair <ll,ll> pll;
 
 //////////////CONTA DIVISORES////////
-int countdiv(int n){
-	int c=0, k=sqrt(n);
-	for(int i=1; i<=k; i++){
+template <class T>
+T countdiv(T n){
+	T c=0, k=sqrt(n);
+	for(T i=1; i<=k; i++){
 		if(n%i==0){
 			if(n/i==i)c++; //conta um divisor
 			else c+=2; // conta 2 divisores: i  e n/i
@@ -14,6 +15,7 @@ int countdiv(int n){
 }
 
 /////EUCLIDES ESTENDIDO//////////
+
 pll euclides(ll a, ll b) {
 	// acha u e v da equacao:
 	// u * x + v * y = gcd(x, y);
@@ -33,33 +35,34 @@ pll euclides(ll a, ll b) {
 }
 
 /////////////MDC//////////////
-ll mdc(ll a, ll b) {
+template <class T>
+T mdc(T a, T b) {
 	while(b) a %= b, swap(a, b);
 	return a;
 }
 
 //////////MMC//////////////////////
-inline ll mmc(const ll &a, const ll &b) {
+template<class T>
+inline T mmc(const T &a, const T &b) {
 	return (a / mdc(a, b)) * b; 
 }
 
 //////////SIEVE////////
 vector<bool> prime(N, 1);
-
-void sieve (int n){
-	for (int p=2; p*p<=n;p++){
+template<class T>
+void sieve (T n){
+	for (T p=2; p*p<=n;p++){
 		if(prime[p]){
-			for(int i=p*2; i<=n; i+=p)
+			for(T i=p*2; i<=n; i+=p)
 				prime[i]=0; 
 		}
 	}    
 }
 
 ////////////FAST EXPONENTIATION//////
-const ll mod = 1e9+7;
-
-ll fexp(ll a, ll b) {
-	ll ans = 1;
+template<class T>
+T fexp(T a, T b) {
+	T ans = 1;
 	while(b) {
 		if(b & 1) ans = ans * a % mod;
 		a = a * a % mod;

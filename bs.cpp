@@ -17,7 +17,7 @@ int biggestSolution(int l, int r) {
 	return check(r) ? r : l;
 }
 
-int bs(int l,r,k){
+int bs(int l, int r, int k){
 	while(l<=r){
 		m=(l+r)>>1;
 		if(arr[m]==k) return m;

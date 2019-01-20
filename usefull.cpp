@@ -31,7 +31,7 @@ ss>>word; //pega uma palavra de text
 
 ///////////////PERMUTATIONS//////////
 vector<int> v(n);
-iota(v.begin(),v.end(),0);
+iota(v.begin(),v.end(),0);//lembrar de incluir numeric
 do{
 	get(v);
 }while(next_permutation(v.begin(),v.end()));
