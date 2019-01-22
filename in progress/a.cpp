@@ -1,73 +1,45 @@
-#include<bits/stdc++.h>
-using namespace std;
-#define pl '\n'
-#define sp ' '
-typedef long long ll;
+//MAXFLOW
+#include<vector>
+const int E = 2e5+5;
+const int V = 2e5+5;
+struct ed{
+	int to,f,c;
+}edges[E];
 
-//kattis apparatus
-#define ms 1000
-#define mod 1000003
+vector<int> g[V];
 
-void impossible(){
-    cout<<0<<pl;
-    exit(0);
+int ind=0;
+void addEd(int a,int b,int cap,int revcap){
+	edges[ind].to=b; edges[ind].f=0; edges[ind].c=cap;
+	g[a].push_back(ind++);
+	edges[ind].to=a; edges[ind].f=0; edges[ind].c=revcap;
+	g[b].push_back(ind++);
 }
-bitset<ms> g[ms],da,db,tmp(0);
-int m,n,fat[ms+5];
-map<int,int> f;
-int main(){
-    ios::sync_with_stdio(0); cin.tie(0);
-    cin>>n>>m;
-    fat[0]=1;
-    for(int i=0;i<n;i++){
-        tmp.set(i);
-        fat[i+1]=((i+1)*fat[i])%mod;
-    }
-    if(m==0){
-        cout<<fat[n]<<pl;
-        return 0;
-    }
-    for(int i=0;i<n;i++) g[i]=tmp;
-
-    for(int i=0;i<m;i++){
-        cin>>da>>db;
-
-        if(da.count() != db.count())
-            impossible();//dicas inconsistentes
-        
-        for(int a=0;a<n;a++){
-            if(g[a]==0)continue;
-
-            if(da[a]==1)g[a] &= db;
-            else g[a] &= (~db);
-
-            int c=g[a].count();
-            if(c==0) 
-                impossible();//algum vertice tem grau 0    
-            else if(c==1){
-                c=0;
-                while(g[a][0]==0)g[a]>>1, c++;
-                g[a].reset();
-                for(int j=0;j<n;j++){
-                    g[j].reset(c);
-                    if(g[j].count()==0)
-                        impossible();
-
-                } 
-            }
-        }
-    }
-
-    for(int i=0;i<n;i++) f[g[i].count()]++;
-    
-    
-
-    int ans=1;
-    for(auto p : f){
-        if(p.first!=0){
-            if(p.first==p.second) ans = (ans * fat[p.first])%mod;
-            else ans = (ans * p.second)%mod;
-        }
-    }
-    cout<<ans<<pl;
+int time=1;//if vis[u]<time, u has not been visited, visit it by doing vis[u]=time
+int dfs(int s,int t, int F){
+	if(s==t) return F;
+	vis[s]=time;
+	for(int e : g[s]){
+		int k = edges[e].c - edges[e].f;
+		if(vis[edges[e]] and  k){
+			if(int a = dfs(edges[e].to, t, min(F,k))){
+				edges[e].f += a;
+				edges[e^1].f -= a;
+				return a;
+			}
+		}
+	}
+	return 0;
 }
+
+int  maxflow(){
+	int flow = 0; //max flow here
+	while(int a = dfs(s,t,INT32_MAX)){
+		flow+=a;
+		time++;//unvisit everybody
+	}
+	return flow;
+}
+
+
+//////HUNGARIAN-> MAX WEIGHTED BIPARTITE MATCHING	

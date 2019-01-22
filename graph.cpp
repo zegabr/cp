@@ -34,12 +34,13 @@ return dis[goal]==inf ? -1 : dis[goal];
 }
 
 ////////DFS////////
+vector<int> vis(N);
+int tempo=1;
 void dfs(int u){
-	if(vis[u]) return;
-	vis[u]=true;
+	if(vis[u]==tempo) return;
+	tempo++;
 	for(auto v : g[u]){
-		if(vis[v]) continue;
-
+		if(vis[v]==tempo) continue;
 		dfs(v);
 	}
 }
@@ -153,7 +154,7 @@ int main(){
 }
 
 ///////TOPOSORT////////(ITERATIVO e intuitivo)
-vector<int> g[N], vis[N];
+vector<int> g[N], vis(N);
 map<int,int>grau;
 
 void toposort(){
@@ -172,37 +173,46 @@ void toposort(){
 
 ///////KUHN'S ALGORITHM//////////////////////////////
 //bipartite unweighted graph maximum matching
-vector<ll> g[200]; //grafo bipartido
-vector<bool> vis(200);
-ll match[200];
-//m vertices em um grupo, n vertices em outro
-void clrvis(){
-    fill(vis.begin(),vis.end(),0);
-}
+vector<int> g[V]; //grafo bipartido
+int matchl[V],matchr[V],tempo=1;
+vector<int> vis(V);
+//m vertices em um grupo, n vertices em outro m+n=V
+
 void clrmatch(){
-    fill(match,match+n+m,-1);//só é necessario limpar o range utilizado nos matchs (m ou n)
+    for(int i=0;i<ms;i++)
+		matchr[i]=matchl[i]=-1;
 }
-bool kuhn(ll u){//dfs based
-    if(vis[u]) return 0;
-    vis[u]=1;
-    for(ll v : g[u]){
-        if(match[v]==-1 or kuhn(match[v])){
-            match[v]=u;
+bool kuhn(int v){//dfs 
+    if(vis[v]==tempo) return 0;
+    vis[v]=tempo;
+    for(int to : g[v]){
+        if(matchl[to]==-1 or kuhn(matchl[to])){
+            matchl[to]=v;
+			matchr[v]=to;
             return 1;
         }
     }
     return 0;
 }
-ll findMaxMatching(){
-    ll ans=0, aux=0;
-    clrmatch();//limpa array de matches
-    for(ll i=n;i<n+m;i++){//dfs em todos os vertices do 2o grupo (n...n+m-1)
-        aux=0; 
-        clrvis();//limpa os visitados
-        kuhn(i);
-        for(ll j=0;j<n;j++) aux += (match[j]!=-1);//conta os utilizados do 1o grupo (0..n-1)
-		// {j, match[j]} eh um match
-        ans=max(ans,aux);
-    }
-return ans;
+bool findmatching(){
+	int ans=0,aux=0;
+	clrmatch();
+	bool foundpath;
+	do{
+		tempo++;//unvisit everybody
+		foundpath=0;
+		for(int i=0;i<n;i++){//dfs em todos os vertices do grupo left (0..n-1)
+			if(matchr[i]<0 and vis[i]<tempo)
+				foundpath|=kuhn(i);
+		}
+	}while(foundpath);
+	for(int i=0;i<n;i++) ans+=(matchr[i]>0);
+
+	return ans==n;//perfect match
 }
+void printmatch(){
+	for(int i=0;i<n;i++)
+			cout<<"match["<<i<<"]="<<matchr[i]-n<<pl;		
+}
+
+/////
