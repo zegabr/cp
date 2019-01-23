@@ -58,7 +58,7 @@ void kmpSearch() {
 }
 
 /////////////Z-ALGORITHM////
-//
+
 vector<int> z(string s){
 	int n = s.size();
 	vector<int> z(n);

@@ -25,6 +25,7 @@ int main()
 }
 
 //////////////STRINGSTREAM//////////
+#include <sstream>
 string text;
 stringstream ss = stringstream(text);
 ss>>word; //pega uma palavra de text
@@ -45,7 +46,7 @@ mask ^ (1<<i) //troca o iesimo bit
 
 
 ////////////////RANDOM////////////////////////
-///---safe hash-map----https://codeforces.com/blog/entry/62393
+//---safe hash-map----https://codeforces.com/blog/entry/62393
 #include<chrono>
 #include<random>
 struct custom_hash {
@@ -64,7 +65,8 @@ struct custom_hash {
 };
 unordered_map<long long, int, custom_hash> safe_map;
 
-////----safe random---https://codeforces.com/blog/entry/61675
+//----safe random---https://codeforces.com/blog/entry/61675
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 cout<<rng()<<endl; //printa numero randomico
 
+///////////////////////////////////////////////////
