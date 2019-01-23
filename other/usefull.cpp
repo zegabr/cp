@@ -31,19 +31,19 @@ stringstream ss = stringstream(text);
 ss>>word; //pega uma palavra de text
 
 ///////////////PERMUTATIONS//////////
+#include <numeric>
 vector<int> v(n);
-iota(v.begin(),v.end(),0);//lembrar de incluir numeric
+iota(v.begin(),v.end(),0);
 do{
 	get(v);
 }while(next_permutation(v.begin(),v.end()));
 
 //////////////BITWISE OPERATIONS////////////
-	1<<n //2^n
+1<<n //2^n
 mask | (1<<n)// seta iesimo bit
-	(mask>>i)&1// testa se o iesimo bit ta setado
-	(1<<n)-1 // seta os n bits menos significativos
+(mask>>i)&1// testa se o iesimo bit ta setado
+(1<<n)-1 // seta os n bits menos significativos
 mask ^ (1<<i) //troca o iesimo bit
-
 
 ////////////////RANDOM////////////////////////
 //---safe hash-map----https://codeforces.com/blog/entry/62393

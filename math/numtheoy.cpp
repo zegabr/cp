@@ -1,8 +1,7 @@
 typedef long long ll;
 typedef pair <ll,ll> pll;
 
-//////////////CONTA DIVISORES////////
-template <class T>
+//////////////DIVISORES////////
 T countdiv(T n){
 	T c=0, k=sqrt(n);
 	for(T i=1; i<=k; i++){
@@ -15,7 +14,6 @@ T countdiv(T n){
 }
 
 /////EUCLIDES ESTENDIDO//////////
-
 pll euclides(ll a, ll b) {
 	// acha u e v da equacao:
 	// u * x + v * y = gcd(x, y);
