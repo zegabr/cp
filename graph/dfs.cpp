@@ -1,6 +1,6 @@
 ////////DFS////////
 vector<int> vis(N);
-int tempo=1;
+int tempo=1;//fazer tempo++ para cada vez que precisar zerar visitados
 void dfs(int u){
 	if(vis[u]==tempo) return;
 	tempo++;
@@ -12,8 +12,8 @@ void dfs(int u){
 ///dfs bipartite check
 bool dfsbicolor(int u){
 	for(int v : g[u]){
-		if(!vis[v]){
-			vis[v]=1;
+		if(vis[v]<tempo){
+			vis[v]=tempo;
 			color[v]=!color[u];
 			if(!dfsbicolor(v)) return false;
 		}else if(color[u]==color[v])
