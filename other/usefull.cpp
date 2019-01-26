@@ -70,3 +70,7 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 cout<<rng()<<endl; //printa numero randomico
 
 ///////////////////////////////////////////////////
+#include <iomanip>
+int main(){
+	cout<<fixed<<setprecision(48);
+}
