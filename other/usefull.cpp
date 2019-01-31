@@ -27,7 +27,7 @@ int main()
 //////////////STRINGSTREAM//////////
 #include <sstream>
 string text;
-stringstream ss = stringstream(text);
+stringstream ss; ss.str(line);
 ss>>word; //pega uma palavra de text
 
 ///////////////PERMUTATIONS//////////
