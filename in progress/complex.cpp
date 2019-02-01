@@ -17,10 +17,10 @@ typedef complex<double>P;
 //abs(P) = size
 //norm(P) = size^2
 //arg(P) = angle in radians
-double angleDegrees(P p){
+double angleDegrees(const P &p){
 	return arg(p)*(180/PI);
 }
-P rotate(P p, double radians){
+P rotate(const P &p, const double &radians){
 	return p*polar(1.0,radians);
 }
 double dot(const P &p,const P &q){
@@ -31,7 +31,7 @@ double cross(const P &p,const P &q){
 }
 ld gcd(ld a, ld b){//gcd between doubles(maybe angles)
 	ld eps=1e-4;	
-	while(fabs(a) > eps and fabs(b)>eps){
+	while(fabs(a)>eps and fabs(b)>eps){
 		if(a>b) a-=floor(a/b)*b;
 		else b-=floor(b/a)*a;
 	}
