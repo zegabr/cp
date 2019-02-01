@@ -2,15 +2,10 @@
 #include<vector>
 #include<algorithms>
 #include<complex>
-using namespace std;
-typedef long long ll;
-typedef complex<ll> P;
-#define X real()
-#define Y imag()
-
 #include<cmath>
-#include<complex>
-typedef complex<double>P;
+using namespace std;
+typedef long double ld;
+typedef complex<ld> P;
 #define x real()
 #define y imag()
 #define PI 3.1415926535897932384626
@@ -20,14 +15,17 @@ typedef complex<double>P;
 double angleDegrees(const P &p){
 	return arg(p)*(180/PI);
 }
-P rotate(const P &p, const double &radians){
-	return p*polar(1.0,radians);
+P rotate(const P &p, const double &rad, const P pivot=P(0.0,0.0),){
+	return (pivot - p) * polar(1.0,rad);
 }
 double dot(const P &p,const P &q){
 	return (conj(p)*q).x;
 }
 double cross(const P &p,const P &q){
 	return (conj(p)*q).y;
+}
+double angleABC(const P &a, const P &b, const P &c){
+	return abs(remainder(arg(a-b)-arg(c-b), 2.0 * PI));
 }
 ld gcd(ld a, ld b){//gcd between doubles(maybe angles)
 	ld eps=1e-4;	
