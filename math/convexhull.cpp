@@ -11,7 +11,7 @@ double cross(P p, P q){
 P orig;
 bool comp(const P &a, const P &b){
 	//compare by angle between a-orig and b-orig
-	return arg(a-orig)<arg(b-orig) or (arg(a-orig)-arg(b-orig)<=1e-5 and abs(a-orig)<abs(b-orig) );
+	return arg(a-orig)<arg(b-orig) or (arg(a-orig)-arg(b-orig)<=1e-5 and abs(a-orig)>abs(b-orig) );
 }
 vector<P> convexhull(vector<P> &v){
 	if(v.size()<3) return v;
