@@ -1,4 +1,4 @@
-//GRAHAM SCAN CONVEX HULL WITH COMPLEX
+//CONVEX HULL WITH COMPLEX
 #include<complex>
 #include<vetor>
 #define x real()
@@ -23,7 +23,7 @@ bool comp(const P &a, const P &b){//works on leftmost
 	}else return arg1<arg2;
 }
 
-void convexhull(vector<P> &v){
+void convexhull(vector<P> &v){//O(nlogn)
 	if(v.size()<3) return v;
 	int	ind = 0;
 	for(int i=1;i<v.size();i++){ //get leftmost
