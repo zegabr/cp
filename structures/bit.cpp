@@ -1,6 +1,7 @@
 //////////BIT/////////
 const int N = 21212414;
 int bit[N],n;
+
 int sum(int i){
 	int res =0;
 	while (i){
@@ -9,6 +10,7 @@ int sum(int i){
 	}
 	return res;
 }
+
 void ad(int i,int val){
 	while(i<n){
 		bit[i]+=val;

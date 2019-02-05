@@ -10,6 +10,7 @@ void kmpPre() {
 		b[++i] = ++j;
 	}
 }
+
 void kmpSearch() {
 	int i = 0, j = 0, ans = 0;
 	while(i < n) {

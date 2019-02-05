@@ -5,9 +5,11 @@ void init() {
 	memset(trie[0], -1, sizeof trie[0]);
 	z = 0;
 }
+
 int getid(char c) {
 	return c - 'a';
 }
+
 void insert(string &p) {
 	int cur = 0;
 	for(int i = 0; i < p.size(); i++) {
@@ -20,6 +22,7 @@ void insert(string &p) {
 	}
 	terminal[cur]++;
 }
+
 int count(string &p) {
 	int cur = 0;
 	for(int i = 0; i < p.size(); i++) {

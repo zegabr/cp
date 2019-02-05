@@ -9,6 +9,7 @@ void clrmatch(){
     for(int i=0;i<ms;i++)
 		matchr[i]=matchl[i]=-1;
 }
+
 bool kuhn(int v){//dfs 
     if(vis[v]==tempo) return 0;
     vis[v]=tempo;
@@ -21,6 +22,7 @@ bool kuhn(int v){//dfs
     }
     return 0;
 }
+
 bool findmatching(){
 	int ans=0,aux=0;
 	clrmatch();
@@ -37,6 +39,7 @@ bool findmatching(){
 
 	return ans==n;//perfect match
 }
+
 void printmatch(){
 	for(int i=0;i<n;i++)
 			cout<<"match["<<i<<"]="<<matchr[i]-n<<pl;		

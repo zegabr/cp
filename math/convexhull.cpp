@@ -1,3 +1,4 @@
+//GRAHAM SCAN CONVEX HULL WITH COMPLEX
 #include<complex>
 #include<vetor>
 #define x real()
@@ -11,6 +12,7 @@ const ld eps=1e-16;
 ld cross(const P &p,const P &q){//use long long if possible
 	return (conj(p)*q).y;
 }
+
 P orig;
 bool comp(const P &a, const P &b){//works on leftmost
 	//compare by angles and distance between a-orig and b-orig
@@ -20,6 +22,7 @@ bool comp(const P &a, const P &b){//works on leftmost
 		return abs1-abs2<eps;
 	}else return arg1<arg2;
 }
+
 void convexhull(vector<P> &v){
 	if(v.size()<3) return v;
 	int	ind = 0;
@@ -31,9 +34,9 @@ void convexhull(vector<P> &v){
 	sort(v.begin()+1,v.end(),comp);//counterclockwise
 	int s=3;
 	for(int i=3; i<v.size(); i++){
-		while(s>=3 and cross(v[s-1]-v[s-2], v[i]-v[s-1])<=0.0){//while turn right or collinear 
-			s--;
-		}
+		//while turn right or collinear
+		while(s>=3 and cross(v[s-1]-v[s-2], v[i]-v[s-1])<=0.0)	s--;
+		
 		v[s]=v[i];
 		s++;
 	}
