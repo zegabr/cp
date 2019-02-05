@@ -24,4 +24,3 @@ void kmpSearch() {
 	}
 	return ans;
 }
-
