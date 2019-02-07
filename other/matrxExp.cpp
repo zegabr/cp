@@ -56,7 +56,7 @@ int main(){
 		Matrix T;//T=Tbase
 		for(int i=0;i<tam;i++)for(int j=0;j<tam;j++)T.mat[i][j]=Tbase[i][j];
 
-		//T=Tbase^n
+		//T=T^n
 		T=fExp(T, n);
 
 		ans=0;

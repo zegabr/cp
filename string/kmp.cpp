@@ -1,6 +1,7 @@
 ////////////KMP/////////
-string p, t;
-int b[N], n, m; 
+
+//string p, t;
+//int b[N], n, m; 
 
 void kmpPre() {
 	int i = 0, j = -1;

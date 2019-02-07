@@ -1,10 +1,11 @@
 //////DIJKSTRA///////
-typedef pair<int,int> ii;
-typedef vector<ii> vii;
-int dis[N];
-vii g[N];
-priority_queue <ii,vii,greater<ii>> pq;
-const int inf = 1231231;
+
+//typedef pair<int,int> ii;
+//typedef vector<ii> vii;
+//int dis[N];
+//vii g[N];
+///priority_queue <ii,vii,greater<ii>> pq;
+//const int inf = 1231231;
 
 bool dijkstra(int S, int T){
 	bool way =false;

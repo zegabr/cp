@@ -1,10 +1,7 @@
-typedef long long ll;
-typedef pair <ll,ll> pll;
-
 //////////////DIVISORES////////
-T countdiv(T n){
-	T c=0, k=sqrt(n);
-	for(T i=1; i<=k; i++){
+ll countdiv(ll n){
+	ll c=0, k=sqrt(n);
+	for(ll i=1; i<=k; i++){
 		if(n%i==0){
 			if(n/i==i)c++; //conta um divisor
 			else c+=2; // conta 2 divisores: i  e n/i
@@ -33,34 +30,30 @@ pll euclides(ll a, ll b) {
 }
 
 /////////////MDC//////////////
-template <class T>
-T mdc(T a, T b) {
+ll mdc(ll a, ll b) {
 	while(b) a %= b, swap(a, b);
 	return a;
 }
 
 //////////MMC//////////////////////
-template<class T>
-inline T mmc(const T &a, const T &b) {
+inline ll mmc(const ll &a, const ll &b) {
 	return (a / mdc(a, b)) * b; 
 }
 
 //////////SIEVE////////
 vector<bool> prime(N, 1);
-template<class T>
-void sieve (T n){
-	for (T p=2; p*p<=n;p++){
+void sieve (ll n){
+	for (ll p=2; p*p<=n;p++){
 		if(prime[p]){
-			for(T i=p*2; i<=n; i+=p)
+			for(ll i=p*2; i<=n; i+=p)
 				prime[i]=0; 
 		}
 	}    
 }
 
 ////////////FAST EXPONENTIATION//////
-template<class T>
-T fexp(T a, T b) {
-	T ans = 1;
+ll fexp(ll a, ll b) {
+	ll ans = 1;
 	while(b) {
 		if(b & 1) ans = ans * a % mod;
 		a = a * a % mod;

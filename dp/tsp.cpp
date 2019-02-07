@@ -1,5 +1,6 @@
 //////TSP///////////////
-int dp[1<<maxn][maxn];
+
+//int dp[1<<maxn][maxn];
 int solve_top_down(int A, int u){
 	if(__builtin_popcount(A)==1) return 0;
 	int &ans = dp[A][u];

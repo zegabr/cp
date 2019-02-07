@@ -1,5 +1,6 @@
 ///////////DISJOINT SET UNION//////////
-int ds[N];
+
+//int ds[N];
 void makeset(){
 	for(int i=0;i<v;i++) ds[i]=i;
 }

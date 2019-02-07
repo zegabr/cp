@@ -1,7 +1,8 @@
 /////////KRUSKAL///////
-int ds[N];
-vector <iii> edges;
-iii ed;
+
+//int ds[N];
+//vector <iii> edges;
+//iii ed;
 
 void makeset(){
 	for(int i=0;i<v;i++) ds[i]=i;

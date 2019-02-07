@@ -1,6 +1,7 @@
 ////////FLOYD WARSHALL///////
-const int inf = 0x3f3f3f3f;
-int g[N][N], dis[N][N], n;
+
+//const int inf = 0x3f3f3f3f;
+//int g[N][N], dis[N][N], n;
 
 void clear() {
 	for(int i = 0; i < n; i++) {

@@ -1,8 +1,9 @@
 ///////KUHN'S ALGORITHM//////////////////////////////
 //bipartite unweighted graph maximum matching
-vector<int> g[V]; //grafo bipartido
-int matchl[V],matchr[V],tempo=1;
-vector<int> vis(V);
+
+//vector<int> g[V]; //grafo bipartido
+//int matchl[V],matchr[V],tempo=1;
+//vector<int> vis(V);
 //m vertices em um grupo, n vertices em outro m+n=V
 
 void clrmatch(){

@@ -1,6 +1,7 @@
 ///////TOPOSORT////////(ITERATIVO e intuitivo)
-vector<int> g[N], vis(N);
-map<int,int>grau;
+
+//vector<int> g[N], vis(N);
+//map<int,int>grau;
 
 void toposort(){
 	priority_queue<int, vector<int>,greater<int>> pq;

@@ -1,8 +1,9 @@
 //////BFS///////
 //BFS FOR UNWEIGHTED GRAPHS MINIMUM DISTANCE
-int V;//#vertices
-vector<int> g[V];
-int dis[V];
+
+//int V;//#vertices
+//vector<int> g[V];
+//int dis[V];
 
 int BFS(int start,int goal){
 	queue<int> q;

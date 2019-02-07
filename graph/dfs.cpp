@@ -1,5 +1,6 @@
 ////////DFS////////
-vector<int> vis(N);
+
+//vector<int> vis(N);
 int tempo=1;//fazer tempo++ para cada vez que precisar zerar visitados
 void dfs(int u){
 	if(vis[u]==tempo) return;

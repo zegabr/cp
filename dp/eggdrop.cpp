@@ -1,5 +1,6 @@
 ///////EGGDROP ITERATIVO//////////////
-int dp[N][N];
+
+//int dp[N][N];
 eggdrop(int n, int k){
 	int res, i, j, k;
 	for(i=1;i<=n;i++){

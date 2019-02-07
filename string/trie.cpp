@@ -1,6 +1,8 @@
 /////////TRIE////////////////
-int trie[N][sigma], terminal[N], z;
+
+//int trie[N][sigma], terminal[N], z;
 //sigma eh o tamanho do alfabeto
+//N é o tamanho da maior string vezes a quantidade de strings
 void init() {
 	memset(trie[0], -1, sizeof trie[0]);
 	z = 0;

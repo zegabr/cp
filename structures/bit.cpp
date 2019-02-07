@@ -1,6 +1,7 @@
 //////////BIT/////////
-const int N = 21212414;
-int bit[N],n;
+
+//const int N = 21212414;
+//int bit[N],n;
 
 int sum(int i){
 	int res =0;
