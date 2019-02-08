@@ -61,3 +61,47 @@ ll fexp(ll a, ll b) {
 	}
 	return ans;
 }
+
+
+
+////////////EULER FUNCTION WITH PRIME FACTORS////////////////
+const int N = 1e6+5;
+vector<int> fators[N], phi(N);
+void PHI(){//get prime factors and calculate phi
+	for(int i=2;i<N;i++){//O(N)
+		phi[i]=i;
+		if(fators[i].size()) continue;
+
+		//i is prime
+		for(int j = i+i; j<N;j+=i){//O(logN)
+			fators[j].push_back(i);
+		}
+	}
+
+	for(int i=2;i<N;i++){//O(N)
+		if(fators[i].empty()){//i is prime
+			fators[i].push_back(i);		
+			phi[i]=i-1;
+			continue;
+		}
+		for(int pi : fators[i]){//O(logN)
+			phi[i]=(phi[i]/pi)*(pi-1);
+		}
+	}
+
+}
+
+////////////OTHER EULER FUNCTION/////////
+vector<ll> phi(N);
+void PHI(){//get prime factors and calculate phi
+for(ll i=1;i<N;i++)phi[i]=i;
+	for(ll i=2;i<N;i++){//O(N)
+		if(phi[i]==i){//n is prime
+			phi[i]=i-1;
+			for(ll j=i+i;j*j<N;j+=i){//O(logN)
+				//i is a prime factor of j
+				phi[j]=phi[j]/i*(i-1);
+			}
+		}
+	}
+}
