@@ -40,17 +40,6 @@ inline ll mmc(const ll &a, const ll &b) {
 	return (a / mdc(a, b)) * b; 
 }
 
-//////////SIEVE////////
-vector<bool> prime(N, 1);
-void sieve (ll n){
-	for (ll p=2; p*p<=n;p++){
-		if(prime[p]){
-			for(ll i=p*2; i<=n; i+=p)
-				prime[i]=0; 
-		}
-	}    
-}
-
 ////////////FAST EXPONENTIATION//////
 ll fexp(ll a, ll b) {
 	ll ans = 1;
@@ -62,10 +51,18 @@ ll fexp(ll a, ll b) {
 	return ans;
 }
 
-
+//////////SIEVE////////
+vector<bool> prime(N, 1);
+void sieve (ll n){
+	for (ll p=2; p*p<=n;p++){
+		if(prime[p]){
+			for(ll i=p*2; i<=n; i+=p)
+				prime[i]=0; 
+		}
+	}    
+}
 
 ////////////EULER FUNCTION WITH PRIME FACTORS////////////////
-const int N = 1e6+5;
 vector<int> fators[N], phi(N);
 void PHI(){//get prime factors and calculate phi
 	for(int i=2;i<N;i++){//O(N)
@@ -94,11 +91,10 @@ void PHI(){//get prime factors and calculate phi
 ////////////OTHER EULER FUNCTION/////////
 vector<ll> phi(N);
 void PHI(){//get prime factors and calculate phi
-for(ll i=1;i<N;i++)phi[i]=i;
+	for(ll i=1;i<N;i++)phi[i]=i;
 	for(ll i=2;i<N;i++){//O(N)
 		if(phi[i]==i){//n is prime
-			phi[i]=i-1;
-			for(ll j=i+i;j*j<N;j+=i){//O(logN)
+			for(ll j=i;j<N;j+=i){//O(logN)
 				//i is a prime factor of j
 				phi[j]=phi[j]/i*(i-1);
 			}
