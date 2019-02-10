@@ -7,8 +7,8 @@ typedef long double ll;
 typedef complex<ld> P;
 #define x real()
 #define y imag()
-#define PI 3.1415926535897932384626
 const ld eps=1e-16;
+const ld PI acos(-1,0);
 
 ld dot(const P &p,const P &q){ return p.x * q.x + p.y * q.y; }
 //norm(P) = size^2 //using norm may lead to rounding errors, use dot(z,z) instead

@@ -3,11 +3,11 @@
 #include<vetor>
 #define x real()
 #define y imag()
-#define PI 3.1415926535897932384626
 
 typedef long double ld;
 typedef complex<ld> P;
 const ld eps=1e-16;
+const ld PI acos(-1,0);
 
 ld cross(const P &p,const P &q){//use long long if possible
 	return (conj(p)*q).y;
