@@ -1,7 +1,7 @@
 //////////////DIVISORES////////
 ll countdiv(ll n){
-	ll c=0, k=sqrt(n);
-	for(ll i=1; i<=k; i++){
+	ll c=0;
+	for(ll i=1; i*i<=n; i++){
 		if(n%i==0){
 			if(n/i==i)c++; //conta um divisor
 			else c+=2; // conta 2 divisores: i  e n/i
