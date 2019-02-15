@@ -14,7 +14,7 @@ ld cross(const P &p,const P &q){//use long long if possible
 }
 
 P orig;
-bool comp(const P &a, const P &b){//works on leftmost
+bool comp(const P &a, const P &b){//works if orig is leftmost (and bottommost if more than one leftmost) point
 	//compare by angles and distance between a-orig and b-orig
 	ld arg1 = arg(a-orig), arg2 = arg(b-orig), abs1 = abs(a-orig), abs2 = abs(b-orig);
 	if(fabs(arg1-arg2)<eps){

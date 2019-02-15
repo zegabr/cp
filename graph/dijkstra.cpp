@@ -7,7 +7,7 @@
 ///priority_queue <ii,vii,greater<ii>> pq;
 //const int inf = 1231231;
 
-bool dijkstra(int S, int T){
+bool dijkstra(int S, int T){//O(E logV)
 	bool way =false;
 	fill(dis,dis+N,inf);
 	dis[S]=0;
@@ -16,11 +16,11 @@ bool dijkstra(int S, int T){
 		ii aux=pq.top(); pq.pop();
 		int u=aux.second;
 		for(auto child : g[u]){
-			int ew=child.first, v=child.second;
+			int w = child.first, v = child.second;
 			if(v==T)
-				way=true;
-			if(dis[u]+ew<dis[v]){           
-				dis[v]=dis[u]+ew;
+				way = true;
+			if(dis[u] + w < dis[v]){           
+				dis[v] = dis[u] + w;
 				pq.push(ii(dis[v],v));
 			}
 		}

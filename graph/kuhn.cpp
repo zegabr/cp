@@ -24,7 +24,7 @@ bool kuhn(int v){//dfs
     return 0;
 }
 
-bool findmatching(){
+bool findmatching(){//O(mn)
 	int ans=0,aux=0;
 	clrmatch();
 	bool foundpath;

@@ -1,5 +1,5 @@
 //////////////DIVISORES////////
-ll countdiv(ll n){
+ll countdiv(ll n){//O(sqrt(n))
 	ll c=0;
 	for(ll i=1; i*i<=n; i++){
 		if(n%i==0){
@@ -11,7 +11,7 @@ ll countdiv(ll n){
 }
 
 /////EUCLIDES ESTENDIDO//////////
-pll euclides(ll a, ll b) {
+pll euclides(ll a, ll b) {//O()
 	// acha u e v da equacao:
 	// u * x + v * y = gcd(x, y);
 	// u eh inverso modular de x no modulo y
@@ -41,7 +41,7 @@ inline ll mmc(const ll &a, const ll &b) {
 }
 
 ////////////FAST EXPONENTIATION//////
-ll fexp(ll a, ll b) {
+ll fexp(ll a, ll b) {//O(logb)
 	ll ans = 1;
 	while(b) {
 		if(b & 1) ans = ans * a % mod;
@@ -53,8 +53,8 @@ ll fexp(ll a, ll b) {
 
 //////////SIEVE////////
 vector<bool> prime(N, 1);
-void sieve (ll n){
-	for (ll p=2; p*p<=n;p++){
+void sieve (ll n){//O(nlogn)
+	for (ll p=2; p<=n;p++){
 		if(prime[p]){
 			for(ll i=p*2; i<=n; i+=p)
 				prime[i]=0; 
@@ -62,33 +62,7 @@ void sieve (ll n){
 	}    
 }
 
-////////////EULER FUNCTION WITH PRIME FACTORS////////////////
-vector<int> fators[N], phi(N);
-void PHI(){//get prime factors and calculate phi
-	for(int i=2;i<N;i++){//O(N)
-		phi[i]=i;
-		if(fators[i].size()) continue;
-
-		//i is prime
-		for(int j = i+i; j<N;j+=i){//O(logN)
-			fators[j].push_back(i);
-		}
-	}
-
-	for(int i=2;i<N;i++){//O(N)
-		if(fators[i].empty()){//i is prime
-			fators[i].push_back(i);		
-			phi[i]=i-1;
-			continue;
-		}
-		for(int pi : fators[i]){//O(logN)
-			phi[i]=(phi[i]/pi)*(pi-1);
-		}
-	}
-
-}
-
-////////////OTHER EULER FUNCTION/////////
+////////////EULER FUNCTION O(NlogN)/////////
 vector<ll> phi(N);
 void PHI(){//get prime factors and calculate phi
 	for(ll i=1;i<N;i++)phi[i]=i;

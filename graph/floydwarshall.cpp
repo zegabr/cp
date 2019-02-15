@@ -15,7 +15,7 @@ void add(int u, int v, int w) {
 	g[u][v] = min(w, g[u][v]);
 }
 
-void floydWarshall() {
+void floydWarshall() {//O(V³)
 	memcpy(dis, g, sizeof dis);
 	for(int k = 0; k < n; k++) {
 		for(int i = 0; i < n; i++) { 

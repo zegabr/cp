@@ -3,7 +3,7 @@
 //vector<int> g[N], vis(N);
 //map<int,int>grau;
 
-void toposort(){
+void toposort(){//O(V+E)
 	priority_queue<int, vector<int>,greater<int>> pq;
 	for(int i=0;i<n;i++)if(grau[i]==0)pq.push(i);
 	while(pq.size()){

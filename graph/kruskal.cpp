@@ -17,7 +17,7 @@ bool uni(int a, int b){//union
 	ds[find(b)]=find(a); 
 	return true;
 }
-int main(){
+int main(){//O(ElogE)
 	//salva arestas em edges
 	sort(edges.begin(),edges.end());
 	makeset();
