@@ -48,6 +48,8 @@ mask | (1<<n)// seta iesimo bit
 (mask>>i)&1// testa se o iesimo bit ta setado
 (1<<n)-1 // seta os n bits menos significativos
 mask ^ (1<<i) //troca o iesimo bit
+num&1 //num é ímpar?
+~num&1 //num é par?
 
 ////////////////RANDOM////////////////////////
 //---safe hash-map----https://codeforces.com/blog/entry/62393

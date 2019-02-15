@@ -11,6 +11,7 @@ ll countdiv(ll n){//O(sqrt(n))
 }
 
 /////EUCLIDES ESTENDIDO//////////
+//typedef<pair<ll,ll>> pll;
 pll euclides(ll a, ll b) {//O()
 	// acha u e v da equacao:
 	// u * x + v * y = gcd(x, y);
