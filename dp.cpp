@@ -1,5 +1,4 @@
-//////MAX SUBARRAY SUM
-
+//////MAX SUBARRAY SUM//////
 //int dp[maxn],a[maxn], ans = -maxn;
 int maxsubarraysum(int n){
 	dp[0]=0;
@@ -10,3 +9,8 @@ int maxsubarraysum(int n){
 	}
 	return ans;
 }
+
+///////EGGDROP ITERATIVO//////////////
+
+
+//////TSP///////////////
