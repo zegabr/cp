@@ -1,14 +1,91 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const int ms = 1e4+10; // Quantidade maxima de vertices
+const int me = 6e4+10; // Quantidade maxima de arestas
+const ll INF = 6e13+10;
+
+ll wt[me];
+int adj[ms], to[me], ant[me], z, n;
+int copy_adj[ms], fila[ms], level[ms];
+
+void clear() { // Lembrar de chamar no main
+  memset(adj, -1, sizeof adj);
+  z = 0;
+}
+
+void add(int u, int v, ll k) {
+  to[z] = v;
+  ant[z] = adj[u];
+  wt[z] = k;
+  adj[u] = z++;
+  swap(u, v);
+  to[z] = v;
+  ant[z] = adj[u];
+  wt[z] = 0; // Lembrar de colocar = 0
+  adj[u] = z++;
+}
+
+bool bfs(int source, int sink) {
+  memset(level, -1, sizeof level);
+  level[source] = 0;
+  int front = 0, size = 0, v;
+  fila[size++] = source;
+  while(front < size) {
+  v = fila[front++];
+  for(int i = adj[v]; i != -1; i = ant[i]) {
+    if(wt[i] && level[to[i]] == -1) {
+    level[to[i]] = level[v] + 1;
+    fila[size++] = to[i];
+    }
+  }
+  }
+  return level[sink] != -1;
+}
+
+ll dfs(int v, int sink, ll flow) {
+  if(v == sink) return flow;
+  ll f;
+  for(int &i = copy_adj[v]; i != -1; i = ant[i]) {
+  if(wt[i] && level[to[i]] == level[v] + 1 && 
+    (f = dfs(to[i], sink, min(flow, wt[i])))) {
+    wt[i] -= f;
+    wt[i ^ 1] += f;
+    return f;
+  }
+  }
+  return 0;
+}
+
+int maxflow(int source, int sink) {
+  int ret = 0, flow;
+  while(bfs(source, sink)) {
+  memcpy(copy_adj, adj, sizeof adj);
+  while((flow = dfs(source, sink, INF))) {
+    ret += flow;
+  }
+  }
+  return ret;
+}
 
 int main(){
-	addedge(0, 1, 16 ); 
-	addedge(0, 2, 13 ); 
-	addedge(1, 2, 10 ); 
-	addedge(1, 3, 12 ); 
-	addedge(2, 1, 4 ); 
-	addedge(2, 4, 14); 
-	addedge(3, 2, 9 ); 
-	addedge(3, 5, 20 ); 
-	addedge(4, 3, 7 ); 
-	addedge(4, 5, 4); 
-	cout << "Maximum flow " << maxflow(0, 5);
+	clear();
+	map<pair<int,int>, ll> w;
+	int N, M;
+	cin>>N>>M;
+	while(M--){
+		int a,b; ll c;
+		cin>>a>>b>>c;
+		if(a>b) swap(a,b);
+		w[{a,b}]+=c;
+		
+	}
+	for(auto tri : w){
+		auto p = tri.first; ll c = tri.second;
+		add(p.first,p.second,c);
+		add(p.second,p.first,c);
+	}
+
+	cout<<maxflow(1,N)<<'\n';
+
 }
