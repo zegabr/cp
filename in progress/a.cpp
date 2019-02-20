@@ -1,8 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-const int ms = 1e4+10; // Quantidade maxima de vertices
-const int me = 6e4+10; // Quantidade maxima de arestas
+const int ms = 1e5+10; // Quantidade maxima de vertices
+const int me = 5e5+10; // Quantidade maxima de arestas
 const ll INF = 6e13+10;
 
 ll wt[me];
@@ -82,8 +82,8 @@ int main(){
 	}
 	for(auto tri : w){
 		auto p = tri.first; ll c = tri.second;
+		if(p.first==p.second)continue;
 		add(p.first,p.second,c);
-		add(p.second,p.first,c);
 	}
 
 	cout<<maxflow(1,N)<<'\n';
