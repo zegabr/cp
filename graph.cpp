@@ -4,10 +4,9 @@
 //vector<int> g[V];
 //int dis[V];
 int BFS(int start,int goal){//O(V+E)
-	queue<int> q;
 	fill(dis,dis+V,inf);
 	dis[start]=0;
-	q.push(start);
+	queue<int> q({start});
 	while(q.size()){
 		int u = q.front(); q.pop();
 		for(auto v : g[u]){

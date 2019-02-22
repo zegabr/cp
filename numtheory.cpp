@@ -12,11 +12,11 @@ ll countdiv(ll n){//O(sqrt(n))
 
 /////EUCLIDES ESTENDIDO//////////
 //typedef<pair<ll,ll>> pll;
+// acha u e v da equacao:
+// u * x + v * y = gcd(x, y);
+// u eh inverso modular de x no modulo y
+// v eh inverso modular de y no modulo x
 pll euclides(ll a, ll b) {//O()
-	// acha u e v da equacao:
-	// u * x + v * y = gcd(x, y);
-	// u eh inverso modular de x no modulo y
-	// v eh inverso modular de y no modulo x
 	ll u = 0, oldu = 1, v = 1, oldv = 0;
 	while(b) {
 		ll q = a / b;
