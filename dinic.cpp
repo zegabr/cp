@@ -85,7 +85,7 @@ int main(){
 	Graph g(n);
 	while(m--){
 		cin>>u>>v>>w;
-		g.add_edge(u,v,w);
+		g.add_edge(u-1,v-1,w);
 	}
-	cout<<maxflow(g,1,n)<<'\n';
+	cout<<maxflow(g,0,n-1)<<'\n';
 }
