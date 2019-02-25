@@ -120,7 +120,7 @@ void floydWarshall() {//O(V³)
 ///////KUHN'S ALGORITHM//////////////////////////////
 //bipartite unweighted graph maximum matching
 
-//vector<int> g[V]; //grafo bipartido
+//vector<int> g[V]; //grafo bipartido//só precisa criar adjacencia de Left -> Right
 //int matchl[V],matchr[V],tempo=1;
 //vector<int> vis(V);
 //m vertices em um grupo, n vertices em outro m+n=V
