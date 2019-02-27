@@ -2,27 +2,46 @@
 using namespace std;
 #define sp ' '
 #define pl '\n'
-typedef long long ll;
+typedef unsigned long long ll;
 
 const ll inf = 1e18+10;
-const int N =2e7 ;
+const ll N =2e7 ;
 
 
 bool isprime(ll n){//O(sqrt(n))
 	ll c=0;
-	for(ll i=1; i*i<=n; i++){
+	if(n==2) return 1; 
+	if(~n&1 or n==1) return 0;
+	for(ll i=3; i*i<=n; i+=2){
 		if(n%i==0){
-			if(n/i==i)c++; //conta um divisor
-			else c+=2; // conta 2 divisores: i  e n/i
+			return 0;
 		}
+
 	}
-	return c==2;
+	return 1;
 }
 
 int main(){
 	ios::sync_with_stdio(0); cin.tie(0);
-	ll k;
 
+//debug
+/*
+	ll arr[]={2, 4 ,10 ,16 ,40, 100, 250 ,256 ,400 ,640 ,1600, 16000, 25600};
+	ll to=1;
+	for(int v : arr) to*=v;
+	cout<<to<<pl;
+*/
+	ll teste = 14195346025471803392;
+	ll opa = 160000;
+	ll bug = teste*opa;
+	cout<<bug<<pl;
+	return 0;
+
+//debug
+
+
+
+	ll k;
 	cin>>k;//phi(n)
 	if(k==1){
 		cout<<1<<pl;
@@ -31,42 +50,37 @@ int main(){
 		cout<<0<<pl;
 		return 0;
 	}
-	set<ll> divs;//divs of k
+	vector<ll> primes;//primes of k
 	ll d;
 	for(ll i=1 ;i*i<=k; i++){
 		if(k%i==0LL){
-			if(isprime(i+1))divs.insert(i+1);
+			if(isprime(i+1))primes.push_back(i+1);
 			d=k/i;
-			if(d!= i and isprime(d+1) )divs.insert(d+1);
+			if(d!=i and isprime(d+1) )primes.push_back(d+1);
 		}
 	}
-	int tam=divs.size();
-		cout<<tam<<pl;
-		return 0;
-	vector<ll>primes;
-	for(ll p:divs){
-		primes.push_back(p);
-		//	cout<<p<<sp;
-	}
-	//cout<<pl;
-
+	ll tam=primes.size();
+	//cout<<tam<<pl;
+	sort(primes.begin(),primes.end());
 	ll pnum,pden;
 	ll ans = inf;
-	int mask;
+	ll mask;
 	for(mask = 1; mask<(1<<tam); mask++){
-		pnum=1LL; pden=1LL;
+		pnum=1ull; pden=1ull;
 		set<ll> used;
-		for(int i=0;i<tam;i++){
+		for(ll i=0;i<tam;i++){
 			if(mask&(1<<i)){
 				//				cout<<primes[i]<<sp;
 				used.insert(primes[i]);
 				pnum*=primes[i];
 				pden*=primes[i]-1;
-								if(pden==0LL){//degub
+				//cout<<pden<<pl;
+								if(pden==0ULL){//degub
+									cout<<i<<pl;
 									cout<<pden<<pl;
 									cout<<primes[i]<<pl;
 									cout<<primes[i]-1<<pl;
-									for(ll f : used)cout<<f<<sp;
+									for(ll f : used)cout<<f-1<<sp;
 									cout<<pl;
 									return 0;
 								}
@@ -74,14 +88,13 @@ int main(){
 		}
 		//cout<<" ==> ";
 		pnum*=k;	
-		if(pnum%pden==0LL){
+		if(pnum%pden==0ULL){
 			ll n = pnum/pden;
 			ll aux =n;
 			for(ll p:used){
 				while(aux%p==0LL) aux/=p;
 			}
 			if(aux==1){
-
 				//cout<<n<<" is a solution"<<pl;
 				ans=min(ans,n);
 			}
