@@ -31,23 +31,24 @@ int main(){
 		cout<<0<<pl;
 		return 0;
 	}
-	set<ll> divs;
+	set<ll> divs;//divs of k
 	ll d;
 	for(ll i=1 ;i*i<=k; i++){
 		if(k%i==0LL){
-			divs.insert(i+1);
+			if(isprime(i+1))divs.insert(i+1);
 			d=k/i;
-			if(d!= i )divs.insert(d+1);
+			if(d!= i and isprime(d+1) )divs.insert(d+1);
 		}
 	}
 	int tam=divs.size();
-//	cout<<tam<<pl;
-vector<ll>primes;
-for(ll p:primes2){
-	primes.push_back(p);
-//	cout<<p<<sp;
-}
-cout<<pl;
+		cout<<tam<<pl;
+		return 0;
+	vector<ll>primes;
+	for(ll p:divs){
+		primes.push_back(p);
+		//	cout<<p<<sp;
+	}
+	//cout<<pl;
 
 	ll pnum,pden;
 	ll ans = inf;
@@ -60,16 +61,24 @@ cout<<pl;
 				//				cout<<primes[i]<<sp;
 				used.insert(primes[i]);
 				pnum*=primes[i];
-				pden*=primes[i]-1LL;
+				pden*=primes[i]-1;
+								if(pden==0LL){//degub
+									cout<<pden<<pl;
+									cout<<primes[i]<<pl;
+									cout<<primes[i]-1<<pl;
+									for(ll f : used)cout<<f<<sp;
+									cout<<pl;
+									return 0;
+								}
 			}
 		}
 		//cout<<" ==> ";
 		pnum*=k;	
-		if(pden and pnum%pden==0LL){
+		if(pnum%pden==0LL){
 			ll n = pnum/pden;
 			ll aux =n;
 			for(ll p:used){
-				while(p and aux%p==0LL) aux/=p;
+				while(aux%p==0LL) aux/=p;
 			}
 			if(aux==1){
 
