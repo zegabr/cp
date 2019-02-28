@@ -10,7 +10,7 @@ const ll N =2e7 ;
 
 bool isprime(ll n){//O(sqrt(n))
 	ll c=0;
-	if(n==2) return 1; 
+	if(n==2) return 0; 
 	if(~n&1 or n==1) return 0;
 	for(ll i=3; i*i<=n; i+=2){
 		if(n%i==0){
@@ -77,7 +77,10 @@ int main(){
 		if(ok){
 			ll n = aux*pnum;
 
-			//cout<<n<<" is a solution"<<pl;
+			cout<<n<<" is a solution"<<pl;
+			cout<<"used: ";
+			for(auto v : used)cout<<v<<sp;
+			cout<<pl<<pl;
 			ans=min(ans,n);
 		}
 
