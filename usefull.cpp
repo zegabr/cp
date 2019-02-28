@@ -80,3 +80,5 @@ cout<<rng()<<endl; //printa numero randomico
 int main(){
 	cout<<fixed<<setprecision(48);
 }
+
+///////////////////////////BITSET/////////////////////////////
