@@ -76,3 +76,19 @@ void PHI(){//get prime factors and calculate phi
 		}
 	}
 }
+
+ll PHI(ll n){//OTHER EULER FUNCTION///////
+	ll ans = n;
+	for(ll i=2;i*i<=n;i++){
+		if(n%i==0){
+			ans*=i-1;
+			ans/=i;
+			while(n%i==0)n/=i;
+		}
+	}
+	if(n>1){//n is prime
+		ans*=n-1;
+		ans/=n;
+	}	
+	return ans;
+}

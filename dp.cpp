@@ -1,5 +1,5 @@
 //////MAX SUBARRAY SUM//////
-//int dp[maxn],a[maxn], ans = -maxn;
+//int dp[maxn],a[maxn],ans=-maxn;
 int maxsubarraysum(int n){
 	dp[0]=0;
 	for(int i=1;i<=n;i++){
