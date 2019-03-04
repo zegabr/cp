@@ -69,10 +69,4 @@ int main(){
 	}
 	if(ans!=inf)cout<<ans<<pl;
 	else cout<<0<<pl;
-	
-	
-
-
-
-
 }
