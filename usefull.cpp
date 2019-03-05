@@ -30,9 +30,10 @@ int main()
 
 //////////////STRINGSTREAM//////////
 #include <sstream>
-string text;
+string line;
+getline(cin,line);//pega linha
 stringstream ss; ss.str(line);
-ss>>word; //pega uma palavra de text
+ss>>word; //pega uma palavra de line
 
 ///////////////PERMUTATIONS//////////
 #include <numeric>
