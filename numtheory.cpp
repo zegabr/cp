@@ -54,10 +54,10 @@ ll fexp(ll a, ll b) {//O(logb)
 
 //////////SIEVE////////
 vector<bool> prime(N, 1);
-void sieve (ll n){//O(nlogn)
-	for (ll p=2; p<=n;p++){
+void sieve (ll n){//O(nloglogn)
+	for (ll p=2; p<=n;p+=2){
 		if(prime[p]){
-			for(ll i=p*2; i<=n; i+=p)
+			for(ll i=p*p; i<=n; i+=p)
 				prime[i]=0; 
 		}
 	}    
