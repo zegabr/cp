@@ -55,6 +55,7 @@ ll fexp(ll a, ll b) {//O(logb)
 //===================SIEVE==================
 vector<bool> prime(N, 1);
 void sieve (ll n){//O(nloglogn)
+	prime[0]=prime[1]=0;
 	for (ll p=2; p<=n;p++){
 		if(prime[p]){
 			for(ll i=p*p; i<=n; i+=p)
@@ -62,6 +63,9 @@ void sieve (ll n){//O(nloglogn)
 		}
 	}    
 }
+//==============IS PRIME===============
+
+
 
 //================EULER FUNCTION ===============
 vector<ll> phi(N);
