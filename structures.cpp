@@ -1,4 +1,4 @@
-//////////BIT/////////
+//============BIT============
 //const int N = 21212414;
 //int bit[N],n;
 int sum(int i){//O(logn)
@@ -17,7 +17,7 @@ void ad(int i,int val){//O(logn)
 	}
 }
 
-///////////DISJOINT SET UNION//////////
+//============DISJOINT SET UNION==============
 //int ds[N];
 void makeset(){
 	for(int i=0;i<v;i++) ds[i]=i;
@@ -35,7 +35,7 @@ bool uni(int a, int b){//union
 	return true;
 }
 
-//////////////RECURSIVE SEGMENT TREE /////////
+//============RECURSIVE SEGMENT TREE==================
 //int arr[4 * N], seg[4 * N], n;
 void build(int x = 1, int l = 0, int r = n - 1) {
 	if(l == r) {

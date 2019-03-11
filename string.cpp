@@ -1,4 +1,4 @@
-/////////TRIE////////////////
+//===========TRIE=================
 //int trie[N][sigma], terminal[N], z;
 //sigma eh o tamanho do alfabeto
 //N é o tamanho da maior string vezes a quantidade de strings
@@ -34,7 +34,7 @@ int count(string &p) {
 	return terminal[cur];
 }
 
-/////////////Z-ALGORITHM////
+//=============Z-ALGORITHM================
 //z[i] is the length of the biggest prefix of s, beggining from position i
 //z[0] is by definition s.size(), however never used, so leaving zero there is the best option
 //to search for a pattern p in a text t, run zfunc(p+'¨'+t), so p will be prefix
@@ -49,7 +49,7 @@ vector<int> zfunc(const string &s){//O(n)
 	return z;//z-array
 }
 
-////////////KMP/////////
+//============KMP=================
 //string p, t;
 //int b[N], n, m; 
 void kmpPre() {

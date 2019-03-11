@@ -1,8 +1,13 @@
-//////////////////////////FAST IO/////////////////////////////
+//=============FAST IO===================
 #include<iostream>
 ios::sync_with_stdio(0);
 cin.tie(0);
-//////////////////////////GETLINE/////////////////////////////
+//===========SETPRECISION=========================
+#include <iomanip>
+int main(){
+	cout<<fixed<<setprecision(48);
+}
+//=================GETLINE================
 char str[20];
 str[0]=cin.get();//get 1 char
 cin.getline(str, 20);//get at most 20 chars 
@@ -28,14 +33,14 @@ int main()
 	return 0;
 }
 
-//////////////STRINGSTREAM//////////
+//=============STRINGSTREAM================
 #include <sstream>
 string line;
 getline(cin,line);//pega linha
 stringstream ss; ss.str(line);
 ss>>word; //pega uma palavra de line
 
-///////////////PERMUTATIONS//////////
+//==============PERMUTATIONS==============
 #include <numeric>
 vector<int> v(n);
 iota(v.begin(),v.end(),0);
@@ -43,7 +48,7 @@ do{
 	get(v);
 }while(next_permutation(v.begin(),v.end()));
 
-//////////////BITWISE OPERATIONS////////////
+//================BITWISE OPERATIONS================
 1<<n //2^n
 mask | (1<<n)// seta iesimo bit
 (mask>>i)&1// testa se o iesimo bit ta setado
@@ -52,7 +57,7 @@ mask ^ (1<<i) //troca o iesimo bit
 num&1 //num é ímpar?
 ~num&1 //num é par?
 
-////////////////RANDOM////////////////////////
+//===================RANDOM=======================
 //---safe hash-map----https://codeforces.com/blog/entry/62393
 #include<chrono>
 #include<random>
@@ -76,10 +81,5 @@ unordered_map<long long, int, custom_hash> safe_map;
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 cout<<rng()<<endl; //printa numero randomico
 
-///////////////////////////////////////////////////
-#include <iomanip>
-int main(){
-	cout<<fixed<<setprecision(48);
-}
 
-///////////////////////////BITSET/////////////////////////////
+//==================BITSET=========================

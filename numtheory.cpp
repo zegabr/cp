@@ -1,4 +1,4 @@
-//////////////DIVISORES////////
+//=============DIVISORES================
 ll countdiv(ll n){//O(sqrt(n))
 	ll c=0;
 	for(ll i=1; i*i<=n; i++){
@@ -10,7 +10,7 @@ ll countdiv(ll n){//O(sqrt(n))
 	return c;
 }
 
-/////EUCLIDES ESTENDIDO//////////
+//=========EUCLIDES ESTENDIDO==============
 //typedef<pair<ll,ll>> pll;
 // acha u e v da equacao:
 // u * x + v * y = gcd(x, y);
@@ -30,18 +30,18 @@ pll euclides(ll a, ll b) {//O()
 	return pll(oldu, oldv);
 }
 
-/////////////MDC//////////////
+//==============MDC===================
 ll mdc(ll a, ll b) {
 	while(b) a %= b, swap(a, b);
 	return a;
 }
 
-//////////MMC//////////////////////
+//================MMC==================
 inline ll mmc(const ll &a, const ll &b) {
 	return (a / mdc(a, b)) * b; 
 }
 
-////////////FAST EXPONENTIATION//////
+//===============FAST EXPONENTIATION=================
 ll fexp(ll a, ll b) {//O(logb)
 	ll ans = 1;
 	while(b) {
@@ -52,7 +52,7 @@ ll fexp(ll a, ll b) {//O(logb)
 	return ans;
 }
 
-//////////SIEVE////////
+//===================SIEVE==================
 vector<bool> prime(N, 1);
 void sieve (ll n){//O(nloglogn)
 	for (ll p=2; p<=n;p++){
@@ -63,20 +63,19 @@ void sieve (ll n){//O(nloglogn)
 	}    
 }
 
-////////////EULER FUNCTION O(NlogN)/////////
+//================EULER FUNCTION ===============
 vector<ll> phi(N);
 void PHI(){//get prime factors and calculate phi
 	for(ll i=1;i<N;i++)phi[i]=i;
 	for(ll i=2;i<N;i++){//O(N)
 		if(phi[i]==i){//n is prime
-			for(ll j=i;j<N;j+=i){//O(logN)
+			for(ll j=i;j<N;j+=i){//O(logi)
 				//i is a prime factor of j
 				phi[j]=phi[j]/i*(i-1);
 			}
 		}
 	}
 }
-
 ll PHI(ll n){//OTHER EULER FUNCTION///////
 	ll ans = n;
 	for(ll i=2;i*i<=n;i++){

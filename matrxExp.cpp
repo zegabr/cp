@@ -1,4 +1,4 @@
-///////MATRIX FAST EXPONENTIATION//////////////// for recurrence problems
+//============MATRIX FAST EXPONENTIATION=========== for recurrence problems
 //this one is for uva tribonacci
 #include <bits/stdc++.h>
 using namespace std;

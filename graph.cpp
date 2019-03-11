@@ -1,4 +1,4 @@
-//////BFS///////
+//=========BFS==========
 //BFS FOR UNWEIGHTED GRAPHS MINIMUM DISTANCE
 //int V;//#vertices
 //vector<int> g[V];
@@ -21,7 +21,7 @@ int BFS(int start,int goal){//O(V+E)
 return dis[goal]==inf ? -1 : dis[goal];  
 }
 
-////////DFS////////
+//==========DFS=============
 //vector<int> vis(N);
 int tempo=1;//fazer tempo++ para cada vez que precisar zerar visitados
 void dfs(int u){//O(V+E)
@@ -46,7 +46,7 @@ bool dfsbicolor(int u){
 	return true;
 }
 
-///////TOPOSORT////////(ITERATIVO e intuitivo)
+//========TOPOSORT=========(ITERATIVO e intuitivo)
 //vector<int> g[N], vis(N);
 //map<int,int>grau;
 void toposort(){//O(V+E)
@@ -63,7 +63,7 @@ void toposort(){//O(V+E)
 	}
 }
 
-//////DIJKSTRA///////
+//=========DIJKSTRA===============
 //typedef pair<int,int> ii;
 //typedef vector<ii> vii;
 //int dis[N];
@@ -91,7 +91,7 @@ bool dijkstra(int S, int T){//O(E logV)
 	return way;
 }
 
-////////FLOYD WARSHALL///////
+//=============FLOYD WARSHALL=============
 //const int inf = 0x3f3f3f3f;
 //int g[N][N], dis[N][N], n;
 void clear() {
@@ -117,7 +117,7 @@ void floydWarshall() {//O(V³)
 	}
 }
 
-///////KUHN'S ALGORITHM//////////////////////////////
+//============KUHN'S ALGORITHM====================
 //bipartite unweighted graph maximum matching
 
 //vector<int> g[V]; //grafo bipartido//só precisa criar adjacencia de Left -> Right
