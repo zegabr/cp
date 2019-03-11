@@ -53,19 +53,24 @@ ll fexp(ll a, ll b) {//O(logb)
 }
 
 //===================SIEVE==================
-vector<bool> prime(N, 1);
-void sieve (ll n){//O(nloglogn)
+bitset<10000010> prime;
+vector<ll> primes;
+void sieve (ll n){
+	prime.set();
 	prime[0]=prime[1]=0;
-	for (ll p=2; p<=n;p++){
-		if(prime[p]){
+	for (ll p=2; p<=n;p++) if(prime[p]){
+			primes.push_back(i);
 			for(ll i=p*p; i<=n; i+=p)
 				prime[i]=0; 
 		}
-	}    
+	    
 }
 //==============IS PRIME===============
-
-
+bool isPrime(ll n){
+	if(n<prime.size()) return prime[n];
+	for(int i=0;i<primes.size();i++) if(n%primes[i]==0) return 0;
+	return 1;
+}
 
 //================EULER FUNCTION ===============
 vector<ll> phi(N);
@@ -84,14 +89,12 @@ ll PHI(ll n){//OTHER EULER FUNCTION///////
 	ll ans = n;
 	for(ll i=2;i*i<=n;i++){
 		if(n%i==0){
-			ans*=i-1;
-			ans/=i;
+			ans-=ans/i;
 			while(n%i==0)n/=i;
 		}
 	}
 	if(n>1){//n is prime
-		ans*=n-1;
-		ans/=n;
+		ans-=ans/n;
 	}	
 	return ans;
 }
