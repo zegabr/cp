@@ -11,23 +11,18 @@ ll countdiv(ll n){//O(sqrt(n))
 }
 
 //=========EUCLIDES ESTENDIDO==============
-//typedef<pair<ll,ll>> pll;
-// acha u e v da equacao:
-// u * x + v * y = gcd(x, y);
-// u eh inverso modular de x no modulo y
-// v eh inverso modular de y no modulo x
-pll euclides(ll a, ll b) {//O()
-	ll u = 0, oldu = 1, v = 1, oldv = 0;
-	while(b) {
-		ll q = a / b;
-		oldv = oldv - v * q;
-		oldu = oldu - u * q;
-		a = a - b * q;
-		swap(a, b);
-		swap(u, oldu);
-		swap(v, oldv);
-	}
-	return pll(oldu, oldv);
+// acha x e y da equacao:
+// a * x + b * y = gcd(a, b);
+// x eh inverso modular de a no modulo y
+// y eh inverso modular de b no modulo x
+ll x,y,d;
+void euclides(ll a, ll b) {
+	if(b==0){x=1; y=0; d=a; return;}
+	euclides(b,a%b);
+	int x1=y;
+	int y1=x-(a/b)*y;
+	x=x1; y=y1;
+	
 }
 
 //==============MDC===================
