@@ -125,7 +125,7 @@ void floydWarshall() {//O(V³)
 //vector<int> vis(V);
 //m vertices em um grupo, n vertices em outro m+n=V
 void clrmatch(){
-    for(int i=0;i<ms;i++)
+    for(int i=0;i<V;i++)
 		matchr[i]=matchl[i]=-1;
 }
 

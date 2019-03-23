@@ -3,7 +3,7 @@ const int maxn=10000;
 ll c[maxn][maxn];
 
 ll C(int n,int k){//combinacao de n, escolhendo k
-	if(k==0 or k==n) 1;
+	if(k==0 or k==n) return 1;
 	if(c[n][k]) return c[n][k];
 	return c[n][k] = C(n-1,k-1)+C(n-1,k);
 }
