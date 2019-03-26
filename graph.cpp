@@ -26,7 +26,7 @@ return dis[goal]==inf ? -1 : dis[goal];
 int tempo=1;//fazer tempo++ para cada vez que precisar zerar visitados
 void dfs(int u){//O(V+E)
 	if(vis[u]==tempo) return;
-	tempo++;
+	vis[u]=tempo;
 	for(auto v : g[u]){
 		if(vis[v]==tempo) continue;
 		dfs(v);
