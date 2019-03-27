@@ -92,4 +92,4 @@ raízes primitivas:
 	se ord(a,m)==phi(m) , a é raíz primitiva
 	gcd(a,m) tem q ser 1 para possuir ordem
 	se k=ord(a,m), ord(a^t,m)=k/gcd(k,t);//logo se a for raíz primitiva, vc consegue ordem de qualquer potencia dele, logo de qualquer nmero q possui ordem
-	
+	um número tem raíz primitiva se for da forma 2,4,p^k ou 2p^k com k inteiro positivo e p PRIMO ÍMPAR
