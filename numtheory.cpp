@@ -37,7 +37,7 @@ inline ll mmc(const ll &a, const ll &b) {
 }
 
 //===============FAST EXPONENTIATION=================
-ll fexp(ll a, ll b) {//O(logb)
+ll fexp(ll a, ll b, ll mod) {//O(logb)
 	ll ans = 1;
 	while(b) {
 		if(b & 1) ans = ans * a % mod;
@@ -132,3 +132,29 @@ int main()
     return 0;
 }
 //////===========================================
+
+
+//===========PRIMITIVE ROOT=================//requires fexp e PHI()
+int generator (int p) {//find a primitive root modulo p
+	//talvez seja interessante fazer uma condicional aqui pra saber se o p tem raíz primitiva
+	
+	vector<int> fact;
+	int tot = PHI(p),  n = tot;
+	for (int i=2; i*i<=n; ++i)
+		if (n % i == 0) {
+			fact.push_back (i);//fatores de phi
+			while (n % i == 0)
+				n /= i;
+		}
+	if (n > 1)
+		fact.push_back (n);
+
+
+	for (int res=2; res<=p; ++res) {
+		bool ok = true;
+		for (int i=0; i<fact.size() && ok; ++i)
+			ok &= fexp (res, tot / fact[i], p) != 1;
+		if (ok)  return res;//primitive root
+	}
+	return -1;//there is none
+}
