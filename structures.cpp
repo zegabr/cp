@@ -29,9 +29,8 @@ int find(int i){//find
 }
 
 bool uni(int a, int b){//union
-	if(find(a)==find(b)) 
-		return false;
 	int x=find(a), y=find(b);
+	if(x==y) return false;
 	if(rank[x]>rank[y]) ds[y]=x;
 	else{
 		ds[x]=y;
