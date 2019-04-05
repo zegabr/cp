@@ -1,72 +1,50 @@
 #include<bits/stdc++.h>
-using namespace std;
 #define sp ' '
 #define pl '\n'
-typedef unsigned long long ll;
+using namespace std;
+typedef long long ll;
 
-const ll inf = 1e18+10;
-const ll N =2e7 ;
-
-
-bool isprime(const ll &n){//O(sqrt(n))
-	ll c=0;
-	if(n==2) return 1;//2 é nao otimo nesta questao
-	if(~n&1 or n==1) return 0;
-	for(ll i=3; i*i<=n; i+=2){
-		if(n%i==0){
-			return 0;
-		}
-
-	}
-	return 1;
-}
-
+int pd[10001][701][3];//index,weight,how many is not activated
+int p[10001],w[10001],d[10001];
+//int s[10001][701][3];
 int main(){
 	ios::sync_with_stdio(0); cin.tie(0);
-	ll k,upp,d1,d2;
-	cin>>k;
-	if(k==1 or k==2){
-		cout<<1<<pl;
-		return 0;
-	}
-	if(k&1){
-		cout<<0<<pl;
-		return 0;
-	}
-	if(isprime(k+1)){
-		cout<<k+1<<pl;
-		return 0;
+	int n,m; cin>>n>>m;
+	for(int i=1;i<=n;i++){
+		cin>>p[i]>>w[i]>>d[i];
 	}
 
-	vector<ll> divs;// divs of k = phi(n)
-	for(int i=1;i*i<=k;i++){
-		if(k%i==0){
-			d1=i, d2=k/i;
-			if(isprime(d1+1)) divs.push_back(d1);
-			if(d1!=d2 and isprime(d2+1)) divs.push_back(d2);
-		}
-	}
-	sort(divs.begin(),divs.end());
-
-	cout<<"divisors of k are ";
-	for(ll v : divs) cout<<v<<sp;
-	cout<<pl;
-
-
-	ll n=1,ans=inf,p,k2=k;
-	for(int i=0;i<divs.size();i++){
-		n=1,k2=k;
-		for(int j=i;j<divs.size();j++){		
-			p=divs[j]+1;
-			n*=p;
-			
-			while(k2%(p)==0){
-				k2/=p;
-				n*=p;
+	for(int i=1;i<=n;i++){
+		for(int j=1;j<=m;j++){//backpack size
+			if(w[i]<=j){//can get artifact
+				for(int ac=2; ac>=0;ac--){
+					if(ac==0){//cannot activate it
+						pd[i][j][0] = max(pd[i][j][0], pd[i-1][j-w[i]][0]+p[i]);//ok
+					}else if(ac==1){
+						pd[i][j][1] = max(pd[i][j][1], pd[i-1][j-w[i]][1]+p[i]);
+						pd[i][j+d[i]][0] = max(pd[i][j+d[i]][0], pd[i-1][j-w[i]][1]+p[i]);
+					}else{
+						pd[i][j][2] = max(pd[i][j][2], pd[i-1][j-w[i]][2]+p[i]);
+						pd[i][j+d[i]][1] = max(pd[i][j+d[i]][1], pd[i-1][j-w[i]][2]+p[i]);
+					}
+				}
 			}
 		}
-		if(n>k) ans = min(n,ans);
 	}
-	if(ans!=inf)cout<<ans<<pl;
-	else cout<<0<<pl;
+
+	int ans=0;
+	for(int i=1;i<=n;i++)
+		for(int j=0;j<=700;j++)
+			for(int a=0;a<3;a++)
+				ans = max(ans, pd[i][j][a]);
+	cout<<ans<<pl;
+
+
 }
+
+
+/**
+
+P V D
+
+*/
