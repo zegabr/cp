@@ -16,17 +16,12 @@ int main(){
 
 	for(int i=1;i<=n;i++){
 		for(int j=1;j<=m;j++){//backpack size
-			if(w[i]<=j){//can get artifact
-				for(int ac=2; ac>=0;ac--){
-					if(ac==0){//cannot activate it
-						pd[i][j][0] = max(pd[i][j][0], pd[i-1][j-w[i]][0]+p[i]);
-					}else if(ac==1){//can activate 1
-						pd[i][j][1] = max(pd[i][j][1], pd[i-1][j-w[i]][1]+p[i]);
-						pd[i][j+d[i]][0] = max(pd[i][j+d[i]][0], pd[i-1][j-w[i]][1]+p[i]);
-					}else{//can activate 2
-						pd[i][j][2] = max(pd[i][j][2], pd[i-1][j-w[i]][2]+p[i]);
-						pd[i][j+d[i]][1] = max(pd[i][j+d[i]][1], pd[i-1][j-w[i]][2]+p[i]);
-					}
+			for(int ac=0; ac<3;ac++){
+				pd[i][j][ac]=pd[i-1][j][ac];
+				if(w[i]<=j)
+					pd[i][j][ac] = max(pd[i-1][j][ac], pd[i-1][j-w[i]][ac]+p[i]);
+				if(ac and w[i]<=j+d[i]){
+					pd[i][j+d[i]][ac-1] = max(pd[i][j+d[i]][ac-1], pd[i-1][j-w[i]][ac]+p[i]);
 				}
 			}
 		}
