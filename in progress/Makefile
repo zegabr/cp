@@ -2,3 +2,5 @@ a.out: x.cpp
 	g++ x.cpp -std=c++14 -O2 -o a.out
 1: x.cpp
 	g++ x.cpp -std=c++14 -Wfatal-errors
+2: 
+	./a.out < i1 && ./a.out < i2
