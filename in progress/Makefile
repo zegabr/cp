@@ -1,4 +1,4 @@
 a.out: x.cpp
-	g++ x.cpp -std=c++14 -o a.out
+	g++ x.cpp -std=c++14 -O2 -o a.out
 1: x.cpp
-	g++ x.cpp -std=c++14 -o a.out -Wfatal-errors
+	g++ x.cpp -std=c++14 -Wfatal-errors
