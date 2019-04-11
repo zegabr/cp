@@ -24,7 +24,7 @@ int main()
 	{
 		getline(cin, str);
 
-		while (str.length()==0 )
+		while (str.size()==0 )
 			// Keep reading a new line while there is a blank line
 			getline(cin, str);
 
@@ -38,14 +38,17 @@ int main()
 string line;
 getline(cin,line);//pega linha
 stringstream ss; ss.str(line);
-ss>>word; //pega uma palavra de line
+while(ss>>word){
+	//pega uma palavra de line e coloca em word
+
+} 
 
 //==============PERMUTATIONS==============
 #include <numeric>
 vector<int> v(n);
 iota(v.begin(),v.end(),0);
 do{
-	get(v);
+	get(v);//processa permutacao
 }while(next_permutation(v.begin(),v.end()));
 
 //================BITWISE OPERATIONS================
@@ -83,6 +86,22 @@ cout<<rng()<<endl; //printa numero randomico
 
 
 //==================BITSET=========================
+bitset<10> a(10);//bitset de tamanho 10 com o valor 10 atribuido
+bitset<10> a("0111100000");//funciona com zeros a esquerda
+a = bitset<10>(val);//tbm funciona
+a.count();//retorna quantidade de bits 1
+
+a.test(i);//retorna 1 se o i-ésimo bit está setado
+a.any();//true se algum bit está setado
+a.none();// true se nenhum bit setado
+a.all;//true se todos os bits setados
+
+a.set(k,i);//seta k bits partindo do i-
+a.set(i);//seta i-esimo
+a.set();//seta todos os bits
+a.reset();//funciona igual ao set
+a.flip();//mesmos parametros, porém troca bits
+
 
 
 //===============NUMTheory=========================
@@ -90,6 +109,6 @@ raízes primitivas:
 	ord(a,m) = menor inteiro positivo tal que a^k==1modm
 	ord(a,m)|phi(m) //ordem de a mod m divide phi(m)
 	se ord(a,m)==phi(m) , a é raíz primitiva
-	gcd(a,m) tem q ser 1 para possuir ordem
+	gcd(a,m) tem q ser 1 para a possuir ordem modulo m
 	se k=ord(a,m), ord(a^t,m)=k/gcd(k,t);//logo se a for raíz primitiva, vc consegue ordem de qualquer potencia dele, logo de qualquer nmero q possui ordem
 	um número tem raíz primitiva se for da forma 2,4,p^k ou 2p^k com k inteiro positivo e p PRIMO ÍMPAR
