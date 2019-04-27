@@ -52,32 +52,32 @@ do{
 }while(next_permutation(v.begin(),v.end()));
 
 //================BITWISE OPERATIONS================
-1<<n //2^n
+	1<<n //2^n
 mask | (1<<n)// seta iesimo bit
-(mask>>i)&1// testa se o iesimo bit ta setado
-(1<<n)-1 // seta os n bits menos significativos
+	(mask>>i)&1// testa se o iesimo bit ta setado
+	(1<<n)-1 // seta os n bits menos significativos
 mask ^ (1<<i) //troca o iesimo bit
-num&1 //num é ímpar?
-~num&1 //num é par?
+	num&1 //num é ímpar?
+	~num&1 //num é par?
 
-//===================RANDOM=======================
-//---safe hash-map----https://codeforces.com/blog/entry/62393
+	//===================RANDOM=======================
+	//---safe hash-map----https://codeforces.com/blog/entry/62393
 #include<chrono>
 #include<random>
-struct custom_hash {
-    static uint64_t splitmix64(uint64_t x) {
-        // http://xorshift.di.unimi.it/splitmix64.c
-        x += 0x9e3779b97f4a7c15;
-        x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
-        x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
-        return x ^ (x >> 31);
-    }
+	struct custom_hash {
+		static uint64_t splitmix64(uint64_t x) {
+			// http://xorshift.di.unimi.it/splitmix64.c
+			x += 0x9e3779b97f4a7c15;
+			x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
+			x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
+			return x ^ (x >> 31);
+		}
 
-    size_t operator()(uint64_t x) const {
-        static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
-        return splitmix64(x + FIXED_RANDOM);
-    }
-};
+		size_t operator()(uint64_t x) const {
+			static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
+			return splitmix64(x + FIXED_RANDOM);
+		}
+	};
 unordered_map<long long, int, custom_hash> safe_map;
 
 //----safe random---https://codeforces.com/blog/entry/61675
@@ -107,7 +107,7 @@ a.flip();//mesmos parametros, porém troca bits
 //===============NUMTheory=========================
 raízes primitivas:
 	ord(a,m) = menor inteiro positivo tal que a^k==1modm
-	ord(a,m)|phi(m) //ordem de a mod m divide phi(m)
+ord(a,m)|phi(m) //ordem de a mod m divide phi(m)
 	se ord(a,m)==phi(m) , a é raíz primitiva
 	gcd(a,m) tem q ser 1 para a possuir ordem modulo m
 	se k=ord(a,m), ord(a^t,m)=k/gcd(k,t);//logo se a for raíz primitiva, vc consegue ordem de qualquer potencia dele, logo de qualquer nmero q possui ordem
