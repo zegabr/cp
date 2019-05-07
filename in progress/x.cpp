@@ -5,57 +5,49 @@ using namespace std;
 typedef long long ll;
 
 
-int pd[10001][910][3];//index, current capacity, how many can activate
-int p[10001],w[10001],d[10001];
-int m,n;
+int a[100][5][5];
+int n;
 
-//offset capacity
-int S;
-inline int off(int j){ return j+S;}
-
+bool eat(int c1, int c2){//empatam antes de todos
+	bool rep=0;
+	for(int i=0;i<5;i++){
+		for(int j=0;j<5;j++){
+			set<int> s;//uniao entre 2 
+			s.insert(a[c1][i], a[c1][i]+5);
+			s.insert(a[c2][j], a[c2][j]+5);
+			if(s.size()==10) continue;//linha i de c1 nao empata com linha j de c2
+			rep=1;//linha i de c1 empata com linha j de c2 (possuem numeros em comum)
+			for(int k=0;k<n;k++){//pra cada cartela difernte de c1 e c2
+				if(k==c1 or k==c2)continue;
+				for(int lin=0;lin<5;lin++){//pra cada linha
+					bool allin=1;//supoe que todos tao na uniao das linhas de c1 e c2
+					for(int col=0;col<5 and allin;col++){
+						allin &= s.count(a[k][lin][col]);
+					}
+					if(allin)return 0;//outra linha ganha antes de c1 e c2 empatarem
+				}
+			}
+		}
+	}
+	return rep;
+}
 
 int main(){
 	ios::sync_with_stdio(0); cin.tie(0);
-	cin>>n>>m;
-	int me=0,me2=0;
-	memset(pd, 0, sizeof pd);
+	cin>>n;
+	for(int i=0;i<n;i++)
+	for(int j=0;j<5;j++)
+	for(int k=0;k<5;k++)
+		cin>>a[i][j][k];
 
-	for(int i=1;i<=n;i++){
-		cin>>p[i]>>w[i]>>d[i];
-		if(d[i]>me2)me2=d[i];
-		if(me2>me)swap(me,me2);
-	}
-
-	S=me+me2;
-
-	for(int i=1;i<=n;i++){
-		for(int j=off(0);j<=off(m);j++){
-			for(int a=0;a<3;a++){
-				//caso de pegar ou nao pegar sem ativar
-				if(off(w[i])>j)pd[i][j][a] = pd[i-1][j][a];//n pode pegar
-				else pd[i][j][a] = max(pd[i-1][j][a], pd[i-1][j-w[i]][a]+p[i]);//nao pega ou pega 
-	
-				if(a){	
-					pd[i][j+d[i]][a-1] = max(pd[i-1][j+d[i]][a-1], pd[i-1][j+d[i]-w[i]][a]+p[i]);//nao pegar ou pegar (ativando)
-				}
-
+	for(int c1=0;c1<n-1;c1++){
+		for(int c2=c1+1;c2<n;c2++){
+			if(eat(c1,c2)){
+				cout<<c1+1<<sp<<c2+1<<pl;
+				return 0;
 			}
-
 		}
 	}
 
-	int ans=0;
-	//	cout<<S<<pl;
-	for(int i=1;i<=n;i++)
-		for(int j=off(1);j<=off(m);j++)
-			for(int a=0;a<3;a++)
-				ans = max(ans, pd[i][j][a]);
-
-
-//	cout<<pd[n][off(m)][0]<<pl;
-	cout<<ans<<pl;
-
-
-
-
+	cout<<"no ties\n";
 }
