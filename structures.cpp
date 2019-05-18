@@ -18,9 +18,9 @@ void ad(int i,int val){//O(logn)
 }
 
 //============DISJOINT SET UNION==============
-//int ds[N],rnk[N];
+//int ds[N],sz[N];
 void makeset(){
-	for(int i=0;i<v;i++){ ds[i]=i; rnk[i]=0;}
+	for(int i=0;i<v;i++){ ds[i]=i; sz[i]=1;}
 }
 
 int find(int i){//find
@@ -31,11 +31,8 @@ int find(int i){//find
 bool uni(int a, int b){//union
 	int x=find(a), y=find(b);
 	if(x==y) return false;
-	if(rnk[x]>rnk[y]) ds[y]=x;
-	else{
-		ds[x]=y;
-		rnk[y] += rnk[x]==rnk[y];
-	} 
+	ds[x]=y;
+	sz[y]+=sz[x];
 	return true;
 }
 
