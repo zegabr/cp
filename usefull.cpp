@@ -2,6 +2,8 @@
 #include<stdio.h>
 freopen("in.txt", "r", stdin);
 freopen("out.txt", "w", stdout);
+fclose(stdin);
+fclose(stdout);
 //=============FAST IO===================
 #include<iostream>
 ios::sync_with_stdio(0);
