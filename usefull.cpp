@@ -1,16 +1,21 @@
 //===============file input output=================
 #include<stdio.h>
-freopen("in.txt", "r", stdin);
-freopen("out.txt", "w", stdout);
-fclose(stdin);
-fclose(stdout);
+//abaixo vai dentro do main
+main(){
+	freopen("in.txt", "r", stdin);
+	freopen("out.txt", "w", stdout);
+	fclose(stdin);
+	fclose(stdout);
+}
 //=============FAST IO===================
 #include<iostream>
-ios::sync_with_stdio(0);
-cin.tie(0);
+main(){
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+}
 //===========SETPRECISION=========================
 #include <iomanip>
-int main(){
+main(){
 	cout<<fixed<<setprecision(48);
 }
 //=================GETLINE================
@@ -22,7 +27,7 @@ cin>>str; // get next word and return true. return false if there is no input
 getline (cin, str);//get full line and return true r return false if there is no line
 cin.ignore(150, '\n');//jump blank lines
 ///how to get non empty lines
-int main()
+main()
 {
 	string str;
 	int t = 4;
