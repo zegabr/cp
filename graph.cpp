@@ -89,6 +89,7 @@ bool dijkstra(int S, int T){//O(E logV)
 		int u=aux.second;
 		for(auto child : g[u]){
 			int w = child.first, v = child.second;
+			if(w>dist[v]) continue;
 			if(v==T)
 				way = true;
 			if(dis[u] + w < dis[v]){           
