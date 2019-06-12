@@ -47,6 +47,10 @@ ll fexp(ll a, ll b, ll mod) {//O(logb)
 	return ans;
 }
 
+ll invmultmod(ll a, ll mod){//mod is prime
+	return fexp(a,mod-2,mod);
+}
+
 //===================SIEVE==================
 bitset<10000010> prime;
 vector<ll> primes;
