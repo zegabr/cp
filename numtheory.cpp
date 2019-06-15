@@ -10,7 +10,7 @@ ll countdiv(ll n){//O(sqrt(n))
 	return c;
 }
 
-//=========EUCLIDES ESTENDIDO==============
+//=========EUCLIDES ESTENDIDmO==============
 // acha x e y da equacao:
 // a * x + b * y = gcd(a, b);
 // x eh inverso modular de a no modulo y
@@ -52,13 +52,14 @@ ll invmultmod(ll a, ll mod){//mod is prime
 }
 
 //===================SIEVE==================
-bitset<10000010> prime;
+const int P = 2e5+5;
+bitset<P+1> prime;
 vector<ll> primes;
 void sieve (ll n){
 	prime.set();
 	prime[0]=prime[1]=0;
 	for (ll p=2; p<=n;p++) if(prime[p]){
-		primes.push_back(i);
+		primes.push_back(p);
 		for(ll i=p*p; i<=n; i+=p)
 			prime[i]=0; 
 	}
