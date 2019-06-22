@@ -42,7 +42,7 @@ vector<int> LIS(vector<int> &v){//retorna maior sequencia
 	return ans;
 }
 
-vi getlen(vi &v){//pega soh os tamanhos
+vi getlen(vi &v){//pega o tamanho da lis terminada em cada elemento
 	vi L;
 	vi len(v.size(),0);
 	fr(i,0,v.size()-1){
