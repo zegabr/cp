@@ -65,6 +65,7 @@ void sieve (ll n){
 	}
 
 }
+
 //==============IS PRIME===============
 bool isPrime(ll n){
 	if(n<prime.size()) return prime[n];
@@ -99,7 +100,7 @@ ll PHI(ll n){//OTHER EULER FUNCTION///////
 	return ans;
 }
 
-
+//separar
 //==========CRT=================
 #include<bits/stdc++.h>
 using namespace std;
@@ -138,7 +139,7 @@ int main()
 }
 //////===========================================
 
-
+//separar
 //===========PRIMITIVE ROOT=================//requires fexp e PHI()
 int generator (int p) {//find a primitive root modulo p
 	//talvez seja interessante fazer uma condicional aqui pra saber se o p tem raíz primitiva
