@@ -6,7 +6,7 @@ for(int i = 0; i < 8;++i){//u,r,d,l,ur,dr,dl,ul
 	int ny = movy[i] + y;
 	//if safe then dfs(nx,ny)
 }
-
+//separar
 //=========BFS==========
 //BFS FOR UNWEIGHTED GRAPHS MINIMUM DISTANCE
 //int V;//#vertices
