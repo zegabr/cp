@@ -1,3 +1,4 @@
+//separar
 //============BIT============
 //const int N = 21212414;
 //int bit[N],n;
@@ -16,7 +17,7 @@ void ad(int i,int val){//O(logn)
 		i+= i&-i;
 	}
 }
-
+//separar
 //============DISJOINT SET UNION==============
 //int ds[N],sz[N];
 void makeset(){
@@ -36,6 +37,7 @@ bool uni(int a, int b){//union
 	return true;
 }
 
+//separar
 //============RECURSIVE SEGMENT TREE==================
 //int arr[4 * N], seg[4 * N], n;
 void build(int x = 1, int l = 0, int r = n - 1) {
