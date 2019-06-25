@@ -1,4 +1,4 @@
-//====lca==============
+//==========LCA==============
 const int N=1e4+10, ln=25;
 int up[N][ln+1], lv[N];
 vector<int> g[N];
