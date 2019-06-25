@@ -1,9 +1,9 @@
 //========DINIC MAX FLOW===============
-#include<bits/stdc++.h>
 //fonte: https://linux.ime.usp.br/~marcosk/mac0499/codigos.html
-using namespace std;
-typedef long long ll;
-const int INF = 0x3f3f3f3f;
+// #include<bits/stdc++.h>
+// using namespace std;
+// typedef long long ll;
+// const int INF = 0x3f3f3f3f;
 struct Graph {
 	struct Edge {
 		int v;
@@ -77,7 +77,7 @@ ll maxflow(Graph &g, int s, int t) {
 	}
 	return total_flow;
 }
-
+/*
 int main(){
 	int n,m;
 	int u,v;
@@ -90,3 +90,4 @@ int main(){
 	}
 	cout<<maxflow(g,0,n-1)<<'\n';
 }
+*/
