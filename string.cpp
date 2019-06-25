@@ -33,7 +33,7 @@ int count(string &p) {
 	}
 	return terminal[cur];
 }
-
+//separar
 //=============Z-ALGORITHM================
 //z[i] is the length of the biggest prefix of s, beggining from position i
 //z[0] is by definition s.size(), however never used, so leaving zero there is the best option
@@ -48,7 +48,7 @@ vector<int> zfunc(const string &s){//O(n)
 	}
 	return z;//z-array
 }
-
+//separar
 //============KMP=================
 //string p, t;
 //int b[N], n, m; 
