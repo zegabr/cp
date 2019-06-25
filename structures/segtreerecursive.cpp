@@ -1,45 +1,5 @@
-//separar
-//============BIT============
-//const int N = 21212414;
-//int bit[N],n;
-int sum(int i){//O(logn)
-	int res =0;
-	while (i){
-		res += bit[i];
-		i-= i&-i;
-	}
-	return res;
-}
-
-void ad(int i,int val){//O(logn)
-	while(i<n){
-		bit[i]+=val;
-		i+= i&-i;
-	}
-}
-//separar
-//============DISJOINT SET UNION==============
-//int ds[N],sz[N];
-void makeset(){
-	for(int i=0;i<v;i++){ ds[i]=i; sz[i]=1;}
-}
-
-int find(int i){//find
-	if(ds[i]==i) return i;
-	return ds[i]=find(ds[i]);
-}
-
-bool uni(int a, int b){//union
-	int x=find(a), y=find(b);
-	if(x==y) return false;
-	ds[x]=y;
-	sz[y]+=sz[x];
-	return true;
-}
-
-//separar
 //============RECURSIVE SEGMENT TREE==================
-//int arr[4 * N], seg[4 * N], n;
+int arr[4 * N], seg[4 * N], n;
 void build(int x = 1, int l = 0, int r = n - 1) {
 	if(l == r) {
 		seg[x] = arr[l];

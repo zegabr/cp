@@ -1,16 +1,3 @@
-//==========MAX SUBARRAY SUM============
-//int dp[maxn],a[maxn],ans=-maxn;
-int maxsubarraysum(int n){
-	dp[0]=0;
-	for(int i=1;i<=n;i++){
-		cin>>a[i];
-		dp[i]=max(a[i],dp[i-1]+a[i]);
-		ans = max(ans, dp[i]);
-	}
-	return ans;
-}
-
-//separar
 //==================LIS (nlogn)==========
 int ceilindex(vector<int> &v,vector<int> &T, int l, int r, int key){
 	while(r-l > 1){
@@ -53,8 +40,3 @@ vi getlen(vi &v){//pega o tamanho da lis terminada em cada elemento
 	}
 	return len;
 }
-
-///////EGGDROP ITERATIVO//////////////
-
-
-//////TSP///////////////
