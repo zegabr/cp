@@ -1,13 +1,12 @@
 //============MATRIX FAST EXPONENTIATION=========== for recurrence problems
 //this one is for uva tribonacci
-#include <bits/stdc++.h>
-using namespace std;
-char pl = '\n',sp=' ';
-typedef long long ll;
+// #include <bits/stdc++.h>
+// using namespace std;
+// char pl = '\n',sp=' ';
+// typedef long long ll;
 #define tam 3
 
-ll mod= 1e9+9;; 
-ll n,i,j,val,k,t;
+ll mod= 1e9+9;
 
 struct Matrix { 
 	ll mat[tam][tam];
@@ -60,7 +59,7 @@ main(){
 		T=fExp(T, n);
 
 		ans=0;
-		for(i=0;i<3;i++)
+		for(int i=0;i<3;i++)
 			ans=(ans+ (T.mat[tam-1][i]*base[i])%mod)%mod;
 		cout<<ans<<pl;
 	}
