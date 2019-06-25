@@ -10,7 +10,7 @@ int maxsubarraysum(int n){
 	return ans;
 }
 
-
+//separar
 //==================LIS (nlogn)==========
 int ceilindex(vector<int> &v,vector<int> &T, int l, int r, int key){
 	while(r-l > 1){
