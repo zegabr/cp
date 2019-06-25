@@ -17,6 +17,7 @@ void pascaltriangle(int n){
 	}
 }
 
+ll catalan(ll n){return C(2*n, n)/(n+1); }
 
 //========CATALAN NUMBERS=========
 /*
@@ -31,5 +32,4 @@ void pascaltriangle(int n){
 	 - Hankel Matric eh uma matriz nxn tal que a posicao i,j contem o valor catalan(i+j-2). Essa matriz sempre terá determinante igual a 1.
 	 -trocando catalan(i+j-2) por catalan(i+j-1) o determinante continua sendo 1
 	 */
-ll catalan(ll n){return C(2*n, n)/(n+1); }
 

@@ -1,7 +1,7 @@
+//========ARTICULATION POINT AND BRIDGES===========
 const int unvisited = 0, visited=1, explored=2,V=1e6+5;
 int timer, dfsroot, rootchildren;
 vector<int>num(V), low(V), par(V), cutvertex(V), g[V];
-
 
 void artpoints(int u){
 	low[u]=num[u]=timer++;
@@ -13,7 +13,7 @@ void artpoints(int u){
 			artpoints(v);
 
 			if(low[v]>=num[u]){
-				cutvertex[u]=1;
+				//cutvertex[u]=1;//vertex u is articulation point
 			}
 			if(low[v]>num[u]){
 				//edge u v is bridge

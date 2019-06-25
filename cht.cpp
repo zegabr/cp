@@ -1,5 +1,4 @@
 //CONVEX HULL TRICK
-//by kkinhoz eu acho
 struct line{
 	ll m,c;
 };

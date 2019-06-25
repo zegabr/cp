@@ -1,10 +1,14 @@
 //find bridges in graphs by cp-algorithms
 int n; // number of nodes
-vecvr<vecvr<int>> g; // adjacency list of graph
+vector<vector<int>> g; // adjacency list of graph
 
-vecvr<bool> vis;
-vecvr<int> tin, low;
+vector<bool> vis;
+vector<int> tin, low;
 int timer;
+
+void IS_BRIDGE(int u, int v){
+	//something here
+}
 
 void dfs(int u, int p = -1) {
 	vis[u] = 1;
@@ -17,10 +21,11 @@ void dfs(int u, int p = -1) {
 			dfs(v, u);
 			low[u] = min(low[u], low[v]);
 			if (low[v] > tin[u])
-				//IS_BRIDGE(u, v);
+				IS_BRIDGE(u, v);
 		}
 	}
 }
+
 void find_bridges() {
 	timer = 0;
 	vis.assign(n, 0);
