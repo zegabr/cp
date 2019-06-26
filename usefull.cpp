@@ -71,8 +71,8 @@ do{
 	num&1 //num é ímpar?
 	~num&1 //num é par?
 
-	//===================RANDOM=======================
-	//---safe hash-map----https://codeforces.com/blog/entry/62393
+//===================RANDOM=======================
+//---safe hash-map----https://codeforces.com/blog/entry/62393
 #include<chrono>
 #include<random>
 	struct custom_hash {

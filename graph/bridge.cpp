@@ -1,6 +1,6 @@
 //find bridges in graphs by cp-algorithms
 int n; // number of nodes
-vector<vector<int>> g; // adjacency list of graph
+vector<int> g[n]; // adjacency list of graph
 vector<bool> vis;
 vector<int> tin, low;
 int timer;

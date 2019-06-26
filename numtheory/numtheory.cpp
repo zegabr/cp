@@ -1,3 +1,7 @@
+#define mdc(a,b) __gcd(a,b)
+inline ll mmc(const ll &a, const ll &b) {
+	return (a / mdc(a, b)) * b; 
+}
 //=============DIVISORES================
 ll countdiv(ll n){//O(sqrt(n))
 	ll c=0;
@@ -25,16 +29,7 @@ void euclides(ll a, ll b, ll &x, ll &y, ll &d) {
 
 }
 
-//==============MDC===================
-ll mdc(ll a, ll b) {
-	while(b) a %= b, swap(a, b);
-	return a;
-}
 
-//================MMC==================
-inline ll mmc(const ll &a, const ll &b) {
-	return (a / mdc(a, b)) * b; 
-}
 
 //===============FAST EXPONENTIATION=================
 ll fexp(ll a, ll b, ll mod) {//O(logb)

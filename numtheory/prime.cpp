@@ -1,5 +1,5 @@
 //===================SIEVE==================
-const int P = 2e5+5;
+const int P = 2e7+5;
 bitset<P+1> prime;
 vector<ll> primes;
 void sieve (ll n){
