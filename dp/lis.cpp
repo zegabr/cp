@@ -7,6 +7,7 @@ int ceilindex(vector<int> &v,vector<int> &T, int l, int r, int key){
 	}
 	return r;
 }
+
 vector<int> LIS(vector<int> &v){//retorna maior sequencia
 	vector<int> ans;
 	if(v.size()==0) return ans;
