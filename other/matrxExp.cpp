@@ -1,9 +1,5 @@
 //============MATRIX FAST EXPONENTIATION=========== for recurrence problems
 //this one is for uva tribonacci
-// #include <bits/stdc++.h>
-// using namespace std;
-// char pl = '\n',sp=' ';
-// typedef long long ll;
 #define tam 3
 
 ll mod= 1e9+9;

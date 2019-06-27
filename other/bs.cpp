@@ -1,4 +1,8 @@
 //======BINARY SEARCH==========
+bool check(int m){
+	//check here
+	return 1;
+}
 int smallestSolution(int l, int r) {
 	while(l < r) {
 		int m = (l+r)/2;

@@ -13,7 +13,7 @@ ll catalan(ll n){
 }
 
 ll catalan(ll n, ll mod){ //see numtheory.cpp
-	return C(2*n, n)*invmultmod(n+1,mod);
+	return C(2*n, n)*invmod(n+1,mod);
 }
 
 void pascaltriangle(int n){

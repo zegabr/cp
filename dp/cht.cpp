@@ -1,8 +1,8 @@
 //CONVEX HULL TRICK
+#include<deque>
 struct line{
 	ll m,c;
 };
-
 deque<line> hull;
 
 inline ld inter(line &t1,line &t2){

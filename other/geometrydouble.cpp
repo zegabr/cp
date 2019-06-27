@@ -1,9 +1,4 @@
-#include<bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-#define pl '\n'
-#define sp ' '
-const double inf = 1e100, eps = 1e-9;
+const double eps = 1e-9;
 
 struct PT {
 	double x, y;

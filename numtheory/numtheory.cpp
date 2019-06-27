@@ -1,4 +1,6 @@
 #define mdc(a,b) __gcd(a,b)
+
+//==========MMC(LCM)================
 inline ll mmc(const ll &a, const ll &b) {
 	return (a / mdc(a, b)) * b; 
 }
@@ -41,7 +43,7 @@ ll fexp(ll a, ll b, ll mod) {//O(logb)
 	}
 	return ans;
 }
-
-ll invmultmod(ll a, ll mod){//mod is prime
+//===========MULTIPLICATIVE INVERSE=================
+ll invmod(ll a, ll mod){//mod has to be prime
 	return fexp(a,mod-2,mod);
 }

@@ -1,5 +1,4 @@
 //===============file input output=================
-#include<stdio.h>
 //abaixo vai dentro do main
 main(){
 	freopen("in.txt", "r", stdin);
@@ -10,8 +9,7 @@ main(){
 //=============FAST IO===================
 #include<iostream>
 main(){
-	ios::sync_with_stdio(0);
-	cin.tie(0);
+	ios::sync_with_stdio(0);cin.tie(0);
 }
 //===========SETPRECISION=========================
 #include <iomanip>

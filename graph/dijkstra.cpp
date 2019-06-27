@@ -1,4 +1,5 @@
 //=========DIJKSTRA===============
+#include<queue>
 int dis[N];
 vector<pair<int,int>> g[N];
 const int inf = 1231231;

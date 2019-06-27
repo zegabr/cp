@@ -1,4 +1,5 @@
 //===================SIEVE==================
+#include<bitset>
 const int P = 2e7+5;
 bitset<P+1> prime;
 vector<ll> primes;
