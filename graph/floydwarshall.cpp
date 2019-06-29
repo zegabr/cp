@@ -1,6 +1,6 @@
 //=============FLOYD WARSHALL=============
 const int inf = 0x3f3f3f3f;
-int g[N][N], dis[N][N], n;
+int g[N][N], n;
 int p[N][N];
 void clear() {
 	for(int i = 0; i < n; i++) {
@@ -15,14 +15,12 @@ void add(int u, int v, int w) {
 	g[u][v] = min(w, g[u][v]);
 }
 
-#include<cstring> //memcpy
 void floydWarshall() {//O(V³)
-	memcpy(dis, g, sizeof dis);
 	for(int k = 0; k < n; k++) {
 		for(int i = 0; i < n; i++) { 
 			for(int j = 0; j < n; j++) {
 				//if pode atualizar, faz p[i][j]=p[k][j]
-				dis[i][j] = min(dis[i][j], dis[i][k] + dis[k][j]);
+				g[i][j] = min(g[i][j], g[i][k] + g[k][j]);
 			}
 		}
 	}
