@@ -1,6 +1,6 @@
 //============DISJOINT SET UNION==============
 int ds[N],sz[N];
-void makeset(){
+void makeset(int v=N){
 	for(int i=0;i<v;i++){ ds[i]=i; sz[i]=1;}
 }
 
