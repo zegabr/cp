@@ -1,5 +1,4 @@
 //===============file input output=================
-//abaixo vai dentro do main
 main(){
 	freopen("in.txt", "r", stdin);
 	freopen("out.txt", "w", stdout);
