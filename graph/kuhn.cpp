@@ -5,7 +5,7 @@ vector<int> g[V]; //grafo bipartido//só precisa criar adjacencia de Left -> Rig
 int matchl[V],matchr[V],tempo=1;
 vector<int> vis(V);
 //m vertices em um grupo, n vertices em outro m+n=V
-void clrmatch(){
+void clr(){
 	for(int i=0;i<V;i++)
 		matchr[i]=matchl[i]=-1;
 }
