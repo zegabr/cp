@@ -1,94 +1,69 @@
 //========DINIC MAX FLOW===============
-//fonte: https://linux.ime.usp.br/~marcosk/mac0499/codigos.html
-// #include<bits/stdc++.h>
-// using namespace std;
-// typedef long long ll;
-// const int INF = 0x3f3f3f3f;
-#include<queue>
-struct Graph {
-	struct Edge {
-		int v;
-		ll u;
-		Edge(int _v, ll _u) : v(_v), u(_u) {}
-	};
+int inf = 0x3f3f3f3f;//atualizar com fluxo maximo possivel em caso de runtime error
+const int ms = 5555; // Quantidade maxima de vertices
+const int me = 63333; // Quantidade maxima de arestas
 
-	int n;
-	vector<Edge> edges;//lista de arestas
-	vector<vector<int>> adj;//indices das arestas q saem de um vertice v => adj[v]
+int to[me], ant[me], z;
+int adj[ms], copy_adj[ms], fila[ms], level[ms];
+ll wt[me];
 
-	Graph(int _n) : n(_n) { adj.resize(n); }
+void add(int u, int v, ll k,ll rev =0) {//adiciona aresta e aresta residual (2 arestas)
+	//chamar add(a,b,cap) se direcionado
+	//chamar add(a,b,cap,cap) se nao direcionado
+	to[z] = v;
+	ant[z] = adj[u];
+	wt[z] = k;
+	adj[u] = z++;
+	swap(u, v);
+	to[z] = v;
+	ant[z] = adj[u];
+	wt[z] = rev;
+	adj[u] = z++;
+}
 
-	void add_edge(int v, int w, ll u) {
-		adj[v].push_back(edges.size());
-		edges.push_back(Edge(w, u));
-		adj[w].push_back(edges.size());//aresta reversa
-		edges.push_back(Edge(v, 0));//trocar 0 por u em grafos nao direcionados
-	}
-};
-
-vector<int> level;
-bool bfs(Graph &g, int s, int t) {
-	fill(level.begin(), level.end(), -1);
-	level[s] = 0;
-	queue<int> queue({s});
-	while (!queue.empty()) {
-		int v = queue.front();
-		if (level[v] == level[t]) break;
-		queue.pop();
-		for (int i: g.adj[v]) {
-			int w = g.edges[i].v;
-			ll u = g.edges[i].u;
-			if (level[w] == -1 && u > 0) {
-				level[w] = level[v] + 1;
-				queue.push(w);
+int bfs(int source, int sink) {
+	memset(level, -1, sizeof level);
+	level[source] = 0;
+	int front = 0, size = 0, v;
+	fila[size++] = source;
+	while(front < size) {
+		v = fila[front++];
+		for(int i = adj[v]; i != -1; i = ant[i]) {//percorre adjacencia de v (existem arestas v->to[i])
+			if(wt[i] && level[to[i]] == -1) {
+				level[to[i]] = level[v] + 1;
+				fila[size++] = to[i];
 			}
 		}
 	}
-	return level[t] != -1;
+	return level[sink] != -1;
 }
 
-vector<int> ptr;
-ll augment(Graph &g, int v, int t, ll cap) {
-	if (v == t) return cap;
-	for (int &p = ptr[v]; p < (int)g.adj[v].size(); p++) {
-		int i = g.adj[v][p];
-		int w = g.edges[i].v;
-		ll u = g.edges[i].u;
-		if (level[w] == level[v] + 1 && u > 0) {
-			ll eps = augment(g, w, t, min(cap, u));
-			if (eps > 0) {
-				g.edges[i].u -= eps;
-				g.edges[i ^ 1].u += eps;
-				return eps;
-			}
+ll dfs(int v, int sink, ll flow) {
+	if(v == sink) return flow;
+	ll f;
+	for(int &i = copy_adj[v]; i != -1; i = ant[i]) {
+		if(wt[i] && level[to[i]] == level[v] + 1 and
+		(f = dfs(to[i], sink, min(flow, wt[i])))) {
+			wt[i] -= f;
+			wt[i ^ 1] += f;
+			return f;
 		}
 	}
 	return 0;
 }
 
-ll maxflow(Graph &g, int s, int t) {
-	level.resize(g.n), ptr.resize(g.n);
-	ll total_flow = 0, cur_flow;
-	while (bfs(g, s, t)) {
-		fill(ptr.begin(), ptr.end(), 0);
-		do {
-			cur_flow = augment(g, s, t, INF);
-			total_flow += cur_flow;
-		} while (cur_flow > 0);
+ll maxflow(int source, int sink) {
+	ll ret = 0, flow;
+	while(bfs(source, sink)) {
+		memcpy(copy_adj, adj, sizeof adj);
+		while((flow = dfs(source, sink, inf))) {
+			ret += flow;
+		}
 	}
-	return total_flow;
+	return ret;
 }
-/*
-int main(){
-	int n,m;
-	int u,v;
-	ll w;
-	cin>>n>>m;
-	Graph g(n);
-	while(m--){
-		cin>>u>>v>>w;
-		g.add_edge(u-1,v-1,w);
-	}
-	cout<<maxflow(g,0,n-1)<<'\n';
+
+void clear() { // Lembrar de chamar no main
+	memset(adj, -1, sizeof adj);
+	z = 0;
 }
-*/
