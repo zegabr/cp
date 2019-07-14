@@ -1,4 +1,4 @@
-//==================LIS (nlogn)==========
+//====================================
 int ceilindex(vector<int> &v,vector<int> &T, int l, int r, int key){
 	while(r-l > 1){
 		int m = l + (r-l)/2;
@@ -41,3 +41,4 @@ vi getlen(vi &v){//pega o tamanho da lis terminada em cada elemento
 	}
 	return len;
 }
+//=======================================

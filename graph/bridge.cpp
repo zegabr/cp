@@ -1,4 +1,4 @@
-//find bridges in graphs by cp-algorithms
+//====================================================
 int n; // number of nodes
 vector<int> g[n]; // adjacency list of graph
 vector<bool> vis;
@@ -34,3 +34,4 @@ void find_bridges() {
 			dfs(i);
 	}
 }
+//====================================================

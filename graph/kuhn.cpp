@@ -1,4 +1,4 @@
-//============KUHN'S ALGORITHM====================
+//====================================================
 //bipartite unweighted graph maximum matching
 const int V = 2e6+5;
 vector<int> g[V]; //grafo bipartido//só precisa criar adjacencia de Left -> Right
@@ -38,4 +38,4 @@ void printmatch(){
 	for(int i=0;i<n;i++)
 		cout<<"match["<<i<<"]="<<matchr[i]-n<<pl;		
 }
-
+//====================================================

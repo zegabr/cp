@@ -1,8 +1,10 @@
+//====================================================
 //===================SIEVE==================
 #include<bitset>
 const int P = 2e7+5;
 bitset<P+1> prime;
 vector<ll> primes;
+
 void sieve (ll n){
 	prime.set();
 	prime[0]=prime[1]=0;
@@ -20,3 +22,4 @@ bool isPrime(ll n){
 	for(int i=0;i<primes.size();i++) if(n%primes[i]==0) return 0;
 	return 1;
 }
+//====================================================

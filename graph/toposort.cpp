@@ -1,4 +1,4 @@
-//========TOPOSORT=========(ITERATIVO e intuitivo)
+//====================================================
 #include<map>
 #include<queue>
 vector<int> g[N], vis(N);
@@ -16,3 +16,4 @@ void toposort(){//O(V+E)
 		vis[u]=1;
 	}
 }
+//====================================================

@@ -1,4 +1,4 @@
-//==============COMBINATORICS===========
+//====================================================
 const int maxn=10000;
 ll c[maxn][maxn];
 
@@ -40,3 +40,4 @@ void pascaltriangle(int n){
 	 -trocando catalan(i+j-2) por catalan(i+j-1) o determinante continua sendo 1
 	 */
 
+//====================================================

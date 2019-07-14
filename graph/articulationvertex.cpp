@@ -1,4 +1,4 @@
-//========ARTICULATION POINT AND BRIDGES===========
+//====================================================
 const int unvisited = 0, visited=1, explored=2,V=1e6+5;
 int timer, dfsroot, rootchildren;
 vector<int>num(V), low(V), par(V), cutvertex(V), g[V];
@@ -36,5 +36,6 @@ void find(){
 		}
 	}
 }
+//====================================================
 
 

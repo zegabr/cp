@@ -1,5 +1,4 @@
-//==========MAX SUBARRAY SUM============
-//vector<int> a(maxn);
+//=======================================
 int maxsubarraysum(vector<int> %a){
 	int ans = -maxn;
 	vector<int> dp(maxn,0);
@@ -10,3 +9,4 @@ int maxsubarraysum(vector<int> %a){
 	}
 	return ans;
 }
+//=======================================

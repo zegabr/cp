@@ -1,3 +1,4 @@
+//====================================================
 //================EULER FUNCTION ===============
 vector<ll> phi(N);
 void PHI(){//get prime factors and calculate phi
@@ -54,3 +55,4 @@ int generator (int p) {//find a primitive root modulo p
 // 	gcd(a,m) tem q ser 1 para a possuir ordem modulo m
 // 	se k=ord(a,m), ord(a^t,m)=k/gcd(k,t);//logo se a for raíz primitiva, vc consegue ordem de qualquer potencia dele, logo de qualquer nmero q possui ordem
 // 	um número tem raíz primitiva se for da forma 2,4,p^k ou 2p^k com k inteiro positivo e p PRIMO ÍMPAR
+//====================================================

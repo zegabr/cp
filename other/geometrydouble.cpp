@@ -1,3 +1,4 @@
+//====================================================
 const double eps = 1e-9;
 
 struct PT {
@@ -214,6 +215,7 @@ bool isSimple( vector<PT> &p) {
   }
   return true;
 }
+
 vector<PT> convexHull(vector<PT> p) {
 	int n = p.size(), k = 0;
 	vector<PT> h(2 * n);
@@ -229,7 +231,4 @@ vector<PT> convexHull(vector<PT> p) {
 	h.resize(k);
 	return h;
 }
-
-int main(){
-	ios::sync_with_stdio(0); cin.tie(0);
-}
+//====================================================

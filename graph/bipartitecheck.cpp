@@ -1,4 +1,4 @@
-///dfs bipartite check
+//====================================================
 vector<int>g[N], vis(N);
 vector<bool> color(N);
 int timer=1;
@@ -13,3 +13,4 @@ bool dfsbicolor(int u){
 	}
 	return true;
 }
+//====================================================

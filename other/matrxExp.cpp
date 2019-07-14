@@ -1,3 +1,4 @@
+//====================================================
 //============MATRIX FAST EXPONENTIATION=========== for recurrence problems
 //this one is for uva tribonacci
 #define tam 3
@@ -28,8 +29,9 @@ Matrix fExp(Matrix a, ll b) {
 	}
 	return ans;
 }
+//====================================================
 
-
+/*
 main(){
 	ios::sync_with_stdio(0); cin.tie(0);
 	ll ans;
@@ -60,3 +62,4 @@ main(){
 		cout<<ans<<pl;
 	}
 }
+ */

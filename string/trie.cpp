@@ -1,4 +1,4 @@
-//===========TRIE=================
+//====================================================
 //sigma eh o tamanho do alfabeto
 //N é o tamanho da maior string vezes a quantidade de strings
 int trie[N][sigma], terminal[N], z;
@@ -33,4 +33,4 @@ int count(string &p) {
 	}
 	return terminal[cur];
 }
-
+//====================================================

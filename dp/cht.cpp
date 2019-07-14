@@ -1,4 +1,4 @@
-//CONVEX HULL TRICK
+//=======================================
 #include<deque>
 struct line{
 	ll m,c;
@@ -54,3 +54,4 @@ ll get(ll &x){
 	}
 	return (hull[m].m * x) + hull[m].c;
 }
+//=======================================

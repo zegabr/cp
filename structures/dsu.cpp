@@ -1,4 +1,4 @@
-//============DISJOINT SET UNION==============
+//====================================================
 int ds[N],sz[N];
 void makeset(int v=N){
 	for(int i=0;i<v;i++){ ds[i]=i; sz[i]=1;}
@@ -16,3 +16,4 @@ bool uni(int a, int b){//union
 	sz[y]+=sz[x];
 	return true;
 }
+//====================================================

@@ -1,3 +1,4 @@
+//====================================================
 #define mdc(a,b) __gcd(a,b)
 
 //==========MMC(LCM)================
@@ -47,3 +48,4 @@ ll fexp(ll a, ll b, ll mod) {//O(logb)
 ll invmod(ll a, ll mod){//mod has to be prime
 	return fexp(a,mod-2,mod);
 }
+//====================================================
