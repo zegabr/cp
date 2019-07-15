@@ -50,11 +50,11 @@ main(){
 			cout<<n<<pl;
 			continue;
 		}
-		Matrix T;//T=Tbase
-		for(int i=0;i<tam;i++)for(int j=0;j<tam;j++)T.mat[i][j]=Tbase[i][j];
+		Matrix T;
+		for(int i=0;i<tam;i++)for(int j=0;j<tam;j++)T.mat[i][j]=Tbase[i][j]; //T=Tbase
 
-		//T=T^n
-		T=fExp(T, n);
+	
+		T=fExp(T, n); 	//T=T^n
 
 		ans=0;
 		for(int i=0;i<3;i++)

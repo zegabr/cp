@@ -3,7 +3,9 @@ bool check(int m){
 	//check here
 	return 1;
 }
-int smallestSolution(int l, int r) {
+
+//smallest solution
+int ssol(int l, int r) {
 	while(l < r) {
 		int m = (l+r)/2;
 		if(check(m)) r = m;
@@ -12,8 +14,9 @@ int smallestSolution(int l, int r) {
 	return l;
 }
 
-int biggestSolution(int l, int r) {
-	while(r - l > 1) {
+//biggest solution
+int bsol(int l, int r) {
+	while(r > l + 1) {
 		int m = (l+r)/2;
 		if(check(m)) l = m;
 		else r = m;
@@ -28,5 +31,6 @@ int bs(int l, int r, int k){
 		if(arr[m]<k) l=m+1;
 		else r=m-1;
 	}
+	return -1;
 }
 //====================================================
