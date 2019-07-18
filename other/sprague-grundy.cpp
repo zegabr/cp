@@ -1,4 +1,8 @@
 //===============================================
+/*
+ *Sprague-Grundy Theorem:
+ the player starting first is guaranteed to win if the XOR of the grundy numbers of position in each sub-games at the beginning of the game is non-zero. Otherwise, if the XOR evaluates to zero, then player A will lose definitely, no matter what.*/
+
 int getmex(unordered_set<int> &s){
 	int mex=0;
 	while(s.count(mex))mex++;
@@ -18,6 +22,8 @@ int grundy(int n){//varia dependendo do jogo
 
 	return Grund[n] = getmex(nex);
 }
-/*
- *Sprague-Grundy Theorem:
- the player starting first is guaranteed to win if the XOR of the grundy numbers of position in each sub-games at the beginning of the game is non-zero. Otherwise, if the XOR evaluates to zero, then player A will lose definitely, no matter what.*/
+ 
+ int newgrundy(int n){
+//em caso de TLE, achar padrao e inserir aqui
+return 0;
+ }
