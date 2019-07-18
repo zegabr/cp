@@ -23,7 +23,8 @@ int grundy(int n){//varia dependendo do jogo
 	return Grund[n] = getmex(nex);
 }
  
- int newgrundy(int n){
-//em caso de TLE, achar padrao e inserir aqui
-return 0;
- }
+int newgrundy(int n){
+	//em caso de TLE, achar padrao e inserir aqui
+	return 0;
+}
+ //======================================
