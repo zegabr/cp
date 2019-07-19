@@ -2,9 +2,9 @@
 //BFS FOR UNWEIGHTED GRAPHS MINIMUM DISTANCE
 int V;//#vertices
 vector<int> g[V];
-int dis[V];
+vector<int> dis(V);
 int BFS(int start,int goal){//O(V+E)
-	fill(dis,dis+V,inf);
+	fill(all(dis), 0x3f3f3f3f);
 	dis[start]=0;
 	queue<int> q({start});
 	while(q.size()){

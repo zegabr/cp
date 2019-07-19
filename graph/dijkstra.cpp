@@ -1,12 +1,13 @@
 //====================================================
-#include<queue>
-int dis[N];
-vector<pair<int,int>> g[N];
+#define ii pair<int,int>
+vector<int> dis(N);
+vector<ii> g[N];
 const int inf = 1231231;
+
 bool dijkstra(int S, int T){//O(E logV)
-	priority_queue <pair<int,int>> pq;
+	priority_queue <ii> pq;
 	bool way =false;
-	fill(dis,dis+N,inf);
+	fill(all(dis),inf);
 	dis[S]=0;
 	pq.push({0,S});
 	while(pq.size()){
@@ -14,9 +15,8 @@ bool dijkstra(int S, int T){//O(E logV)
 		int u=aux.second;
 		for(auto child : g[u]){
 			int w = child.first, v = child.second;
-			if(w>dist[v]) continue;
-			if(v==T)
-				way = true;
+			if(w>dis[v]) continue;
+			if(v==T) way = true;
 			if(dis[u] + w < dis[v]){           
 				dis[v] = dis[u] + w;
 				pq.push({-dis[v],v});
