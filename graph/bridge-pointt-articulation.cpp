@@ -1,5 +1,5 @@
 //====================================================
-const int unvisited = 0, visited=1, explored=2,V=1e6+5;
+const int V=1e6+5;
 int timer, dfsroot, rootchildren;
 vector<int>num, low, par, cutvertex, g[V];
 
@@ -14,7 +14,7 @@ inline void isbridge(int u, int v){
 void dfspointbridge(int u){
 	low[u]=num[u]=timer++;
 	for(int v : g[u]){
-		if(num[v]==unvisited){
+		if(num[v]==0){
 			par[v]=u;
 			if(u == dfsroot) rootchildren++;
 
@@ -31,14 +31,14 @@ void dfspointbridge(int u){
 	}
 }
 
-void findpointbridge(int V){
+void findpointbridge(int n=V){
 	timer=0;
-	num.assign(V+1,unvisited);
-	low.assign(V+1,0);
-	par.assign(V+1,0);
-	cutvertex.assign(V+1,0);
-	for(int i=0;i<V;i++){
-		if(num[i]==unvisited){
+	num.assign(n+1,0);
+	low.assign(n+1,0);
+	par.assign(n+1,0);
+	cutvertex.assign(n+1,0);
+	for(int i=0;i<n;i++){
+		if(num[i]==0){
 			dfsroot=i; rootchildren=0; dfspointbridge(i);
 			if(rootchildren > 1) iscutvertex(i);
 		}
