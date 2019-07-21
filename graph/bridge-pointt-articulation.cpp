@@ -4,7 +4,7 @@ int timer, dfsroot, rootchildren;
 vector<int>num, low, par, cutvertex, g[V];
 
 inline void iscutvertex(int v){
-
+	cutvertex[v]=true;
 }
 
 inline void isbridge(int u, int v){
@@ -40,7 +40,7 @@ void findpointbridge(int V){
 	for(int i=0;i<V;i++){
 		if(num[i]==unvisited){
 			dfsroot=i; rootchildren=0; dfspointbridge(i);
-			cutvertex[i] = rootchildren > 1;
+			if(rootchildren > 1) iscutvertex(i);
 		}
 	}
 }
