@@ -24,13 +24,4 @@ int bsol(int l, int r) {
 	return check(r) ? r : l;
 }
 
-int bs(int l, int r, int k){
-	while(l<=r){
-		m=(l+r)/2;
-		if(arr[m]==k) return m;
-		if(arr[m]<k) l=m+1;
-		else r=m-1;
-	}
-	return -1;
-}
 //====================================================

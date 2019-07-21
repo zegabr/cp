@@ -17,7 +17,7 @@ int lca(int a, int b){
 	int d = lv[a]-lv[b];
 	for(int i=0;i<ln;i++) if((d>>i)&1) a = up[a][i];
 	if(a==b) return a;
-	for(int i=ln; i>-1 ; i--){
+	for(int i=ln; ~i ; i--){
 		if(up[a][i] != up[b][i]){
 			a=up[a][i];
 			b=up[b][i];
