@@ -6,6 +6,70 @@ inline ll lcm(const ll &a, const ll &b) {
 	return (a / gcd(a, b)) * b; 
 }
 
+//===================SIEVE==================
+const int P = 2e7+5;
+bitset<P+1> prime;
+vector<ll> primes;
+
+void sieve (){
+	prime.set();
+	prime[0]=prime[1]=0;
+	for (ll p=2; p<=P;p++) if(prime[p]){
+		primes.push_back(p);
+		for(ll i=p*p; i<=P; i+=p)
+			prime[i]=0; 
+	}
+
+}
+
+//==============IS PRIME===============
+bool isPrime(ll n){
+	if(n<prime.size()) return prime[n];
+	for(int i=0;i<primes.size();i++) if(n%primes[i]==0) return 0;
+	return 1;
+}
+
+//================EULER FUNCTION ===============
+vector<ll> phi(P+1);
+void PHI(){//get prime factors and calculate phi
+	for(ll i=1;i<P;i++)phi[i]=i;
+	for(ll i=2;i<P;i++){//O(N)
+		if(phi[i]==i){//n is prime
+			for(ll j=i;j<P;j+=i){//O(logi)
+				//i is a prime factor of j
+				phi[j]=phi[j]/i*(i-1);
+			}
+		}
+	}
+}
+
+ll PHI(ll n){//OTHER EULER FUNCTION///////calculates one phi
+	ll ans = n;
+	for(ll i=2;i*i<=n;i++){
+		if(n%i==0){
+			ans-=ans/i;
+			while(n%i==0)n/=i;
+		}
+	}
+	if(n>1){//n is prime
+		ans-=ans/n;
+	}	
+	return ans;
+}
+
+//============SUM OF DIVISORS=========
+ll sumdiv(ll n){
+	ll pri = 0, prf = primes[pri], ans=1;
+	while(prf*prf <= n){
+		ll power=0;
+		while(n%prf==0){n/=prf; power++;}
+		ans*=((ll)pow((double)prf, power+1.0) - 1)/(prf-1);
+		prf = primes[++pri];
+	}
+	if(n!=1) ans*=((ll)pow((double)n, 2.0) - 1)/(n-1);
+	return ans;
+}
+
 //=============DIVISORS================
 ll countdiv(ll n){//O(sqrt(n))
 	ll c=0;
@@ -47,57 +111,6 @@ ll fexp(ll a, ll b, ll mod) {//O(logb)
 //===========MULTIPLICATIVE INVERSE=================
 ll invmod(ll a, ll mod){//mod has to be prime
 	return fexp(a,mod-2,mod);
-}
-
-//===================SIEVE==================
-const int P = 2e7+5;
-bitset<P+1> prime;
-vector<ll> primes;
-
-void sieve (ll n){
-	prime.set();
-	prime[0]=prime[1]=0;
-	for (ll p=2; p<=n;p++) if(prime[p]){
-		primes.push_back(p);
-		for(ll i=p*p; i<=n; i+=p)
-			prime[i]=0; 
-	}
-
-}
-
-//==============IS PRIME===============
-bool isPrime(ll n){
-	if(n<prime.size()) return prime[n];
-	for(int i=0;i<primes.size();i++) if(n%primes[i]==0) return 0;
-	return 1;
-}
-
-//================EULER FUNCTION ===============
-vector<ll> phi(N);
-void PHI(){//get prime factors and calculate phi
-	for(ll i=1;i<N;i++)phi[i]=i;
-	for(ll i=2;i<N;i++){//O(N)
-		if(phi[i]==i){//n is prime
-			for(ll j=i;j<N;j+=i){//O(logi)
-				//i is a prime factor of j
-				phi[j]=phi[j]/i*(i-1);
-			}
-		}
-	}
-}
-
-ll PHI(ll n){//OTHER EULER FUNCTION///////calculates one phi
-	ll ans = n;
-	for(ll i=2;i*i<=n;i++){
-		if(n%i==0){
-			ans-=ans/i;
-			while(n%i==0)n/=i;
-		}
-	}
-	if(n>1){//n is prime
-		ans-=ans/n;
-	}	
-	return ans;
 }
 
 //===========PRIMITIVE ROOT=================
