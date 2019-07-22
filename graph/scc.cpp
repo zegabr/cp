@@ -1,4 +1,5 @@
 //=================================
+//for directed graphs
 const int V=1e6+5;
 vector<int> num,low,vis,S;
 int dfsCounter,sccCounter;

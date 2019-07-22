@@ -1,4 +1,5 @@
 //====================================================
+//for undirected graph
 const int V=1e6+5;
 int timer, dfsroot, rootchildren;
 vector<int>num, low, par, cutvertex, g[V];
