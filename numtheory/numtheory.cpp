@@ -71,6 +71,7 @@ bool isPrime(ll n){
 	for(int i=0;i<primes.size();i++) if(n%primes[i]==0) return 0;
 	return 1;
 }
+
 //================EULER FUNCTION ===============
 vector<ll> phi(N);
 void PHI(){//get prime factors and calculate phi
@@ -84,6 +85,7 @@ void PHI(){//get prime factors and calculate phi
 		}
 	}
 }
+
 ll PHI(ll n){//OTHER EULER FUNCTION///////calculates one phi
 	ll ans = n;
 	for(ll i=2;i*i<=n;i++){
