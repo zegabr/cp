@@ -30,10 +30,10 @@ int findmatching(){//O(mn)
 		tempo++;
 		ans+=kuhn(i);
 	}
-	return ans;//qt arestas usadas no match maximo = minima qntidade de vertices que se retirados separam todo o grafo em 2 
+	return ans;//qt arestas usadas no match maximo = minima qntidade de vertices que se retirados separam todo o grafo em 2 (min vertex cover)
 	//return ans==n;//perfect match
 }
-
+//MAXIMUM INDEPENDENT SET = V - MAXIMUM BIPARTITE MATCHING
 void printmatch(){
 	for(int i=0;i<n;i++)
 		cout<<"match["<<i<<"]="<<matchr[i]-n<<pl;		
