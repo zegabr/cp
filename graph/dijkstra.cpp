@@ -7,7 +7,7 @@ const int inf = 1231231;
 bool dijkstra(int S, int T){//O(E logV)
 	priority_queue <ii> pq;
 	bool way =false;
-	fill(all(dis),inf);
+	fill(dis.begin(),dis.end(),inf);
 	dis[S]=0;
 	pq.push({0,S});
 	while(pq.size()){

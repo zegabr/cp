@@ -4,7 +4,7 @@ int V;//#vertices
 vector<int> g[V];
 vector<int> dis(V);
 int BFS(int start,int goal){//O(V+E)
-	fill(all(dis), 0x3f3f3f3f);
+	fill(dis.begin(),dis.end(), 0x3f3f3f3f);
 	dis[start]=0;
 	queue<int> q({start});
 	while(q.size()){
