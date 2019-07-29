@@ -8,14 +8,6 @@ ll C(int n,int k){//combinacao de n, escolhendo k
 	return c[n][k] = C(n-1,k-1)+C(n-1,k);
 }
 
-ll catalan(ll n){
-	return C(2*n, n)/(n+1); 
-}
-
-ll catalan(ll n, ll mod){ //see numtheory.cpp
-	return C(2*n, n)*invmod(n+1,mod);
-}
-
 void pascaltriangle(int n){
 	for(int i=0;i<=n;i++){
 		for(int j=0;j<=i;j++){
@@ -23,6 +15,14 @@ void pascaltriangle(int n){
 		}
 		cout<<pl;
 	}
+}
+
+ll catalan(ll n){
+	return C(2*n, n)/(n+1); 
+}
+
+ll catalan(ll n, ll mod){ //import numtheory.cpp
+	return C(2*n, n)*invmod(n+1,mod);
 }
 
 
