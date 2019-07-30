@@ -36,6 +36,6 @@ int findmatching(){//O(mn)
 //MAXIMUM INDEPENDENT SET = V - MAXIMUM BIPARTITE MATCHING
 void printmatch(){
 	for(int i=0;i<n;i++)
-		cout<<"match["<<i<<"]="<<matchr[i]-n<<pl;		
+		cout<<"match["<<i<<"]="<<matchr[i]-n<<endl;		
 }
 //====================================================

@@ -2,27 +2,27 @@
 const int maxn=10000;
 ll c[maxn][maxn];
 
-ll C(int n,int k){//combinacao de n, escolhendo k
+ll comb(int n,int k){//combinacao de n, escolhendo k
 	if(k==0 or k==n) return 1;
 	if(c[n][k]) return c[n][k];
-	return c[n][k] = C(n-1,k-1)+C(n-1,k);
+	return c[n][k] = comb(n-1,k-1)+comb(n-1,k);
 }
 
 void pascaltriangle(int n){
 	for(int i=0;i<=n;i++){
 		for(int j=0;j<=i;j++){
-			cout<<C(i,j)<<sp;
+			cout<<comb(i,j)<<' ';
 		}
-		cout<<pl;
+		cout<<endl;
 	}
 }
 
 ll catalan(ll n){
-	return C(2*n, n)/(n+1); 
+	return comb(2*n, n)/(n+1); 
 }
 
 ll catalan(ll n, ll mod){ //import numtheory.cpp
-	return C(2*n, n)*invmod(n+1,mod);
+	return comb(2*n, n)*invmod(n+1,mod);
 }
 
 
