@@ -1,19 +1,18 @@
 //====================================================
 string p, t;
 int b[N], n, m; 
-void kmpPre() {
-	int i = 0, j = -1;
-	b[0] = -1;
+void kmppre() {
+	int i = 0, j = b[0] = -1;
 	while(i < m) {
-		while(j >= 0 && p[i] != p[j]) j = b[j];
+		while(j >= 0 and p[i] != p[j]) j = b[j];
 		b[++i] = ++j;
 	}
 }
 
-int kmpSearch() {
+int kmpfind() {
 	int i = 0, j = 0, ans = 0;
 	while(i < n) {
-		while(j >= 0 && t[i] != p[j]) j = b[j];
+		while(j >= 0 and t[i] != p[j]) j = b[j];
 		i++; j++;
 		if(j == m) {
 			//ocorrencia aqui comecando em i - j
