@@ -1,7 +1,18 @@
 //====================================================
 string p, t;
-int b[N], n, m; 
-void kmppre() {
+vector<int> b(p.size()+1); 
+
+void kmpdebug(string &p, vector<int>&b){//for debugging
+	cout<<"    ";
+	for(int i=0;i<p.size();i++)cout<<p[i]<<"  ";
+	cout<<endl;
+	for(int i=0;i<b.size();i++)cout<<b[i]<<"  ";
+	cout<<endl;
+}
+
+vector<int> kmppre(string &p) {
+	int m=p.size();
+	vector<int> b(m+1);
 	int i = 0, j = b[0] = -1;
 	while(i < m) {
 		while(j >= 0 and p[i] != p[j]) j = b[j];
