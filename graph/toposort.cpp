@@ -1,6 +1,4 @@
 //====================================================
-#include<map>
-#include<queue>
 vector<int> g[N], vis(N);
 map<int,int>grau;
 void toposort(){//O(V+E)

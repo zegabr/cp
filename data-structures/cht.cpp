@@ -1,5 +1,3 @@
-typedef long long ll;
-typedef long double ld;
 //https://csacademy.com/submission/1357076/
 
 const ll is_query = -(1LL<<62), inf = 1e18;

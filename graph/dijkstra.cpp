@@ -1,7 +1,6 @@
 //====================================================
-#define ii pair<int,int>
-vector<int> dis(N);
-vector<ii> g[N];
+vi dis(N);
+vii g[N];
 const int inf = 1231231;
 
 bool dijkstra(int S, int T){//O(E logV)

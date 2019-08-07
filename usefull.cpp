@@ -45,7 +45,7 @@ main()
 #include <sstream>
 string line;
 getline(cin,line);//pega linha
-stringstream ss; ss.str(line);
+stringstream ss; ss.str(line);//redeclarar pra cada nova query de linha
 while(ss>>word){
 	//pega uma palavra de line e coloca em word
 
@@ -86,6 +86,7 @@ do{
 			return splitmix64(x + FIXED_RANDOM);
 		}
 	};
+#include<unordered_map>
 unordered_map<long long, int, custom_hash> safe_map;
 
 //----safe random---https://codeforces.com/blog/entry/61675
