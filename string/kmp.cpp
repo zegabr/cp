@@ -1,18 +1,18 @@
 //====================================================
-string p, t;
-vector<int> b(p.size()+1); 
+const int ms=100;
+string p="SEVENTY SEVEN", t;
+int b[ms]; 
 
-void kmpdebug(string &p, vector<int>&b){//for debugging
+void kmpdebug(){//for debugging
 	cout<<"    ";
 	for(int i=0;i<p.size();i++)cout<<p[i]<<"  ";
 	cout<<endl;
-	for(int i=0;i<b.size();i++)cout<<b[i]<<"  ";
+	for(int i=0;i<p.size()+1;i++)cout<<b[i]<<"  ";
 	cout<<endl;
 }
 
-vector<int> kmppre(string &p) {
+void kmppre() {
 	int m=p.size();
-	vector<int> b(m+1);
 	int i = 0, j = b[0] = -1;
 	while(i < m) {
 		while(j >= 0 and p[i] != p[j]) j = b[j];
@@ -22,10 +22,10 @@ vector<int> kmppre(string &p) {
 
 int kmpfind() {
 	int i = 0, j = 0, ans = 0;
-	while(i < n) {
+	while(i < t.size()) {
 		while(j >= 0 and t[i] != p[j]) j = b[j];
 		i++; j++;
-		if(j == m) {
+		if(j == p.size()) {
 			//ocorrencia aqui comecando em i - j
 			ans++;
 			j = b[j];
@@ -34,3 +34,4 @@ int kmpfind() {
 	return ans;
 }
 //====================================================
+
