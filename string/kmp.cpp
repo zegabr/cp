@@ -1,6 +1,6 @@
 //====================================================
 const int ms=100;
-string p="SEVENTY SEVEN", t;
+string p, t;
 int b[ms]; 
 
 void kmpdebug(){//for debugging
@@ -22,10 +22,11 @@ void kmppre() {
 
 int kmpfind() {
 	int i = 0, j = 0, ans = 0;
-	while(i < t.size()) {
+	int n = t.size(), m=p.size();
+	while(i < n) {
 		while(j >= 0 and t[i] != p[j]) j = b[j];
 		i++; j++;
-		if(j == p.size()) {
+		if(j == m) {
 			//ocorrencia aqui comecando em i - j
 			ans++;
 			j = b[j];
