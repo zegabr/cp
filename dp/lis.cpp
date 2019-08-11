@@ -34,7 +34,7 @@ vi getlen(vi &v){//pega o tamanho da lis terminada em cada elemento
 	vi L;
 	vi len(v.size(),0);
 	fr(i,0,v.size()-1){
-		int pos = getpos(L,v[i]);//lowerbound-begin
+		int pos = lower_bound(all(L),v[i])-L.begin();
 		if(pos==L.size()) L.pb(v[i]);
 		else L[pos]=v[i];
 		len[i]=pos+1;
