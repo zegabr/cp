@@ -8,11 +8,11 @@ inline ll lcm(const ll &a, const ll &b) {
 
 //===================SIEVE==================
 const int P = 2e7+5;
-bitset<P+1> prime;
+vector<bool> prime;
 vector<ll> primes;
 
 void sieve (){
-	prime.set();
+	prime.assign(P+1,1);
 	prime[0]=prime[1]=0;
 	for (ll p=2; p<=P;p++) if(prime[p]){
 		primes.push_back(p);
