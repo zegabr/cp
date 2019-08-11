@@ -1,5 +1,5 @@
 ///=====================================================
-int a[4 * N], seg[4 * N], n;
+int a[4 * ms], seg[4 * ms], n;
 const int none = 0x3f3f3f3f;//padrao retornado pela query tal que nao interfira
 
 inline int merge(int e, int d){

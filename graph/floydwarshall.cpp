@@ -1,8 +1,8 @@
 //====================================================
 const int inf = 0x3f3f3f3f;
-int g[N][N];
-int p[N][N];
-void clear(int n = N) {
+int g[ms][ms];
+int p[ms][ms];
+void clear(int n = ms) {
 	for(int i = 0; i < n; i++) {
 		for(int j = 0; j < n; j++) {
 			g[i][j] = i == j ? 0 : inf;
@@ -15,7 +15,7 @@ void add(int u, int v, int w) {
 	g[u][v] = min(w, g[u][v]);
 }
 
-void floydWarshall(int n = N) {//O(V³)
+void floydWarshall(int n = ms) {//O(V³)
 	for(int k = 0; k < n; k++) {
 		for(int i = 0; i < n; i++) { 
 			for(int j = 0; j < n; j++) {

@@ -1,5 +1,5 @@
 //====================================================
-vector<int> g[N], vis(N);
+vector<int> g[ms], vis(ms);
 map<int,int>grau;
 void toposort(){//O(V+E)
 	priority_queue<int, vector<int>,greater<int>> pq;

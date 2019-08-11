@@ -1,5 +1,4 @@
-const int ms = 20;
-int v[] =  {2, ,3,45 ,65,4 ,76, 2};
+const int ms = 2222222;//biggest number
 int bit[ms];
 int dp[ms];
 
@@ -14,8 +13,8 @@ int get(int x){
 		ans = max(bit[x], ans);
 }
 
-int lis(int n){
-	int ans =0;
+int lis(vector<int> &v){
+	int ans =0, n = v.size();
 	for(int i=0;i<n;i++){
 		dp[i] = 1 + get(v[i]);
 		update(v[i], dp[i]);

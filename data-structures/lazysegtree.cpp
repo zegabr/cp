@@ -1,5 +1,5 @@
 //https://sites.google.com/site/indy256/algo_cpp/segment_tree
-const int maxn = 200000;
+const int ms = 200000;
 
 const int INIT_VALUE = 0;
 const int NEUTRAL_VALUE = INT_MIN;
@@ -19,8 +19,8 @@ int incdelta(int val, int delta, int length) {
 
 // generic code
 int n;
-int seg[4 * maxn];
-int delta[4 * maxn]; // affects only child roots
+int seg[4 * ms];
+int delta[4 * ms]; // affects only child roots
 
 void init(int p=0, int l=0, int r=n-1) {
   if (l == r) {

@@ -1,6 +1,6 @@
 //====================================================
-const int N = 21212414;
-int bit[N],n;
+const int ms = 21212414;
+int bit[ms],n;
 int sum(int i){//O(logn)
 	int res =0;
 	while (i){

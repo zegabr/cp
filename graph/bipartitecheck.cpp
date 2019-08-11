@@ -1,6 +1,6 @@
 //====================================================
-vector<int>g[N], vis(N);
-vector<bool> color(N);
+vector<int>g[ms], vis(ms);
+vector<bool> color(ms);
 int timer=1;
 bool dfsbicolor(int u){
 	for(int v : g[u]){

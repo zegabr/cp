@@ -1,6 +1,6 @@
 //====================================================
-const int maxn=10000;
-ll c[maxn][maxn];
+const int ms=10000;
+ll c[ms][ms];
 
 ll comb(int n,int k){//combinacao de n, escolhendo k
 	if(k==0 or k==n) return 1;

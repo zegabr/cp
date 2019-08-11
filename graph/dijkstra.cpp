@@ -1,6 +1,6 @@
 //====================================================
-vi dis(N);
-vii g[N];
+vi dis(ms);
+vii g[ms];
 const int inf = 1231231;
 
 bool dijkstra(int S, int T){//O(E logV)

@@ -1,12 +1,12 @@
 //====================================================
-const int N=1e4+10, ln=25;
-int up[N][ln+1], lv[N];
-vector<int> g[N];
+const int ms=1e4+10, lg=25;
+int up[ms][lg+1], lv[ms];
+vector<int> g[ms];
 
 void dfslca(int u,int p, int h=0){//chamar dfslca(root,root)
 	lv[u]=h;
 	up[u][0] = p;
-	for(int i=1; i<=ln;i++) up[u][i] = up[up[u][i-1]][i-1];
+	for(int i=1; i<=lg;i++) up[u][i] = up[up[u][i-1]][i-1];
 	for(int v : g[u]){
 		if(v!=p) dfslca(v, u, h+1);
 	}
@@ -15,9 +15,9 @@ void dfslca(int u,int p, int h=0){//chamar dfslca(root,root)
 int lca(int a, int b){
 	if(lv[b]>lv[a]) swap(a,b);
 	int d = lv[a]-lv[b];
-	for(int i=0;i<ln;i++) if((d>>i)&1) a = up[a][i];
+	for(int i=0;i<lg;i++) if((d>>i)&1) a = up[a][i];
 	if(a==b) return a;
-	for(int i=ln; i>=0 ; i--){
+	for(int i=lg; i>=0 ; i--){
 		if(up[a][i] != up[b][i]){
 			a=up[a][i];
 			b=up[b][i];
