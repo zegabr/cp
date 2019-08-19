@@ -4,6 +4,7 @@ ll c[ms][ms];
 
 ll comb(int n,int k){//combinacao de n, escolhendo k
 	if(k==0 or k==n) return 1;
+	k = min(k,n-k);
 	if(c[n][k]) return c[n][k];
 	return c[n][k] = comb(n-1,k-1)+comb(n-1,k);
 }
