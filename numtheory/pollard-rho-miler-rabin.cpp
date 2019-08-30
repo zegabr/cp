@@ -1,18 +1,19 @@
 #define gdc __gcd
+
 bool overflow(ll a, ll b) {
   return b && (a >= (1ll << 62) / b);
 }
 
-ll add(ll a, ll b, ll md) {
-  return (a + b) % md;
+ll add(ll a, ll b, ll mod) {
+  return (a + b) % mod;
 }
 
-ll mul(ll a, ll b, ll md) {
-  if (!overflow(a, b)) return (a * b) % md;
+ll mul(ll a, ll b, ll mod) {
+  if (!overflow(a, b)) return (a * b) % mod;
   ll ans = 0;
   while(b) {
-    if (b & 1) ans = add(ans, a, md);
-    a = add(a, a, md);
+    if (b & 1) ans = add(ans, a, mod);
+    a = add(a, a, mod);
     b >>= 1;
   }
   return ans;
@@ -24,12 +25,12 @@ ll my_rand() {
   return ans;
 }
 
-bool miller(ll p, int iteracao) {
+bool miller(ll p, int precision) {
   if(p < 2) return 0;
   if(p % 2 == 0) return (p == 2);
   ll s = p - 1;
   while(s % 2 == 0) s >>= 1;
-  for(int i = 0; i < iteracao; i++) {
+  for(int i = 0; i < precision; i++) {
     ll a = rand() % (p - 1) + 1, temp = s;
     ll mod = fexp(a, temp, p);
     while(temp != p - 1 && mod != 1 && mod != p - 1) {
