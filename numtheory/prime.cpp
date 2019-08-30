@@ -1,5 +1,5 @@
 //=============MDC(GCD)===================
-#define gcd(a,b) __gcd(a,b)
+#define gcd __gcd
 
 //==========MMC(LCM)================
 inline ll lcm(const ll &a, const ll &b) {

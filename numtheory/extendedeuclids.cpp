@@ -1,5 +1,5 @@
 
-#define gcd(a,b) __gcd(a,b)
+#define gcd __gcd
 //=========EUCLIDES ESTENDIDO==============
 // acha x e y da equacao:
 // a * x + b * y = gcd(a, b);
