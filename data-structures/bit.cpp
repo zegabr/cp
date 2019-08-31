@@ -1,6 +1,6 @@
 //====================================================
 const int ms = 21212414;
-int bit[ms],n;
+int bit[ms];
 int sum(int i){//O(logn)
 	int res =0;
 	while (i){
@@ -11,7 +11,7 @@ int sum(int i){//O(logn)
 }
 
 void ad(int i,int val){//O(logn)
-	while(i<n){
+	while(i<ms-1){
 		bit[i]+=val;
 		i+= i&-i;
 	}
