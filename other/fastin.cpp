@@ -1,24 +1,25 @@
+#define getchar getchar_unlocked
 void getint(int &num){
 	num=0;
 	bool neg=0;
-	register int c = getchar_unlocked();
+	register int c = getchar();
 	if(c=='-'){
 		neg=1;
-		c=getchar_unlocked();
+		c=getchar();
 	}
-	for(;c<='9' and c>='0';c=getchar_unlocked())
+	for(;c<='9' and c>='0';c=getchar())
 		num=(num<<1)+(num<<3)+c-'0';
 	if(neg)num*=-1;
 }
 void getint(ll &num){
 	num=0ll;
 	bool neg=0;
-	register int c = getchar_unlocked();
+	register int c = getchar();
 	if(c=='-'){
 		neg=1;
-		c=getchar_unlocked();
+		c=getchar();
 	}
-	for(;c<='9' and c>='0';c=getchar_unlocked())
+	for(;c<='9' and c>='0';c=getchar())
 		num=(num<<1)+(num<<3)+c-'0';
 	if(neg)num*=-1ll;
 }
