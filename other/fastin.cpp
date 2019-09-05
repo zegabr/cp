@@ -1,3 +1,4 @@
+//===============================
 #define getchar getchar_unlocked
 void sc(int &num){//scan int
 	num=0;
@@ -21,3 +22,4 @@ void sc(ll &num){//scan ll
 		num=(num<<1)+(num<<3)+c-'0';
 	if(neg)num*=-1ll;
 }
+//=============================
