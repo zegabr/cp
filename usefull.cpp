@@ -89,10 +89,15 @@ do{
 #include<unordered_map>
 unordered_map<long long, int, custom_hash> safe_map;
 
-//----safe random---https://codeforces.com/blog/entry/61675
+// mt19937_64 se LL
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-cout<<rng()<<endl; //printa numero randomico
-
+// Random_Shuffle
+shuffle(v.begin(), v.end(), rng);
+// Random number in interval
+int randomInt = uniform_int_distribution(0, i)(rng);
+double randomDouble = uniform_real_distribution(0, 1)(rng);
+// bernoulli_distribution, binomial_distribution, geometric_distribution
+// normal_distribution, poisson_distribution, exponential_distribution
 
 //==================BITSET=========================
 bitset<10> a(10);//bitset de tamanho 10 com o valor 10 atribuido
