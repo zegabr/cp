@@ -41,4 +41,10 @@ ll catalan(ll n, ll mod){ //import numtheory.cpp
 	 -trocando catalan(i+j-2) por catalan(i+j-1) o determinante continua sendo 1
 	 */
 
+//=============stars and bars=======================
+/*
+	-n identical objects into k labeled boxes is comb(n+k-1,n)
+	-equals combination with repetition of n+k-1, repeating n and k-1
+
+*/
 //====================================================
