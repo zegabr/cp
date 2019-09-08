@@ -115,3 +115,25 @@ a.set(i);//seta i-esimo
 a.set();//seta todos os bits
 a.reset();//funciona igual ao set
 a.flip();//mesmos parametros, porém troca bits
+//==================COMPARATORS==================
+#include <algorithm>
+#include <set>
+#include <iostream>
+using namespace std;
+
+struct item {
+    int x, y;
+    bool operator<(const item &o) const {
+        return x < o.x || x == o.x && y < o.y;
+    }
+};
+
+int main() {
+    item a[] = { { 2, 3 }, { 1, 2 } };
+    typedef set<item> myset;
+    myset s(a, a + 2);
+    for (myset::iterator it = s.begin(); it != s.end(); it++) {
+        cout << it->x << " " << it->y << endl;
+    }
+}
+//===========================================
