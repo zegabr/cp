@@ -106,7 +106,7 @@ int generator (int p) {//find a primitive root modulo p
 
 //===============DISCRETE ROOT========================
 #define mp make_pair
-vector<int> discretelog(int k,int a,int n){//x^k==a mod n
+vector<int> droot(int k,int a,int n){//find x where x^k==a mod n
 	if(a==0){
 		//0 is the only solution
 		vector<int> ans={0};
@@ -143,3 +143,27 @@ vector<int> discretelog(int k,int a,int n){//x^k==a mod n
 	return ans;
 }
 //===================================================
+//===========DISCRETE LOG==========================
+int dlog(int a, int b, int m){//find x where a^x = b mod m, with a and m co-prime
+	int n = (int)sqrt(m+ .0) + 1;
+	int an = 1;
+	for(int i = 0; i < n; i++)
+		an = an * a % m;
+
+	map<int,int> vals;
+	for(int p = 1, cur = an; p <= n; p++){
+		if(!vals.count(cur)) vals[cur] = p;
+		cur = cur * an % m;
+	}
+
+	for(int q = 0, cur = b; q <= n; q++){
+		if(vals.count(cur)){
+			int ans = vals[cur] * n - q;
+			return ans;
+		}
+		cur = cur * a % m;
+	}
+	return -1
+
+}
+//================================================
