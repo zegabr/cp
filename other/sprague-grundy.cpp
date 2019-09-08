@@ -12,7 +12,7 @@ int getmex(unordered_set<int> &s){
 
 
 unordered_map<int,int> Grund;//pd
-int grundy(int n){//varia dependendo do jogo
+int grundy(int n){//varia dependendo do jogo, deve retornar 0 se for estado de perda, numero grande se for estado de vencimento
 	//caso base
 	if(n<=1) return 0;//retorna 0 se nao pode retirar pedras num jogo com n pedras
 	if(Grund.count(n)) return Grund[n];
