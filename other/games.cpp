@@ -23,9 +23,31 @@ int grundy(int n){//varia dependendo do jogo, deve retornar 0 se for estado de p
 
 	return Grund[n] = getmex(nex);
 }
- 
+
 int newgrundy(int n){
 	//em caso de TLE, achar padrao e inserir aqui
 	return 0;
 }
- //======================================
+//======================================
+//=============GAMES ON ARBITRARY GRAPHS=======
+vector<vector<int>> adj_rev;//reversed edges graph
+
+vector<bool> winning;
+vector<bool> losing;
+vector<bool> visited;
+vector<int> degree;//outgoing degree of vertices on reversed grapf
+
+void dfs(int v) {//start from already defined vertices
+	visited[v] = true;
+	for (int u : adj_rev[v]) {
+		if (!visited[u]) {
+			if (losing[v])
+				winning[u] = true;
+			else if (--degree[u] == 0)
+				losing[u] = true;
+			else
+				continue;
+			dfs(u);
+		}
+	}
+}
