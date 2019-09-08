@@ -25,4 +25,9 @@ int lca(int a, int b){
 	}
 	return up[a][0]; 
 }
+
+int distance(int u, int v) {
+	int lc = lca(u, v);
+	return lv[u] + lv[v] - 2 * lv[lc];
+}
 //====================================================
