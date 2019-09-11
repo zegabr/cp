@@ -1,5 +1,8 @@
 //=============MDC(GCD)===================
-#define gcd __gcd
+ll gcd(ll a, ll b) {
+  while(b) a %= b, swap(a, b);
+  return a;
+}
 
 //==========MMC(LCM)================
 inline ll lcm(const ll &a, const ll &b) {
