@@ -55,9 +55,10 @@ other/parser.cpp    Expression Parser
 other/games.cpp Game on general graphs
 
 [Geometry]
-math/geometrydouble.cpp
+math/geometrydouble.cpp Geometry
 
 [Maybe Useful]
+usefull.cpp Coisas Uteis
 math/probablyuseless.cpp    Coisas de math
 py/pythoncheatsheet.py Cheat Sheet Python
 py/pmp.py   Python Template
