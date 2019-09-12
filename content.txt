@@ -1,64 +1,64 @@
 [Data Structures]
-data-structures/bit.cpp BIT
-data-structures/dsu.cpp Disjoint Set Union
-data-structures/segtreerecursive.cpp    Segtree
-data-structures/segtree2Diterative.cpp  Seg2D
-data-structures/cht.cpp CHT
-data-structures/cht2.cpp Other CHT
+cp/data-structures/bit.cpp BIT
+cp/data-structures/dsu.cpp Disjoint Set Union
+cp/data-structures/segtreerecursive.cpp    Segtree
+cp/data-structures/segtree2Diterative.cpp  Seg2D
+cp/data-structures/cht.cpp CHT
+cp/data-structures/cht2.cpp Other CHT
 
 [DP]
-dp/kadane.cpp   Kadane
-dp/lis-bit.cpp  Lis com bit
-dp/lis.cpp  LIS
-dp/somacumulada.cpp Soma Acumulada 2D
+cp/dp/kadane.cpp   Kadane
+cp/dp/lis-bit.cpp  Lis com bit
+cp/dp/lis.cpp  LIS
+cp/dp/somacumulada.cpp Soma Acumulada 2D
 
 [Graph]
-graph/dijkstra.cpp  Dijkstra
-graph/dinic.cpp Dinic Maxflow
-graph/bellman-ford.cpp  Belmann Ford
-graph/bfs.cpp   BFS
-graph/bipartitecheck.cpp    Bipartite Check
-graph/bridge-pointt-articulation.cpp    Bridge-Points-Articulation
-graph/dfs.cpp   DFS
-graph/grid.cpp  Grid Movement
-graph/eulertour.cpp Euler Tour
-graph/floydwarshall.cpp Floyd Warshall
-graph/kuhn.cpp  Bipartite-Matching Kuhn
-graph/lca.cpp   LCA
-graph/scc.cpp   SCC
-graph/toposort.cpp  Toposort
+cp/graph/dijkstra.cpp  Dijkstra
+cp/graph/dinic.cpp Dinic Maxflow
+cp/graph/bellman-ford.cpp  Belmann Ford
+cp/graph/bfs.cpp   BFS
+cp/graph/bipartitecheck.cpp    Bipartite Check
+cp/graph/bridge-pointt-articulation.cpp    Bridge-Points-Articulation
+cp/graph/dfs.cpp   DFS
+cp/graph/grid.cpp  Grid Movement
+cp/graph/eulertour.cpp Euler Tour
+cp/graph/floydwarshall.cpp Floyd Warshall
+cp/graph/kuhn.cpp  Bipartite-Matching Kuhn
+cp/graph/lca.cpp   LCA
+cp/graph/scc.cpp   SCC
+cp/graph/toposort.cpp  Toposort
 
 [Math]
-math/combinatorics.cpp  Combinatória
-math/matrxExp.cpp   Exponenciacao Matriz
-math/det.cpp    Determinante
-math/gauss.cpp  Gaussian Elimination
-math/integration.cpp    Integral de Simpson
-math/numtheory/brent-cycle-finder.cpp   Brent Cycle finder
-math/numtheory/crt.cpp  Teorema Chines dos Restos
-math/numtheory/divisors.cpp Divisors
-math/numtheory/extendedeuclids.cpp  Euclides Extendido
-math/numtheory/pollard-rho-miller-rabin.cpp Miller-Rho
-math/numtheory/prime.cpp    Prime Numbers
+cp/math/combinatorics.cpp  Combinatória
+cp/math/matrxExp.cpp   Exponenciacao Matriz
+cp/math/det.cpp    Determinante
+cp/math/gauss.cpp  Gaussian Elimination
+cp/math/integration.cpp    Integral de Simpson
+cp/math/numtheory/brent-cycle-finder.cpp   Brent Cycle finder
+cp/math/numtheory/crt.cpp  Teorema Chines dos Restos
+cp/math/numtheory/divisors.cpp Divisors
+cp/math/numtheory/extendedeuclids.cpp  Euclides Extendido
+cp/math/numtheory/pollard-rho-miller-rabin.cpp Miller-Rho
+cp/math/numtheory/prime.cpp    Prime Numbers
 
 
 [String]
-string/kmp.cpp  KMP
-string/zfunc.cpp    Z-Function
-string/trie.cpp Trie
+cp/string/kmp.cpp  KMP
+cp/string/zfunc.cpp    Z-Function
+cp/string/trie.cpp Trie
 
 [Other]
-other/fastin.cpp    Getchar Fast Input
-other/bs.cpp    Binary-Search
-other/ts.cpp    Ternary-Search
-other/parser.cpp    Expression Parser
-other/games.cpp Game on general graphs
+cp/other/fastin.cpp    Getchar Fast Input
+cp/other/bs.cpp    Binary-Search
+cp/other/ts.cpp    Ternary-Search
+cp/other/parser.cpp    Expression Parser
+cp/other/games.cpp Game on general graphs
 
 [Geometry]
-math/geometrydouble.cpp Geometry
+cp/math/geometrydouble.cpp Geometry
 
 [Maybe Useful]
-usefull.cpp Coisas Uteis
-math/probablyuseless.cpp    Coisas de math
-py/pythoncheatsheet.py Cheat Sheet Python
-py/pmp.py   Python Template
+cp/usefull.cpp Coisas Uteis
+cp/math/probablyuseless.cpp    Coisas de math
+cp/py/pythoncheatsheet.py Cheat Sheet Python
+cp/py/pmp.py   Python Template
