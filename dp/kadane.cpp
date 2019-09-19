@@ -1,4 +1,3 @@
-//=======================================
 int maxsubarraysum(vector<int> %a){
 	int ans = -inf;
 	vector<int> dp(inf,0);
@@ -9,4 +8,3 @@ int maxsubarraysum(vector<int> %a){
 	}
 	return ans;
 }
-//=======================================
