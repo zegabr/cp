@@ -1,4 +1,3 @@
-
 #define gcd __gcd
 //=========EUCLIDES ESTENDIDO==============
 // acha x e y da equacao:

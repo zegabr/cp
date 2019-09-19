@@ -1,4 +1,3 @@
-//====================================================
 //============MATRIX FAST EXPONENTIATION=========== for recurrence problems
 //this one is for uva tribonacci
 #define TAM 3

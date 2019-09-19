@@ -1,5 +1,4 @@
 #include <cassert>
-//====================================================
 const double eps = 1e-9;
 
 struct PT {
@@ -232,4 +231,3 @@ vector<PT> convexHull(vector<PT> p) {
 	h.resize(k);
 	return h;
 }
-//====================================================

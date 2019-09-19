@@ -1,4 +1,3 @@
-//======================
 int f(int x){
 
 	return x;
@@ -32,4 +31,3 @@ pair<int,int> brent(int x0){
 
 	return {lam, mu};//periodo,indice onde comeca o periodo
 }
-//==========================================

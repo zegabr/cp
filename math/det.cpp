@@ -1,4 +1,3 @@
-//==========================
 const double EPS = 1e-9;
 int determinant(vector < vector<double> > &a, int n){
 	double det = 1;
@@ -24,4 +23,3 @@ int determinant(vector < vector<double> > &a, int n){
 	}
 	return det;
 }
-//=============================

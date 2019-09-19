@@ -1,4 +1,3 @@
-//=======================
 int gauss (vector < vector<double> > a, vector<double> & ans) {//Ax=b, b is at last collumn of vector a
 	int n = (int) a.size();
 	int m = (int) a[0].size() - 1;
@@ -41,4 +40,3 @@ int gauss (vector < vector<double> > a, vector<double> & ans) {//Ax=b, b is at l
 			return INF;//infinite solutions
 	return 1;//one solution at ans
 }
-//=======================

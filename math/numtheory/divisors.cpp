@@ -1,5 +1,3 @@
-
-//============SUM OF DIVISORS=========
 ll sumdiv(ll n){
 	ll pri = 0, prf = primes[pri], ans=1;
 	while(prf*prf <= n){
@@ -12,7 +10,6 @@ ll sumdiv(ll n){
 	return ans;
 }
 
-//=============DIVISORS================
 ll countdiv(ll n){//O(sqrt(n))
 	ll c=0;
 	for(ll i=1; i*i<=n; i++){

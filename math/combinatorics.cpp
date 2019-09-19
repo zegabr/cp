@@ -1,4 +1,3 @@
-//====================================================
 const int ms=10000;
 ll c[ms][ms];
 
@@ -47,4 +46,3 @@ ll catalan(ll n, ll mod){ //import numtheory.cpp
 	-equals combination with repetition of n+k-1, repeating n and k-1
 
 */
-//====================================================

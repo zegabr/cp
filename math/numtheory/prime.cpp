@@ -169,4 +169,3 @@ int dlog(int a, int b, int m){//find x where a^x = b mod m, with a and m co-prim
 	return -1;
 
 }
-//================================================
