@@ -1,4 +1,3 @@
-///=====================================================
 int a[4 * ms], seg[4 * ms], n;
 const int none = 0x3f3f3f3f;//padrao retornado pela query tal que nao interfira
 
@@ -33,4 +32,3 @@ void build(int x = 1, int l = 0, int r = n - 1) {
 	build(e, l, m); build(d, m + 1, r);
 	seg[x] = merge(seg[e], seg[d]);
 }
-//====================================================
