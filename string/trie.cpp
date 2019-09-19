@@ -1,4 +1,3 @@
-//====================================================
 //alfasize eh o tamanho do alfabeto
 //ms é o tamanho da maior string vezes a quantidade de strings
 #include<cstring>
@@ -34,4 +33,3 @@ int count(string &p) {
 	}
 	return terminal[cur];
 }
-//====================================================
