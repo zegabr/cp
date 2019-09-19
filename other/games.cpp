@@ -1,4 +1,3 @@
-//===============================================
 /*
  *Sprague-Grundy Theorem:
  the player starting first is guaranteed to win if the XOR of the grundy numbers of position in each sub-games at the beginning of the game is non-zero. Otherwise, if the XOR evaluates to zero, then player A will lose definitely, no matter what.*/

@@ -1,4 +1,3 @@
-//=======================
 double f(double x){
 	//function that strictly grows up then strictly grows down or the inverse
 }
@@ -16,4 +15,3 @@ double ternary_search(double l, double r) {
     }
     return f(l);                    //return the maximum of f(x) in [l, r]
 }
-//===================================
