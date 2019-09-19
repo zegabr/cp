@@ -1,4 +1,3 @@
-//====================================================
 const int ms=1e4+10, lg=25;
 int up[ms][lg+1], lv[ms];
 vector<int> g[ms];
@@ -30,4 +29,3 @@ int distance(int u, int v) {
 	int lc = lca(u, v);
 	return lv[u] + lv[v] - 2 * lv[lc];
 }
-//====================================================

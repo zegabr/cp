@@ -1,4 +1,3 @@
-//====================================================
 //for undirected graph
 const int V=1e6+5;
 int timer, dfsroot, rootchildren;
@@ -45,6 +44,3 @@ void findpointbridge(int n=V){
 		}
 	}
 }
-//====================================================
-
-

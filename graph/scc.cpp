@@ -1,4 +1,3 @@
-//=================================
 //for directed graphs
 const int V=1e6+5;
 vector<int> num,low,vis,S;
@@ -35,4 +34,3 @@ void findscc(int n=V){
         if(num[i]==0) tarjan(i);
     }
 }
-//================================

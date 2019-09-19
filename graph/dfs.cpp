@@ -1,4 +1,3 @@
-//====================================================
 vector<int> vis(ms), g[ms];
 int tempo=1;//fazer tempo++ para cada vez que precisar zerar visitados
 void dfs(int u){//O(V+E)
@@ -9,4 +8,3 @@ void dfs(int u){//O(V+E)
 		dfs(v);
 	}
 }
-//====================================================
