@@ -4,22 +4,21 @@ bool check(int m){
 }
 
 //smallest solution
-int ssol(int l, int r) {
-	while(l < r) {
+int bsmin(int l, int r){
+	while(l<r){
 		int m = (l+r)/2;
-		if(check(m)) r = m;
-		else l = m + 1;
+		if(check(m)) r=m;
+		else l=m+1;
 	}
 	return l;
 }
 
 //biggest solution
-int bsol(int l, int r) {
-	while(r > l + 1) {
-		int m = (l+r)/2;
-		if(check(m)) l = m;
-		else r = m;
+int bsmax(int l, int r){
+	while(l<r){
+		int m = (l+r+1)/2;
+		if(check(m)) l=m;
+		else r=m-1;
 	}
-	return check(r) ? r : l;
+	return r;
 }
-
