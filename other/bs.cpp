@@ -1,6 +1,6 @@
 bool check(int m){
 	//check here
-	return 1;
+	
 }
 
 //smallest solution
