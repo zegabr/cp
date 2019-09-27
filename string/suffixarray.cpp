@@ -39,10 +39,9 @@ void buildSA(){
 			ra[i]=tra[i];
 		if(ra[sa[n-1]]==n-1) break;
 	}
-	
-	for(int i=0;i<n;i++) printf("%2d\t%s\n",sa[i], T+sa[i]);
-		cout << sa[i] << "  " << T+sa[i] << endl;
 
+	for(int i=0;i<n;i++) printf("%2d\t%s\n",sa[i], T+sa[i]);
+	cout << sa[i] << "  " << T+sa[i] << endl;
 }
 
 pair<int,int> stringMatching(char P[]){
@@ -69,7 +68,47 @@ pair<int,int> stringMatching(char P[]){
 	return ans;
 }
 
+int phi[ms];
+int PLCP[ms];
+int LCP[ms];
+void computeLCP(){//longest common prefix
+	int n = (int)strlen(T);
+	int i, L;
+	phi[sa[0]] = -1;
+	for(int i=1;i< n;i++)
+		phi[sa[i]]=sa[i-1];
+	for(i = L = 0;i<n;i++){
+		if(phi[i]==-1){
+			PLCP[i]=0;
+			continue;
+		}
+		while(T[L+i]==T[phi[i]+L])L++;
+		PLCP[i]=L;
+		L = max(L-1,0);
+	}
+	for(i = 0 ; i <  n; i++)
+		LCP[i]=PLCP[sa[i]];
+
+}
+
+string longestRepeatedString(){
+	int ans=-1,ind=-1;
+	int n = (int)strlen(T);
+	for(int i=0;i<n;i++){
+		if(LCP[i]>ans){
+			ans=LCP[i];
+			ind=i;
+		}
+	}	
+	string s = "";
+	for(int i=sa[ind];i<sa[ind]+LCP[ind];i++) s.push_back(T[i]);
+	return s;
+}
+
 void stringCopy(char t[], string &s){
 	for(int i=0;i<s.size();i++)
 		t[i]=s[i];
 }
+
+//to get longest commons substring between T and P, 
+//concatenate T$P# and build SA and LCP, then run longestRepeatedString
