@@ -1,3 +1,4 @@
+
 const int ms=10000;
 ll c[ms][ms];
 

@@ -1,3 +1,4 @@
+
 //2D array sum query, no updates
 int a[ms][ms];
 

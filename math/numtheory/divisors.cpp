@@ -1,3 +1,4 @@
+
 ll sumdiv(ll n){
 	ll pri = 0, prf = primes[pri], ans=1;
 	while(prf*prf <= n){

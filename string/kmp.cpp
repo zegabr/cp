@@ -1,3 +1,4 @@
+
 const int ms=100;
 string p, t;
 int b[ms]; 

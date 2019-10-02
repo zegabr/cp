@@ -1,3 +1,4 @@
+
 const int ms = 2222222;//biggest number
 int bit[ms];
 int dp[ms];
@@ -21,5 +22,4 @@ int lis(vector<int> &v){
 		ans  = max(ans, dp[i]);
 	}
 	return ans;
-
 }

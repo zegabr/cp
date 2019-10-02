@@ -1,3 +1,4 @@
+
 #include <cstring>
 const int ms = 111111;
 char T[ms];

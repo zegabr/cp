@@ -1,3 +1,4 @@
+
 int ceilindex(vector<int> &v,vector<int> &T, int l, int r, int key){
 	while(r-l > 1){
 		int m = l + (r-l)/2;

@@ -1,3 +1,4 @@
+
 const int ms = 21212414;
 int bit[ms];
 int sum(int i){//O(logn)

@@ -1,3 +1,4 @@
+
 const int inf = 0x3f3f3f3f;
 int g[ms][ms];
 int p[ms][ms];

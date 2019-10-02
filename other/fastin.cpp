@@ -1,3 +1,4 @@
+
 void sc(int &num){//scan int
 	num=0;
 	bool neg=0;
@@ -9,6 +10,7 @@ void sc(int &num){//scan int
 		num=(num<<1)+(num<<3)+c-'0';
 	if(neg)num*=-1;
 }
+
 void sc(ll &num){//scan ll
 	num=0ll;
 	bool neg=0;

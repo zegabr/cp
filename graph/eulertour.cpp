@@ -1,3 +1,4 @@
+
 //EULER PATH == visit each edge exactly once
 //EULER TOUR == euler path that start and ends at same vertice
 //all except two vertices has even degrees => EULER PATH (undirected)

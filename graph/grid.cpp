@@ -1,3 +1,4 @@
+
 //i grows from top->bottom
 //j grows from left->right
 int di[] = {-1, 0, 1, 0,-1, 1, 1, -1};

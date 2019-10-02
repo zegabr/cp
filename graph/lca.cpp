@@ -1,3 +1,4 @@
+
 const int ms=1e4+10, lg=25;
 int up[ms][lg+1], lv[ms];
 vector<int> g[ms];

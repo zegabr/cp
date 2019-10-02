@@ -1,3 +1,4 @@
+
 vector<int> g[ms];
 map<int,int>grau;//de entrada
 vector<int> ans;

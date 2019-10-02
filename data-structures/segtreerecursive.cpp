@@ -1,3 +1,4 @@
+
 int a[4 * ms], seg[4 * ms], n;
 const int none = 0x3f3f3f3f;//padrao retornado pela query tal que nao interfira
 

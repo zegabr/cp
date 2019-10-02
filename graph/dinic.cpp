@@ -1,3 +1,4 @@
+
 #include<cstring>
 ll inf = 0x3f3f3f3f;//atualizar com fluxo maximo possivel em caso de runtime error
 const int ms = 5555; // Quantidade maxima de vertices

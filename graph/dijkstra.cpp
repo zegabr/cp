@@ -1,3 +1,4 @@
+
 vi dis(ms);
 vii g[ms];
 const int inf = 1231231;

@@ -1,3 +1,4 @@
+
 double f(double x){
 	return x;//function here
 }

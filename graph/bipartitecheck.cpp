@@ -1,3 +1,4 @@
+
 vector<int>g[ms], vis(ms);
 vector<bool> color(ms);
 int timer=1;

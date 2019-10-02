@@ -1,11 +1,11 @@
+
 /*
  *Sprague-Grundy Theorem:
  the player starting first is guaranteed to win if the XOR of the grundy numbers of position in each sub-games at the beginning of the game is non-zero. Otherwise, if the XOR evaluates to zero, then player A will lose definitely, no matter what.*/
 #include<unordered_map>
-#include<unordered_set>
-int getmex(unordered_set<int> &s){
+int getmex(unordered_map<int,bool> &s){
 	int mex=0;
-	while(s.count(mex))mex++;
+	while(ss[mex])mex++;
 	return mex;
 }
 
@@ -15,10 +15,10 @@ int grundy(int n){//varia dependendo do jogo, deve retornar 0 se for estado de p
 	//caso base
 	if(n<=1) return 0;//retorna 0 se nao pode retirar pedras num jogo com n pedras
 	if(Grund.count(n)) return Grund[n];
-	unordered_set<int> nex;
+	unordered_map<int,bool> nex;
 	//adicionar em nex os proximos valores
-	nex.insert(grundy(n-2));
-	nex.insert(grundy(n-3));
+	nex[grundy(n-2)]=1;
+	nex[grundy(n-3)]=1;
 
 	return Grund[n] = getmex(nex);
 }

@@ -1,3 +1,4 @@
+
 #define gdc __gcd
 
 bool overflow(ll a, ll b) {
