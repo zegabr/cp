@@ -17,4 +17,4 @@
 		}
 	};
 #include<unordered_map>
-unordered_map<long long, int, custom_hash> safe_map;
+unordered_map<long long, int, custom_hash> hashmap;
