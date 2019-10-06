@@ -6,8 +6,8 @@ void makeset(int v=ms){
 }
 
 int find(int i){//find
-	if(ds[i]==i) return i;
-	return ds[i]=find(ds[i]);
+	if(ds[i]!=i) ds[i]=find(ds[i]);
+	return i;
 }
 
 bool uni(int a, int b){//union
