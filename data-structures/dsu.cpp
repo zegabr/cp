@@ -11,9 +11,10 @@ int find(int i){//find
 }
 
 bool uni(int a, int b){//union
-	int x=find(a), y=find(b);
-	if(x==y) return false;
-	ds[x]=y;
-	sz[y]+=sz[x];
+	a=find(a), b=find(b);
+	if(a==b) return false;
+	if(sz[a]<sz[b])swap(a,b);
+	sz[a]+=sz[b];
+	ds[b]=a;
 	return true;
 }
