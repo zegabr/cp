@@ -1,9 +1,12 @@
 
-//============MATRIX FAST EXPONENTIATION=========== for recurrence problems
-//this one is for uva tribonacci
-#define TAM 3
-
-ll mod= 1e9+9;
+#define TAM 3 // base size
+ll mod = 1e9+9;
+ll base[TAM] = {0,1,2};//base cases
+ll Tbase[TAM][TAM] = {//transformation
+	{0,1,0},
+	{0,0,1},
+	{1,1,1}
+};
 
 struct Matrix { 
 	ll mat[TAM][TAM];
@@ -17,11 +20,12 @@ struct Matrix {
 	}
 };
 
-Matrix fExp(Matrix a, ll b) {
-	b-=TAM-1;//retirar de b uma qntidade q sirva pra questao (geralmente é TAM-1 e depende da indexacao)
+Matrix fexp(Matrix a, ll b) {
+	b-=TAM-1;//subtracts some value that gives right answer(generally is TAM-1)
 	Matrix ans;//identidade	
-	for(int i = 0; i < TAM; i++) for(int j = 0; j < TAM; j++)
-		ans.mat[i][j] = (i == j);
+	for(int i = 0; i < TAM; i++) 
+		for(int j = 0; j < TAM; j++)
+			ans.mat[i][j] = (i == j);
 	while(b) {
 		if(b & 1) ans = ans * a;
 		a = a * a;
@@ -29,37 +33,19 @@ Matrix fExp(Matrix a, ll b) {
 	}
 	return ans;
 }
-//====================================================
 
-/*
-main(){
-	ios::sync_with_stdio(0); cin.tie(0);
-	ll ans;
-	ll base[TAM] = {0,
-		1,
-		2};
+Matrix T;
+ll solve(ll n){
+	n--;//depends on indexing
+	if(n < TAM) return base[n];//base case
 
+	memcpy(T.mat, Tbase, sizeof T.mat);//T = Tbase
+	T = fexp(T, n);//T = T^n
 
-	ll Tbase[TAM][TAM]={ {0, 1, 0},
-		{0, 0, 1},
-		{1, 1, 1}};
-	ll n, val,k;
-	while(cin>>n and n){
-		n--;// pois n>=1 na questao
-		if(n<3){
-			cout<<n<<pl;
-			continue;
-		}
-		Matrix T;
-		for(int i=0;i<TAM;i++)for(int j=0;j<TAM;j++)T.mat[i][j]=Tbase[i][j]; //T=Tbase
+	ll ans = 0;
+	for(int i=0;i<TAM;i++)
+		ans=(ans+ (T.mat[TAM-1][i] * base[i]) % mod)%mod;
 
-	
-		T=fExp(T, n); 	//T=T^n
-
-		ans=0;
-		for(int i=0;i<3;i++)
-			ans=(ans+ (T.mat[TAM-1][i]*base[i])%mod)%mod;
-		cout<<ans<<pl;
-	}
+	return ans;
 }
- */
+
