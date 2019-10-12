@@ -1,6 +1,5 @@
 
-#define gdc __gcd
-
+//requires fexp.cpp
 bool overflow(ll a, ll b) {
   return b && (a >= (1ll << 62) / b);
 }
@@ -56,7 +55,7 @@ ll rho(ll n) {
       x = add(mul(x, x, n), c, n);
       y = add(mul(y, y, n), c, n);
       y = add(mul(y, y, n), c, n);
-      cur = gcd((x >= y ? x - y : y - x), n);
+      cur = __gcd((x >= y ? x - y : y - x), n);
     }
     if (cur != n) return cur;
   }
