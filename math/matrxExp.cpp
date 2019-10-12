@@ -21,8 +21,8 @@ struct Matrix {
 };
 
 Matrix fexp(Matrix a, ll b) {
-	b-=TAM-1;//subtracts some value that gives right answer(generally is TAM-1)
-	Matrix ans;//identidade	
+	b-=TAM-1;//subtracts some value that gives right answer(generally is TAM-1 so it returns base cases if is less than TAM)
+	Matrix ans;//identity matrix
 	for(int i = 0; i < TAM; i++) 
 		for(int j = 0; j < TAM; j++)
 			ans.mat[i][j] = (i == j);
@@ -48,4 +48,3 @@ ll solve(ll n){
 
 	return ans;
 }
-
