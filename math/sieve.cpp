@@ -15,11 +15,12 @@ void sieve (){
 			primes.push_back(i);
 }
 
-bool isPrime(ll n){
+bool isprime(ll n){
 	if(n<prime.size()) return prime[n];
-	for(int i=0;i<primes.size() and primes[i]*primes[i]<=n;i++) 
-		if(n%primes[i]==0) 
-			return 0;
+	for(ll &p:primes){
+		if(p*p>n) break;
+		if(n%p==0) return 0;
+	}
 	return 1;
 }
 
