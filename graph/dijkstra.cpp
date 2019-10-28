@@ -1,26 +1,26 @@
 
-vi dis(ms);
-vii g[ms];
-const int inf = 1231231;
+const int ms = 2e7+5;
+vector<int> dis(ms);
+vector<pair<int,int>> g[ms];//g[u] contains {w, v}
+const int inf = 0x3f3f3f3f;
 
-bool dijkstra(int S, int T){//O(E logV)
-	priority_queue <ii> pq;
-	bool way =false;
-	fill(dis.begin(),dis.end(),inf);
+void dijkstra(int S, int T){//O(E logV)
+	priority_queue <ii, vector<ii>, greater<ii>> pq;//contains {dis[u], u} , be aware of signal
+	pq.push(ii(0,S));
+	dis.assign(ms, inf);
 	dis[S]=0;
-	pq.push({0,S});
+
 	while(pq.size()){
-		ii aux=pq.top(); pq.pop();
-		int u=aux.second;
+		int u=pq.top().second; 
+		int disu = pq.top().first;
+		pq.pop();
+		if(disu > dis[u])continue;
 		for(auto child : g[u]){
-			int w = child.first, v = child.second;
-			if(w>dis[v]) continue;
-			if(v==T) way = true;
+			int v = child.second,  w = child.first;
 			if(dis[u] + w < dis[v]){           
 				dis[v] = dis[u] + w;
-				pq.push({-dis[v],v});
+				pq.push(ii(dis[v],v));
 			}
 		}
 	}
-	return way;
 }
