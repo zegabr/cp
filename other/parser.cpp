@@ -1,3 +1,5 @@
+
+#include<stack>
 bool delim(char c) {
 	return c == ' ';
 }
