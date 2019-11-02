@@ -1,9 +1,9 @@
 
 //=========EUCLIDES ESTENDIDO==============
 // acha x e y da equacao:
-// a * x + b * y = gcd(a, b);
-// x eh inverso modular de a no modulo y
-// y eh inverso modular de b no modulo x
+// a * x + b * y = gcd(a, b) = d;
+// x eh inverso modular de a no modulo y (se d == 1)
+// y eh inverso modular de b no modulo x (se d == 1)
 //ll x,y,d;
 void euclides(ll a, ll b, ll &x, ll &y, ll &d) {
 	if(b==0){x=1; y=0; d=a; return;}
