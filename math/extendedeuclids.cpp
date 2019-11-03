@@ -11,27 +11,18 @@ void euclides(ll a, ll b, ll &x, ll &y, ll &d) {
 	int x1 = y;
 	int y1 = x - ( a / b ) * y;
 	x = x1; y = y1;
-
 }
 
-void makePositive(ll &x,ll &y,ll a, ll b){
-	if(x<0){
-		ll g = __gcd(a,b);
-		ll n = (ll)ceil((double)-x * g / b);
-		x = x + n * b / g;
-		y = y - n * a / g;
-	}else if(y<0){
-		ll g = __gcd(a,b);
-		ll n = (ll)ceil((double)-y * g / a);
-		x = x - n * b / g;
-		y = y + n * a / g;
-	}
+void makePositive(ll &x,ll &y, ll d, ll a, ll b){
+	//recode this
 }
 //ax+by=k
-void positiveSolution(ll a, ll b, ll k, ll &x, ll &y, ll &d){
+int positiveSolution(ll a, ll b, ll k, ll &x, ll &y, ll &d){
 	euclides(a,b,x,y,d);
 	ll g = __gcd(a,b);
-	x = k * x / g;
-	y = k * y / g;
-	makePositive(x,y,a,b);
+	if(k%g!=0) return 0; // no solution at all
+	x = k / g * x;
+	y = k / g * y;
+	if(makePositive(x,y,d,a,b)) return 2;//positive solution exists
+	return 1;//integer solution exists
 }
