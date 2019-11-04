@@ -13,16 +13,24 @@ void euclides(ll a, ll b, ll &x, ll &y, ll &d) {
 	x = x1; y = y1;
 }
 
-void makePositive(ll &x,ll &y, ll d, ll a, ll b){
+bool anySolution(ll a, ll b, ll k, ll &x, ll &y, ll &d){
+	euclides(a,b,x,y,d);
+	if(k%d!=0) return 0; // no solution at all
+	x = k / d * x;
+	y = k / d * y;
+	return 1;
+}
+
+/////positive solution
+bool makePositive(ll &x,ll &y, ll d, ll a, ll b){
 	//recode this
 }
 //ax+by=k
 int positiveSolution(ll a, ll b, ll k, ll &x, ll &y, ll &d){
 	euclides(a,b,x,y,d);
-	ll g = __gcd(a,b);
-	if(k%g!=0) return 0; // no solution at all
-	x = k / g * x;
-	y = k / g * y;
+	if(k%d!=0) return 0; // no solution at all
+	x = k / d * x;
+	y = k / d * y;
 	if(makePositive(x,y,d,a,b)) return 2;//positive solution exists
 	return 1;//integer solution exists
 }
