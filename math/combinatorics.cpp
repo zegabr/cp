@@ -52,7 +52,7 @@ ll catalan(ll n){
 	return comb(2*n, n)/(n+1); 
 }
 
-ll catalan(ll n, ll mod){ //import numtheory.cpp
+ll catalan(ll n, ll mod){ //import fexp.cpp
 	return comb(2*n, n)*invmod(n+1,mod);
 }
 

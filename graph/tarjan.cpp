@@ -4,7 +4,7 @@ const int V=1e6+5;
 vector<int> num,low,vis,S;
 int dfsCounter,sccCounter;
 vector<vector<int>> sccs;
-vector<pair<int,int>> g[V];
+vector<pair<int,int>> g[V];//g[u] contains {v, w}
 
 void tarjan(int u){
     low[u]=num[u]=dfsCounter++;
