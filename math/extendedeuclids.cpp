@@ -1,5 +1,4 @@
 
-//=========EUCLIDES ESTENDIDO==============
 // acha x e y da equacao:
 // a * x + b * y = gcd(a, b) = d;
 // x eh inverso modular de a no modulo y (se d == 1)
@@ -16,15 +15,15 @@ void euclides(ll a, ll b, ll &x, ll &y, ll &d) {
 /////positive solution
 bool makePositive(ll &x,ll &y, ll d, ll a, ll b){
 	if(x<0){
-		//x+ t*b/d >= 0 ==> t >= -x*d/b
-		ll t = ceil((double)-x*d/(double)b);
+		//x+ t*b/d >= 0 ==> t >= -x*d/b = -x/(b/d)
+		ll t = (-x + (b/d)-1)/(b/d);//ceil de -x/(b/d)
 		x += b/d * t;
 		y -= a/d * t;
 	}
 
 	if(y<0){
-		//y+ t*a/d >= 0 ==> t >= -x*d/a
-		ll t = ceil((double)-y*d/(double)a);
+		//y+ t*a/d >= 0 ==> t >= -y*d/a = -y/(a/d)
+		ll t = (-y + (a/d)-1)/(a/d);//ceil de -y/(a/d)
 		x -= b/d * t;
 		y += a/d * t;
 	}
@@ -40,6 +39,18 @@ int solve(ll a, ll b, ll k, ll &x, ll &y, ll &d){
 	y = k / d * y;
 	if(makePositive(x,y,d,a,b)) return 2;//positive solution exists (comment this if any solution is good)
 	return 1;//integer solution exists
+}
+
+void minimizeX(ll a, ll b, ll &x, ll &y, ll &d){//for positive solution
+	ll t = x/(b/d);
+	x-=b/d*t;
+	y+=a/d*t;
+}
+
+void minimizeY(ll a, ll b, ll &x, ll &y, ll &d){//for positive solution
+	swap(a,b); swap(x,y);
+	minimizeX(a,b,x,y,d);
+	swap(a,b); swap(x,y);
 }
 
 
