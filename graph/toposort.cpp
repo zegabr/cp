@@ -1,6 +1,6 @@
 
 vector<int> g[ms];
-map<int,int>grau;//de entrada
+vector<int> grau(ms);//de entrada
 vector<int> ans;
 
 void toposort(){//O(V+E)
