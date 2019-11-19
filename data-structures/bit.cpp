@@ -1,29 +1,39 @@
 
-const int ms = 21212414;
-int bit[ms];
-int get(int i){//O(logn)
-	int res =0;
-	while (i){
-		res += bit[i];
-		i-= i&-i;
-	}
-	return res;
-}
+template<typename T>
+class BIT{
+	private:
+		vector<T> bit;
 
-int get(int i, int j){
-	return get(j+1) - get(i);//here
-}
+	public:
+		BIT(vector<T> &v){
+			bit.assign(v.size()+2,0);
+			for(int i=0;i<v.size();i++)
+				upd(i,v[i]);
+		}
+		BIT(int tam){
+			bit.assign(tam+2,0);
+		}
 
-void upd(int i,int val){//here
-	while(i<ms-1){
-		bit[i]+=val;
-		i+= i&-i;
-	}
-}
+		T get(int i){
+			i++	;
+			T res = 0;
+			while (i){
+				res += bit[i];
+				i-= i&-i;
+			}
+			return res;
+		}
 
-void build(vector<int> &v){
-	for(int i=0;i<v.size();i++)
-		upd(i+1,v[i]);//here
-}
+		T get(int i, int j){
+			return get(j+1) - get(i);
+		}
 
-//TODO: correct indexes and classify
+		void upd(int i,T val){
+			i++;
+			while(i<bit.size()-1){
+				bit[i]+=val;
+				i+= i&-i;
+			}
+		}
+};
+
