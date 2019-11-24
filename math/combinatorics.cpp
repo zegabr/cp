@@ -57,6 +57,6 @@ ll catalan(ll n){
 }
 
 ll catalan(ll n, ll mod){ //import fexp.cpp
-	return comb(2*n, n)*invmod(n+1,mod);
+	return (comb(2*n, n)*invmod(n+1,mod))%mod;
 }
 
