@@ -30,7 +30,11 @@
 */
 
 const int ms=10000;
-ll c[ms][ms];
+vector<vector<ll>> c;
+
+void initcomb(){
+	c.resize(ms+1,vector<ll>(ms/2+1,0));
+}
 
 ll comb(int n,int k){//combinacao de n, escolhendo k
 	if(k==0 or k==n) return 1;
