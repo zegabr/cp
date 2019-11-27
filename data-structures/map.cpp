@@ -13,6 +13,5 @@
 			return splitmix64(x + FIXED_RANDOM);
 		}
 	};
-	
 #include<unordered_map>
 unordered_map<long long, int, custom_hash> hm;

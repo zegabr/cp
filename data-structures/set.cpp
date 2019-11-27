@@ -14,6 +14,5 @@
 			return splitmix64(x + FIXED_RANDOM);
 		}
 	};
-	
 #include<unordered_set>
 unordered_set<long long, custom_hash> hs;
