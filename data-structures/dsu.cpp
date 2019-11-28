@@ -21,6 +21,10 @@ class dsu{
 		ds[b]=a;
 		return true;
 	}
+	
+	bool same(int a, int b){
+		return pai(a)==pai(b);
+	}
 
 	int size(int a){
 		return sz[pai(a)];
