@@ -43,13 +43,16 @@ main()
 
 //=============STRINGSTREAM================
 #include <sstream>
-string line;
+string line, word;
+char carac;
 getline(cin,line);//pega linha
 stringstream ss; ss.str(line);//redeclarar pra cada nova query de linha
 while(ss>>word){
 	//pega uma palavra de line e coloca em word
-
 } 
+while(ss>>carac){
+	//pega o prox char de ss e guarda em carac
+}
 
 //==============PERMUTATIONS==============
 #include <numeric>
