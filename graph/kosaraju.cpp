@@ -1,15 +1,15 @@
 
 //for directed graphs
 //pls use 0 indexed vertices
-const int V = 1e6+5;
+const int V = 1e5+5;
 vector<int> g[V], gr[V];
 vector<bool> used;
 vector<int> order, component;
 vector<vector<int>> sccs;
+vector<ii> eds;
 
 void dfs1(int u){
 	used[u]=1;
-	component.pb(u);
 	for(auto v : g[u]){
 		if(!used[v]){
 			dfs1(v);
@@ -33,6 +33,7 @@ void init(int n){
 		g[i].clear();
 		gr[i].clear();
 	}
+	eds.clear();
 	order.clear();
 	used.clear();
 	sccs.clear();
@@ -42,19 +43,22 @@ void init(int n){
 void add(int u, int v){
 	g[u].pb(v);
 	gr[v].pb(u);
+	eds.pb({u,v});
 }
 
 void getsccs(int n){
 	used.assign(n,0);
 	for(int i=0;i<n;i++)
 		if(!used[i]) dfs1(i);
-	
+
 	used.assign(n,0);
 	for(int i=0;i<n;i++){
 		int u = order[n-1-i];
 		if(!used[u]){
 			dfs2(u);
 			sccs.pb(component);//storing scc here
+			component.clear();
 		}
 	}
 }
+
