@@ -41,6 +41,7 @@ void init(int n){
 }
 
 void add(int u, int v){
+	u--;v--;//if already 0-indexed, comment this line
 	g[u].pb(v);
 	gr[v].pb(u);
 	eds.pb({u,v});
