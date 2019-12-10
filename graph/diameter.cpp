@@ -54,7 +54,7 @@ void findcenters(int n){
 	diam = maxdist;//tree diameter here
 
 
-	//finding center
+	//finding centers
 	len=diam/2;
 	findnode.assign(n,0);
 
