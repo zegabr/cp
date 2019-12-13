@@ -1,4 +1,5 @@
 
+//shortest path without weight
 const int V=222222;//#vertices
 const int inf = 0x3f3f3f3f;
 vector<int> g[V];
