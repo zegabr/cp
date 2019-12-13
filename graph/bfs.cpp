@@ -1,10 +1,11 @@
 
-//BFS FOR UNWEIGHTED GRAPHS MINIMUM DISTANCE
-int V;//#vertices
+const int V=222222;//#vertices
+const int inf = 0x3f3f3f3f;
 vector<int> g[V];
 vector<int> dis(V);
-int BFS(int start,int goal){//O(V+E)
-	fill(dis.begin(),dis.end(), 0x3f3f3f3f);
+
+void bfs(int start){//O(V+E)
+	dis.assign(V, inf);
 	dis[start]=0;
 	queue<int> q({start});
 	while(q.size()){
@@ -15,8 +16,6 @@ int BFS(int start,int goal){//O(V+E)
 				q.push(v);
 			}
 		}
-	}
-	//retorna -1 se nao houver caminho, menor caminho caso contrario
-	return dis[goal]==inf ? -1 : dis[goal];  
+	}  
 }
 
