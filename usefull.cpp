@@ -101,11 +101,6 @@ a.set();//seta todos os bits
 a.reset();//funciona igual ao set
 a.flip();//mesmos parametros, porém troca bits
 //==================COMPARATORS==================
-#include <algorithm>
-#include <set>
-#include <iostream>
-using namespace std;
-
 struct item {
     int x, y;
     bool operator<(const item &o) const {
