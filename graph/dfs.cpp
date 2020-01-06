@@ -1,10 +1,8 @@
 
-vector<int> vis(ms), g[ms];
-int tempo=1;//fazer tempo++ para cada vez que precisar zerar visitados
 void dfs(int u){//O(V+E)
-	vis[u]=tempo;
+	vis[u]=timer;
 	for(auto v : g[u]){
-		if(vis[v]==tempo) continue;
+		if(vis[v]==timer) continue;
 		dfs(v);
 	}
 }
