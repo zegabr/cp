@@ -1,8 +1,7 @@
 
 //for undirected graph
-const int V=1e6+5;
-int timer, dfsroot, rootchildren;
-vector<int>num, low, par, cutvertex, g[V];
+int dfsroot, rootchildren;
+vector<int>num, low, par, cutvertex;
 
 inline void iscutvertex(int v){
 	cutvertex[v]=true;
@@ -32,7 +31,7 @@ void dfspointbridge(int u){
 	}
 }
 
-void findpointbridge(int n=V){
+void findpointbridge(int n=ms){
 	timer=0;
 	num.assign(n+1,0);
 	low.assign(n+1,0);

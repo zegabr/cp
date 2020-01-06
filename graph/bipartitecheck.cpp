@@ -1,8 +1,5 @@
 
-const int ms = 222222;
-vector<int>g[ms], vis(ms);
 vector<bool> color(ms);
-int timer=1;
 
 bool dfsbicolor(int u){
 	for(int v : g[u]){

@@ -1,8 +1,5 @@
 
-const int ms = 2e7+5;
-vector<int> dis(ms);
-vector<pair<int,int>> g[ms];//g[u] contains {w, v}
-const int inf = 0x3f3f3f3f;
+vector<ii> G[ms];//G[u] contains {w, v}
 
 void dijkstra(int S, int T){//O(E logV)
 	priority_queue <ii, vector<ii>, greater<ii>> pq;//contains {dis[u], u} , be aware of signal
@@ -15,7 +12,7 @@ void dijkstra(int S, int T){//O(E logV)
 		int disu = pq.top().first;
 		pq.pop();
 		if(disu > dis[u])continue;
-		for(auto child : g[u]){
+		for(auto child : G[u]){
 			int v = child.second,  w = child.first;
 			if(dis[u] + w < dis[v]){           
 				dis[v] = dis[u] + w;

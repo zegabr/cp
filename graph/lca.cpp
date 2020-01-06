@@ -1,7 +1,7 @@
 
-const int ms=1e4+10, lg=25;
+const int lg=25;
 int up[ms][lg+1], lv[ms];
-vector<int> g[ms];
+
 
 void dfslca(int u,int p, int h=0){//chamar dfslca(root,root)
 	lv[u]=h;
