@@ -1,10 +1,10 @@
 
 int timer=1;
 /*
-vis[u]<timer ==> u nao visitado
-vis[u]==timer ==> u visitado
-timer++ ==> desvisita todo mundo
-*/
+   vis[u]<timer ==> u nao visitado
+   vis[u]==timer ==> u visitado
+   timer++ ==> desvisita todo mundo
+   */
 const int ms=2e7+5;
 const int inf = 1e8+5;
 vector<int> g[ms], dis(ms,inf), vis(ms); 
@@ -19,8 +19,8 @@ void add(int u, int v){
 }
 
 void cleargraph(){
-    for(int i=0;i<ms;i++){
-        g[i].clear();
-    }
-    dis.assign(ms,inf);
+  for(int i=0;i<ms;i++){
+    g[i].clear();
+  }
+  dis.assign(ms,inf);
 }
