@@ -10,10 +10,10 @@ const int inf = 1e8+5;
 vector<int> g[ms], dis(ms,inf), vis(ms); 
 
 //PLS USE 0 INDEXED VERTICES
-void add(int u, int v, bool undirected=1){
+void add(int u, int v){
   u--;v--;//if already 0-indexed, comment this line
   g[u].pb(v);
-  if(undirected) g[v].pb(u);
+  g[v].pb(u);
   //eds.pb({u,v});
 }
 
