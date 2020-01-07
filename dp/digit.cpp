@@ -1,10 +1,19 @@
 
 vector<int> num;
-const int digits = 101;
+const int digits = 20;
 ll dp[digits][digits*9+1][2];//qtd digitos, soma maxima dos digitos, limitado ou nao
 
 void init(){
   memset(dp,-1,sizeof dp);
+}
+
+void getnum(ll n){
+  num.clear();
+  while(n){
+    num.pb(n%10);
+    n/=10;
+  }
+  reverse(all(num));
 }
 
 //return sum of digits for all number from 0 to num
@@ -26,6 +35,15 @@ ll solve(int pos, int sum, int e){
   return res;
 }
 
-ll solve(){
+//solve from 0 to n
+ll solve(ll n){
+  init();
+  getnum(n);
   return solve(0,0,0);
+}
+
+//solve from a to b inclusively
+ll solve(ll a, ll b){
+  if(a==0)return solve(b);
+  return solve(b) - solve(a-1);
 }
