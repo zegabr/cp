@@ -1,6 +1,6 @@
 
 vector<int> num;
-const int dig = 11;
+const int dig = 11;//tamanho do input +1
 const int maxsum = dig*9+1;
 ll dp[dig][maxsum][2];//qtd digitos, soma maxima dos digitos, limitado ou nao
 
