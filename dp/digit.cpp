@@ -1,7 +1,8 @@
 
 vector<int> num;
-const int digits = 20;
-ll dp[digits][digits*9+1][2];//qtd digitos, soma maxima dos digitos, limitado ou nao
+const int dig = 11;
+const int maxsum = dig*9+1;
+ll dp[dig][maxsum][2];//qtd digitos, soma maxima dos digitos, limitado ou nao
 
 void init(){
   memset(dp,-1,sizeof dp);
