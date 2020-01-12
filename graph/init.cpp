@@ -5,9 +5,10 @@ int timer=1;
    vis[u]==timer ==> u visitado
    timer++ ==> desvisita todo mundo
    */
-const int ms= 
+const int ms= 10;
 const int inf = 1e8+5;
-vector<int> g[ms], dis(ms,inf), vis(ms); 
+vector<int> dis(ms,inf), vis(ms); 
+vector<vector<int>> g(ms);
 vector<ii> eds;
 
 //PLS USE 0 INDEXED VERTICES
@@ -19,8 +20,7 @@ void add(int u, int v){
 }
 
 void cleargraph(){
-  for(int i=0;i<ms;i++){
-    g[i].clear();
-  }
+  g.assign(ms, vector<int>(0));
   dis.assign(ms,inf);
 }
+
