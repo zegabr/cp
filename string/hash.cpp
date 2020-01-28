@@ -3,7 +3,6 @@ const ll base = 31;
 const ll mod = 1e9+9;
 
 vector<ll> pot;
-string s, rev, t;
 
 void buildpot(int maxsize=2000000){//chamar no inicio do main
   pot.resize(maxsize);
