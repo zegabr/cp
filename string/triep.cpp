@@ -24,19 +24,17 @@ using namespace std;
 #define fa(a,c) for(auto &a:c)
 #define endl '\n'
 
-#include <unordered_map>
-
 const int alfa = 26;
 
 class Node{  
   char data;
   bool isEnd;
   int childrenCount;
-  Node *childs[alfa];
+  Node *child[alfa];
   
   Node(){
     for(int i=0;i<alfa;i++){
-      childs[i]=(Node *)NULL;
+      child[i]=(Node *)NULL;
     }
   }
   
