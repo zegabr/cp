@@ -5,10 +5,10 @@ const ll mod = 1e9+9;
 vector<ll> pot;
 string s, rev, t;
 
-void buildpot(int strsize){//chamar no inicio do main
-  pot.resize(strsize);
+void buildpot(int maxsize=2000000){//chamar no inicio do main
+  pot.resize(maxsize);
   pot[0] = 1;
-  for(int i = 1;i < strsize;i++){
+  for(int i = 1;i < maxsize;i++){
     pot[i] = (pot[i-1] * base) % mod;
   }   
 }
@@ -34,4 +34,11 @@ ll get(int l, int r, vector<ll> &h, bool isreversed=0){
   return res;
 }
 
+ll getpref(int m,vector<ll> &h){
+  return get(0, m-1, h);
+}
+
+ll getsuff(int m, vector<ll> &h){
+  return get(len(h)-m, len(h)-1, h);
+}
 
