@@ -1,4 +1,3 @@
-
 const ll base = 31;
 const ll mod = 1e9+9;
 
@@ -27,8 +26,8 @@ ll get(int l, int r, vector<ll> &h, bool isreversed=0){
   ll res = h[r];
 
   if(isreversed){
-    r = len(h)-r-1;
-    l = len(h)-l-1;
+    r = len(h)-l-1;
+    l = len(h)-r-1;
   }
 
   if(l>0) res = ((res - pot[r-l+1]*h[l-1])%mod+mod)%mod;
