@@ -5,7 +5,7 @@ const ll mod = 1e9+9;
 vector<ll> pot;
 string s, rev, t;
 
-void buildpot(int strsize){//chamar antes dos get
+void buildpot(int strsize){//chamar no inicio do main
   pot.resize(strsize);
   pot[0] = 1;
   for(int i = 1;i < strsize;i++){
