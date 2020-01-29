@@ -63,7 +63,8 @@ class Trie{
       return cur->childrenCount;
     }
 
-    void removeOne(string &s){//remove one occurrence
+    void remove(string &s, bool removeAll = false){//remove one or all occurrences
+      //TODO: use a stack of Node* to backtrack path and go back deleting the nodes with no children
       Node *cur = root;
       for(char c : s){
         int id = getId(c);
@@ -72,19 +73,11 @@ class Trie{
         }
         cur = cur->child[id];
       }
-      cur->endHere = max(0,cur->endHere - 1);
-    }
 
-    void removeAll(string &s){//remove all occurrences
-      Node *cur = root;
-      for(char c : s){
-        int id = getId(c);
-        if(cur->child[id] == NULL){
-          return;
-        }
-        cur = cur->child[id];
-      }
-      cur->endHere = 0;
+      cur->endHere = max(0,cur->endHere - 1);//remove one
+
+      if(removeAll)
+        cur->endHere = 0;//remove all
     }
 
   private:
