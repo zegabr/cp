@@ -1,34 +1,8 @@
-#include <set>
-#include <map>
-#include <cmath>
-#include <queue>
-#include <cstring>
-#include <iomanip>
-#include <iostream>
-#include <algorithm>
-using namespace std;
-#define x first
-#define y second
-#define pb push_back
-#define ppb pop_back
-#define pf push_front
-#define ppf pop_front
-#define ll long long
-#define ld long double
-#define ii pair<int,int>
-#define heap priority_queue
-#define ull unsigned long long
-#define all(k) k.begin(),k.end()
-#define rall(k) k.rbegin(),k.rend()
-#define len(v) ((int)v.size())
-#define fa(a,c) for(auto &a:c)
-#define endl '\n'
 
 const int alfa = 26;
 
 class Node{  
   public: 
-    char data;
     int endHere;//count many insertions
     int childrenCount;
     Node *child[alfa];
@@ -90,11 +64,27 @@ class Trie{
     }
 
     void removeOne(string &s){//remove one occurrence
-
+      Node *cur = root;
+      for(char c : s){
+        int id = getId(c);
+        if(cur->child[id] == NULL){
+          return;
+        }
+        cur = cur->child[id];
+      }
+      cur->endHere = max(0,cur->endHere - 1);
     }
 
     void removeAll(string &s){//remove all occurrences
-
+      Node *cur = root;
+      for(char c : s){
+        int id = getId(c);
+        if(cur->child[id] == NULL){
+          return;
+        }
+        cur = cur->child[id];
+      }
+      cur->endHere = 0;
     }
 
   private:
@@ -113,19 +103,3 @@ class Trie{
 };
 
 
-
-
-int32_t main(){
-  Trie trie;
-  string s = "abacata";
-  trie.insert(s);
-  cout<<"abacata existe "<<trie.count(s)<<" vezes"<<endl;
-  s = "abacate";
-  trie.insert(s);
-  cout<<"abacate existe "<<trie.count(s)<<" vezes"<<endl;
-
-  s = "abaca";
-  cout<<trie.countWordsWithPrefix(s)<<endl;
-
-
-}
