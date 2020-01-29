@@ -39,7 +39,8 @@ class Trie{
       cur->endHere++;
     }
 
-    int count(string &s){//count how many times s was inserted
+    int count(string &s, bool isPrefix = 0){
+      //count how many times s was inserted or how many words has s as prefix
       Node *cur = root;
       for(char c : s){
         int id = getId(c);
@@ -48,19 +49,8 @@ class Trie{
         }
         cur = cur->child[id];
       }
+      if(isPrefix) return cur->childrenCount;
       return cur->endHere;
-    }
-
-    int countWordsWithPrefix(string &prefix){
-      Node *cur = root;
-      for(char c : prefix){
-        int id = getId(c);
-        if(cur->child[id] == NULL){
-          return 0;
-        }
-        cur = cur->child[id];
-      }
-      return cur->childrenCount;
     }
 
     void remove(string &s, bool removeAll = false){//remove one or all occurrences
