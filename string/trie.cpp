@@ -1,8 +1,8 @@
 
-//alfasize eh o tamanho do alfabeto
+//alfa eh o tamanho do alfabeto
 //ms é o tamanho da maior string vezes a quantidade de strings
 #include<cstring>
-int trie[ms][alfasize], terminal[ms], z;
+int trie[ms][alfa], terminal[ms], z;
 void init() {
 	memset(trie[0], -1, sizeof trie[0]);
 	z = 0;
