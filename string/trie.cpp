@@ -1,18 +1,17 @@
 
-const int alfa = 26;
+#define alfa 26
 
 class Node{  
   public: 
+    int data;
     int isword;//count many insertions
     int prefix_count;
-    bool deleted;
     Node *child[alfa];
 
     Node(){
       fill(child, child + alfa, (Node *)NULL);
       isword = 0;
       prefix_count = 0;
-      deleted = false;
     }
 };
 
@@ -31,11 +30,12 @@ class Trie{
       Node *cur = root;
       root->prefix_count++;
       for(char &c : s){
-        int id = getId(c);
-        if(isnull(cur->child[id])){
+        int id = getid(c);
+        if(!cur->child[id]){
           cur->child[id] = new Node();
         }
         cur = cur->child[id];
+        cur->data = id;
         cur->prefix_count++;
       }
       cur->isword++;
@@ -45,8 +45,8 @@ class Trie{
       //count how many times s was inserted or how many words has s as prefix
       Node *cur = root;
       for(char &c : s){
-        int id = getId(c);
-        if(isnull(cur->child[id])){
+        int id = getid(c);
+        if(!cur->child[id]){
           return 0;
         }
         cur = cur->child[id];
@@ -55,13 +55,12 @@ class Trie{
       return cur->isword;
     }
 
-
     void remove(string &s, bool removeAll = false){//remove one or all occurrences
       Node *cur = root;
-      vector<Node*> parent;
+      vector<Node*> parent = {cur};
       for(char &c : s){
-        int id = getId(c);
-        if(isnull(cur->child[id])) 
+        int id = getid(c);
+        if(!cur->child[id]) 
           return;
 
         cur = cur->child[id];
@@ -76,7 +75,7 @@ class Trie{
         cur->isword = 0;//remove all
       }
 
-      while(len(parent)){
+      while(len(parent)>1){
         cur = parent.back();
         parent.ppb();
         cur->prefix_count-=quantity;
@@ -85,20 +84,19 @@ class Trie{
 
         bool hasChild=false;
         for(int i=0;!hasChild and i<alfa;i++){
-          hasChild |= (!isnull(cur->child[i]));
+          hasChild |= (cur->child[i]!=NULL);
         }
         if(!hasChild){
-          cur->deleted = true;//gambiarra1
+          int id = cur->data;
+          parent.back()->child[id]=NULL;
+          //freeChildren(cur);
         }
       }
     }
 
   private:
-    bool isnull(Node *cur){//gambiarra2
-      return cur == (Node*)NULL or cur->deleted==true;
-    }
-    int getId(char c){
-      return c-'a';
+    int getid(char c){
+      return (int)c-'a';
     }
 
     void freeChildren(Node *cur){

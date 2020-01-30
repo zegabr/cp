@@ -25,11 +25,12 @@ class Trie{
     ~Trie(){
       freeChildren(root);
     }
+
     void insert(int s){
       Node *cur = root;
       root->prefix_count++;
       for(int i=31;i>=0;i--){
-        int id = (s>>i)&1;
+        int id = getid(s,i);
         if(!cur->child[id]){
           cur->child[id] = new Node();
         }
@@ -43,7 +44,7 @@ class Trie{
     int count(int s){
       Node *cur = root;
       for(int i=31;i>=0;i--){
-        int id = (s>>i)&1;
+        int id = getid(s,i);
         if(!cur->child[id]){
           return 0;
         }
@@ -54,16 +55,16 @@ class Trie{
 
     void remove(int s, bool removeAll = false){//remove one or all occurrences
       Node *cur = root;
-      vector<Node*> parent;
-      parent.pb(cur);
+      vector<Node*> parent = {cur};
       for(int i=31;i>=0;i--){
-        int id = (s>>i)&1;
+        int id = getid(s,i);
         if(!cur->child[id]) 
           return;
 
         cur = cur->child[id];
         parent.pb(cur);
       }
+
       int quantity=1;
       cur->isword = max(0,cur->isword - 1);//remove one
 
@@ -91,11 +92,11 @@ class Trie{
       }
     }
 
-    int maximizeXorWith(int n){
+    int maximizeXorWith(int s){
       int res = 0;
       Node *cur = root;
       for(int i=31;i>=0;i--){
-        int id = (n>>i)&1;
+        int id = getid(s,i);
         if(cur->child[!id]){
           res += (1<<i);
           cur = cur->child[!id];
@@ -107,6 +108,9 @@ class Trie{
     }
 
   private:
+  int getid(int &s, int i){
+    return (s>>i)&1;
+  }
     void freeChildren(Node *cur){
       if(cur==NULL)
         return;
