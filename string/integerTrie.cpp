@@ -108,9 +108,9 @@ class Trie{
     }
 
   private:
-  int getid(int &s, int i){
-    return (s>>i)&1;
-  }
+    int getid(int &s, int i){
+      return (s>>i)&1;
+    }
     void freeChildren(Node *cur){
       if(cur==NULL)
         return;
