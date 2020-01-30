@@ -106,7 +106,7 @@ class Trie{
 
   private:
 
-    bool isnull(Node *cur){
+    bool isnull(Node *cur){//gambiarra2
       return cur == (Node*)NULL or cur->deleted==true;
     }
 
