@@ -4,14 +4,14 @@ const int alfa = 26;
 class Node{  
   public: 
     int isword;//count many insertions
-    int children;
+    int prefix_count;
     bool deleted;
     Node *child[alfa];
 
     Node(){
       fill(child, child + alfa, (Node *)NULL);
       isword = 0;
-      children = 0;
+      prefix_count = 0;
       deleted = false;
     }
 };
@@ -29,14 +29,14 @@ class Trie{
 
     void insert(string &s){
       Node *cur = root;
-      root->children++;
+      root->prefix_count++;
       for(char &c : s){
         int id = getId(c);
         if(isnull(cur->child[id])){
           cur->child[id] = new Node();
         }
         cur = cur->child[id];
-        cur->children++;
+        cur->prefix_count++;
       }
       cur->isword++;
     }
@@ -51,7 +51,7 @@ class Trie{
         }
         cur = cur->child[id];
       }
-      if(isPrefix) return cur->children;
+      if(isPrefix) return cur->prefix_count;
       return cur->isword;
     }
 
@@ -79,8 +79,8 @@ class Trie{
       while(len(parent)){
         cur = parent.back();
         parent.ppb();
-        cur->children-=quantity;
-        if(cur->isword>0 or cur->children>0) 
+        cur->prefix_count-=quantity;
+        if(cur->isword>0 or cur->prefix_count>0) 
           continue;
 
         bool hasChild=false;
