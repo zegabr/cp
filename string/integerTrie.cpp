@@ -3,16 +3,15 @@
 
 class Node{  
   public: 
+    int data;
     int isword;//count many insertions
     int prefix_count;
-    bool deleted;
     Node *child[alfa];
 
     Node(){
       fill(child, child + alfa, (Node *)NULL);
       isword = 0;
       prefix_count = 0;
-      deleted = false;
     }
 };
 
@@ -31,10 +30,11 @@ class Trie{
       root->prefix_count++;
       for(int i=31;i>=0;i--){
         int id = (s>>i)&1;
-        if(isnull(cur->child[id])){
+        if(!cur->child[id]){
           cur->child[id] = new Node();
         }
         cur = cur->child[id];
+        cur->data = id;
         cur->prefix_count++;
       }
       cur->isword++;
@@ -44,7 +44,7 @@ class Trie{
       Node *cur = root;
       for(int i=31;i>=0;i--){
         int id = (s>>i)&1;
-        if(isnull(cur->child[id])){
+        if(!cur->child[id]){
           return 0;
         }
         cur = cur->child[id];
@@ -55,9 +55,10 @@ class Trie{
     void remove(int s, bool removeAll = false){//remove one or all occurrences
       Node *cur = root;
       vector<Node*> parent;
+      parent.pb(cur);
       for(int i=31;i>=0;i--){
         int id = (s>>i)&1;
-        if(isnull(cur->child[id])) 
+        if(!cur->child[id]) 
           return;
 
         cur = cur->child[id];
@@ -71,7 +72,7 @@ class Trie{
         cur->isword = 0;//remove all
       }
 
-      while(len(parent)){
+      while(len(parent)>1){
         cur = parent.back();
         parent.ppb();
         cur->prefix_count-=quantity;
@@ -80,10 +81,12 @@ class Trie{
 
         bool hasChild=false;
         for(int i=0;!hasChild and i<alfa;i++){
-          hasChild |= (!isnull(cur->child[i]));
+          hasChild |= (cur->child[i]!=NULL);
         }
         if(!hasChild){
-          cur->deleted = true;//gambiarra1
+          int id = cur->data;
+          parent.back()->child[id]=NULL;
+          //freeChildren(cur);
         }
       }
     }
@@ -93,10 +96,10 @@ class Trie{
       Node *cur = root;
       for(int i=31;i>=0;i--){
         int id = (n>>i)&1;
-        if(!isnull(cur->child[!id])){
+        if(cur->child[!id]){
           res += (1<<i);
           cur = cur->child[!id];
-        }else if(!isnull(cur->child[id])){
+        }else if(cur->child[id]){
           cur = cur->child[id];
         }
       }
@@ -104,12 +107,8 @@ class Trie{
     }
 
   private:
-    bool isnull(Node *cur){//gambiarra2
-      return cur == (Node*)NULL or cur->deleted==true;
-    }
-
     void freeChildren(Node *cur){
-      if(cur==(Node*)NULL)
+      if(cur==NULL)
         return;
       for(Node *it : cur->child){
         freeChildren(it);
@@ -117,3 +116,4 @@ class Trie{
       delete cur;
     }
 };
+
