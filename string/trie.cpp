@@ -5,13 +5,13 @@ class Node{
   public: 
     int data;
     int isword;//count many insertions
-    int prefix_count;
+    int pref;
     Node *child[alfa];
 
     Node(){
       fill(child, child + alfa, (Node *)NULL);
       isword = 0;
-      prefix_count = 0;
+      pref = 0;
     }
 };
 
@@ -28,7 +28,7 @@ class Trie{
 
     void insert(string &s){
       Node *cur = root;
-      root->prefix_count++;
+      root->pref++;
       for(char &c : s){
         int id = getid(c);
         if(!cur->child[id]){
@@ -36,7 +36,7 @@ class Trie{
         }
         cur = cur->child[id];
         cur->data = id;
-        cur->prefix_count++;
+        cur->pref++;
       }
       cur->isword++;
     }
@@ -51,7 +51,7 @@ class Trie{
         }
         cur = cur->child[id];
       }
-      if(isPrefix) return cur->prefix_count;
+      if(isPrefix) return cur->pref;
       return cur->isword;
     }
 
@@ -68,28 +68,29 @@ class Trie{
       }
 
       int quantity=1;
-      cur->isword = max(0,cur->isword - 1);//remove one
-
       if(removeAll){
         quantity = cur->isword;
         cur->isword = 0;//remove all
+      }else{
+        cur->isword--;//remove one
       }
 
       while(len(parent)>1){
         cur = parent.back();
         parent.ppb();
-        cur->prefix_count-=quantity;
-        if(cur->isword>0 or cur->prefix_count>0) 
+        id = cur->data;
+        cur->pref-=quantity;
+        if(cur->isword>0 or cur->pref>0) 
           continue;
 
-        bool hasChild=false;
-        for(int i=0;!hasChild and i<alfa;i++){
-          hasChild |= (cur->child[i]!=NULL);
+        bool haschild=false;
+        for(int i=0;!haschild and i<alfa;i++){
+          haschild |= (cur->child[i]!=NULL);
         }
-        if(!hasChild){
-          int id = cur->data;
+        if(!haschild){
+          id = cur->data;
+          freeChildren(parent.back()->child[id]);
           parent.back()->child[id]=NULL;
-          //freeChildren(cur);
         }
       }
     }
