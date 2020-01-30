@@ -12,7 +12,7 @@ class Node{
       fill(child, child + alfa, (Node *)NULL);
       isword = 0;
       children = 0;
-      deleted=false;
+      deleted = false;
     }
 };
 
@@ -32,7 +32,6 @@ class Trie{
       for(int i=31;i>=0;i--){
         int id = (s>>i)&1;
         if(isnull(cur->child[id])){
-          //cout<<"criando "<<id<<endl;
           cur->child[id] = new Node();
         }
         cur = cur->child[id];
@@ -45,7 +44,7 @@ class Trie{
       Node *cur = root;
       for(int i=31;i>=0;i--){
         int id = (s>>i)&1;
-        if(!cur->child[id]){
+        if(isnull(cur->child[id])){
           return 0;
         }
         cur = cur->child[id];
@@ -105,7 +104,6 @@ class Trie{
     }
 
   private:
-
     bool isnull(Node *cur){//gambiarra2
       return cur == (Node*)NULL or cur->deleted==true;
     }
