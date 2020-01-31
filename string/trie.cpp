@@ -7,12 +7,14 @@ class Trie{
     vector<vector<int>> trie;
     vector<int> isword;
     vector<int> pref;
+     vector<int> data;
     int z;
 
     Trie() {
       trie.assign(maxsize,vector<int>(alfa,0));
       isword.assign(maxsize,0);
       pref.assign(maxsize,0);
+      data.assign(maxsize,0);
       z = 1;
     }
 
@@ -26,6 +28,7 @@ class Trie{
           trie[cur][id] = z++;
         }
         cur = trie[cur][id];
+        data[cur]=id;
         pref[cur]++;
       }
       isword[cur]++;
@@ -46,6 +49,7 @@ class Trie{
      //remove one or all ocurrences of s
       int cur = 0, id;
       vector<int> parentstack;
+      parentstack.pb(cur);
       for(int i = 0; i < len(s); i++) {
         id = getid(s[i]);
         if(!trie[cur][id]) return;
@@ -54,14 +58,18 @@ class Trie{
       }
 
       int toRemove = removeAll ? isword[cur] : 1;
+      isword[cur] -= toRemove;
 
-      while(len(parentstack)){
+      while(len(parentstack)>1){
         cur = parentstack.back();
         parentstack.ppb();
-        isword[cur] -= toRemove;
         pref[cur] -= toRemove;
-        if(pref[cur]==0){//not a prefix, hence has no child
-          reset(cur);
+        
+        if(isword[cur] or pref[cur]) continue;
+        
+        if(pref[cur]==0){
+          //not a prefix, hence has no child
+          trie[parentstack.back()][data[cur]]=0;
         }
       }
     }
