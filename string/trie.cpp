@@ -65,9 +65,9 @@ class Trie{
         parentstack.ppb();
         pref[cur] -= toRemove;
 
-        if(isword[cur] or pref[cur]) continue;
-
-        if(pref[cur]==0){
+        if(pref[cur]){
+          continue;
+        } else{
           //not a prefix, hence has no child
           trie[parentstack.back()][data[cur]]=0;
         }
