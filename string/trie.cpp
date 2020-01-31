@@ -7,7 +7,7 @@ class Trie{
     vector<vector<int>> trie;
     vector<int> isword;
     vector<int> pref;
-     vector<int> data;
+    vector<int> data;//used for debugging and removals
     int z;
 
     Trie() {
@@ -46,7 +46,7 @@ class Trie{
     }
 
     void remove(string &s, bool removeAll=false){
-     //remove one or all ocurrences of s
+      //remove one or all ocurrences of s
       int cur = 0, id;
       vector<int> parentstack;
       parentstack.pb(cur);
@@ -64,9 +64,9 @@ class Trie{
         cur = parentstack.back();
         parentstack.ppb();
         pref[cur] -= toRemove;
-        
+
         if(isword[cur] or pref[cur]) continue;
-        
+
         if(pref[cur]==0){
           //not a prefix, hence has no child
           trie[parentstack.back()][data[cur]]=0;

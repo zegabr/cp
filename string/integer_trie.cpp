@@ -7,7 +7,7 @@ class Trie{
     vector<vector<int>> trie;
     vector<int> word;
     vector<int> pref;
-    vector<int> data;
+    vector<int> data;//used for debbug and removal
     int z;
 
     Trie() {
@@ -35,7 +35,6 @@ class Trie{
     }
 
     int count(int &s) {
-      //count final words or common prefixes
       int cur = 0, id;
       for(int i = 31; i >= 0; i--) {
         id = getid(s,i);
@@ -64,7 +63,7 @@ class Trie{
         cur = parentstack.back();
         parentstack.ppb();
         pref[cur] -= toRemove;
-        
+
         if(word[cur] or pref[cur]) continue;
 
         if(pref[cur]==0){
