@@ -1,5 +1,5 @@
 
-#define maxsize 100001
+#define maxsize 21111111
 #define alfa 26
 
 class Trie{
@@ -84,4 +84,3 @@ class Trie{
       return c - 'a';
     }
 };
-
