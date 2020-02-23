@@ -20,9 +20,9 @@ using namespace std;
 #define ull unsigned long long
 #define all(k) k.begin(),k.end()
 #define rall(k) k.rbegin(),k.rend()
+#define dbg(x) cerr<<#x<<" = "<<x<<endl
 #define len(v) ((int)v.size())
 #define fa(a,c) for(auto &a:c)
-#define dbg(x) cerr<<#x<<" = "<<x<<endl
 #define endl '\n'
 
 
