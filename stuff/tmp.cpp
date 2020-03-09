@@ -1,3 +1,4 @@
+#define TESTCASE
 #include <set>
 #include <map>
 #include <cmath>
@@ -35,7 +36,10 @@ void solve(){
 int32_t main(){
   ios::sync_with_stdio(0); cin.tie(0);
   int t; 
-
-  db(t);
+#ifdef TESTCASE
+  cin>>t;
+#else 
+  t = 1;
+#endif
   while(t--) solve();
 }
