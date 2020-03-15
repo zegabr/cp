@@ -17,7 +17,6 @@ using namespace std;
 #define ll long long
 #define ld long double
 #define ii pair<int,int>
-#define heap priority_queue
 #define ull unsigned long long
 #define all(k) k.begin(),k.end()
 #define rall(k) k.rbegin(),k.rend()
@@ -25,6 +24,7 @@ using namespace std;
 #define len(v) ((int)v.size())
 #define fa(a,c) for(auto &a:c)
 #define endl '\n'
+
 
 
 void solve(){
