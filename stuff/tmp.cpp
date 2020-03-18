@@ -22,7 +22,6 @@ using namespace std;
 #define rall(k) k.rbegin(),k.rend()
 #define db(x) cerr<<#x<<" = "<<x<<endl
 #define len(v) ((int)v.size())
-#define fa(a,c) for(auto &a:c)
 #define endl '\n'
 
 
