@@ -7,7 +7,7 @@ void bfs(int start){//O(V+E)
   while(q.size()){
     int u = q.front(); q.pop();
     for(auto v : g[u]){
-      if(dis[u]+1<dis[v]){
+      if(dis[v]>dis[u]+1){
         dis[v]=dis[u]+1;
         q.push(v);
       }
