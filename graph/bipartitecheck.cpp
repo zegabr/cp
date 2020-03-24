@@ -6,7 +6,7 @@ bool dfsbicolor(int u){
     if(vis[v]<timer){
       vis[v]=timer;
       color[v]=!color[u];
-      if(!dfsbicolor(v)) return false;
+      return dfsbicolor(v);
     }else if(color[u]==color[v])
       return false;
   }
