@@ -17,7 +17,7 @@ void buildpot(int maxsize=2000000){//call at beginning of main
 }
 
 void build(string &s, vector<ll> &h, vector<ull> &h2){
-  int n = len(s);
+  int n = s.size();
   h.resize(n);
   h2.resize(n);
   h[0] = h2[0] = s[0];
@@ -29,10 +29,11 @@ void build(string &s, vector<ll> &h, vector<ull> &h2){
 
 //hash function is a double hash
 Hash get(int l, int r, vector<ll> &h, vector<ull> &h2, bool isreversed=0){
+  int n = h.size();
   if(isreversed){
     int R=r,L=l;
-    r = len(h)-L-1;
-    l = len(h)-R-1;
+    r = n-L-1;
+    l = n-R-1;
   }
   ll res1 = h[r];
   ull res2 = h2[r];
@@ -48,6 +49,7 @@ Hash getpref(int m,vector<ll> &h, vector<ull> &h2){
 }
 
 Hash getsuff(int m, vector<ll> &h, vector<ull> &h2){
-  return get(len(h)-m,len(h)-1,h,h2);
+  int n = h.size();
+  return get(n-m,n-1,h,h2);
 }
 
