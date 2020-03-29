@@ -1,6 +1,6 @@
 
 #define Hash pair<ll,ull>
-const ll base = 31;
+const ll base = 137;//cover all ascii values
 const ll mod = (1ll<<31)-1ll;
 //mod2 = 1<<64
 
@@ -38,7 +38,7 @@ Hash get(int l, int r, vector<ll> &h, vector<ull> &h2, bool isreversed=0){
   ll res1 = h[r];
   ull res2 = h2[r];
   if(l>0){
-    res1 = ((res1 - pot1[r-l+1]*h[l-1])%mod+mod)%mod;
+    res1 = ((res1 - pot1[r-l+1]*h[l-1]%mod)+mod)%mod;
     res2 = res2 - pot2[r-l+1] * h2[l-1];
   } 
   return Hash(res1,res2);
