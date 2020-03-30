@@ -44,7 +44,7 @@ ll solve(ll n){
 
 	ll ans = 0;
 	for(int i=0;i<TAM;i++)
-		ans=(ans+ (T.mat[TAM-1][i] * base[i]) % mod)%mod;
+		ans=(ans+ T.mat[TAM-1][i] * base[i] % mod  )%mod;
 
 	return ans;
 }
