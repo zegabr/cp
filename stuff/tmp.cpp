@@ -38,6 +38,5 @@ int32_t main(){
 #else 
   t = 1;
 #endif
-  db(t);
   while(t--) solve();
 }
