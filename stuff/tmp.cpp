@@ -26,7 +26,7 @@ using namespace std;
 
 
 
-void solve(){
+void solve(int caso=0){
 
 
 }
@@ -38,5 +38,5 @@ int32_t main(){
 #else 
   t = 1;
 #endif
-  while(t--) solve();
+  for(int i=1;i<=t;i++) solve(i);
 }
