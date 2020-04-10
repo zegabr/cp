@@ -7,7 +7,7 @@ class Trie{
     vector<vector<int>> trie;
     vector<int> word;
     vector<int> pref;
-    vector<int> data;//used for debbug and removal
+    vector<int> data;//used for debug and removal
     int z;
 
     Trie() {

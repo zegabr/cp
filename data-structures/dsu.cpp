@@ -1,8 +1,8 @@
 
-class dsu{
+class Dsu{
   vector<int> ds, sz;
   public:	
-  dsu(int v){
+  Dsu(int v){
     sz.assign(v+1, 1);
     ds.resize(v+1);
     for(int i=0;i<=v;i++){ ds[i]=i;}

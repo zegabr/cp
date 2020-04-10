@@ -20,7 +20,7 @@ int gauss (vector < vector<double> > a, vector<double> & ans) {//Ax=b, b is at l
 				double c = a[i][col] / a[row][col];
 				for (int j=col; j<=m; ++j)
 					a[i][j] -= a[row][j] * c;
-			}
+			}nta um divisor
 		++row;
 	}
 

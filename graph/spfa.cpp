@@ -3,7 +3,7 @@
 vector<bool> inq(ms);
 vector<pair<int,int>> G[ms];//G[u] contains {w, v}
 const int inf = 0x3f3f3f3f;
-int V;//numero de vertices, atualizar no main
+int V;//number of vertices, update in main
 
 int spfa(int S, int T){
     bool way = false;

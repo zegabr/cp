@@ -64,12 +64,13 @@ do{
 
 //================BITWISE OPERATIONS================
 	1<<n //2^n
-	mask |= (1<<n)// seta iesimo bit
-	(mask>>i)&1// testa se o iesimo bit ta setado
-	(1<<n)-1 // seta os n bits menos significativos
-	mask ^= (1<<i) //troca o iesimo bit
-	num&1 //num é ímpar?
-	~num&1 //num é par?
+	mask |= (1<<i)	// seta iesimo bit
+	mask &= ~(1<<i)	// reseta o iesimo bit
+	mask ^= (1<<i) 	//troca o iesimo bit
+	mask & (1<<i)	// testa se o iesimo bit ta setado
+	(1<<n)-1 		// seta os n bits menos significativos
+	num&1 			//num é ímpar?
+	~num&1 			//num é par?
 
 //===================RANDOM=======================
 #include<chrono>
@@ -95,7 +96,7 @@ a.any();//true se algum bit está setado
 a.none();// true se nenhum bit setado
 a.all;//true se todos os bits setados
 
-a.set(k,i);//seta k bits partindo do i-
+a.set(k,i);//seta k bits partindo do i-esimo
 a.set(i);//seta i-esimo
 a.set();//seta todos os bits
 a.reset();//funciona igual ao set

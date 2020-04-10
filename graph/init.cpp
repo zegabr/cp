@@ -23,6 +23,6 @@ void add(int u, int v){
 void cleargraph(){
   g.assign(ms, vector<int>(0));
   dis.assign(ms,inf);
-  if(vis.size()==0) vis.assign(ms,0);
+  if(vis.empty()) vis.assign(ms,0);
 }
 

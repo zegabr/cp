@@ -1,17 +1,17 @@
 
 template<typename T>
-class BIT{
+class Bit{//cumulative sum
   private:
     vector<T> bit;
 
   public:
-    BIT(vector<T> &v){
-      bit.assign(v.size()+2,0);
+    Bit(vector<T> &v){
+      Bit.assign(v.size()+2,0);
       for(int i=0;i<v.size();i++)
         upd(i,v[i]);
     }
-    BIT(int tam){
-      bit.assign(tam+2,0);
+    Bit(int tam){
+      Bit.assign(tam+2,0);
     }
 
     T get(int i){

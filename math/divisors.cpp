@@ -15,8 +15,8 @@ ll countdiv(ll n){//O(sqrt(n))
 	ll c=0;
 	for(ll i=1; i*i<=n; i++){
 		if(n%i==0){
-			if(n/i==i)c++; //conta um divisor
-			else c+=2; // conta 2 divisores: i  e n/i
+			if(n/i==i)c++; //count one divisor
+			else c+=2; // count 2 divisors: i and n/i
 		}
 	}
 	return c;

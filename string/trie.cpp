@@ -80,7 +80,7 @@ class Trie{
       pref[node]=isword[node]=0;
     }
 
-    int getid(char c) {
+    int getid(char c) {//carefull if alphabet is different from [a-z]
       return c - 'a';
     }
 };

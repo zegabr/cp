@@ -3,7 +3,7 @@ const int lg=25;
 int up[lg+1][ms], lv[ms];
 
 
-void dfslca(int u,int p, int h=0){//chamar dfslca(root,root)
+void dfslca(int u,int p, int h=0){//call dfslca(root,root)
   lv[u]=h;
   up[0][u] = p;
   for(int i=1; i<=lg;i++) up[i][u] = up[i-1][up[i-1][u]];

@@ -1,4 +1,8 @@
 
+#define MIN 1
+#define MAX 2
+#define SUM 3
+
 template<typename T>
 class segtree{
 	private:
@@ -8,9 +12,9 @@ class segtree{
 		int op;
 
 		T merge(T e, T d){
-			if(op==1) return min(e,d);
-			else if(op==2) return max(e,d);
-			else if(op==3) return e+d;
+			if(op==MIN) return min(e,d);
+			else if(op==MAX) return max(e,d);
+			else if(op==SUM) return e+d;
 		}
 
 		void update(int a, T val, int x, int l, int r) {
@@ -48,9 +52,9 @@ class segtree{
 			seg.resize(4*v.size());
 			op = opp;
 			tam = v.size();
-			if(op==1) none = 0x3f3f3f3f;
-			else if(op==2) none = -0x3f3f3f3f;
-			else if(op==3) none = 0;
+			if(op==MIN) none = 0x3f3f3f3f;
+			else if(op==MAX) none = -0x3f3f3f3f;
+			else if(op==SUM) none = 0;
 			int x = 1, l = 0, r = tam - 1;
 			build(v, x, l, r);
 		}

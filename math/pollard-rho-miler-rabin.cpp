@@ -25,7 +25,7 @@ ll my_rand() {
   return ans;
 }
 
-bool miller(ll p, int precision) {
+bool miller(ll p, int precision) {//check primality
   if(p < 2) return 0;
   if(p % 2 == 0) return (p == 2);
   ll s = p - 1;
@@ -42,7 +42,7 @@ bool miller(ll p, int precision) {
   return 1;
 }
 
-ll rho(ll n) {
+ll rho(ll n) {//find a prime factor
   if (n == 1 || miller(n, 10)) return n;
   if (n % 2 == 0) return 2;
   while(1) {

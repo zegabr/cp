@@ -1,3 +1,4 @@
+
 #define Hash pair<ll,ull>
 const ll base = 137;//cover all ascii values
 const ll mod = (1ll<<31)-1ll;

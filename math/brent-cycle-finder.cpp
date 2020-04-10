@@ -30,5 +30,5 @@ pair<int,int> brent(int x0){
 		mu++;
 	}
 
-	return make_pair(l,mu);//periodo,indice onde comeca o periodo
+	return make_pair(l,mu);//{period, index where it begins}
 }

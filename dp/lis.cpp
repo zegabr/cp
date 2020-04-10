@@ -8,7 +8,7 @@ int ceilindex(vector<int> &v,vector<int> &T, int l, int r, int key){
 	return r;
 }
 
-vector<int> LIS(vector<int> &v){//retorna maior sequencia
+vector<int> LIS(vector<int> &v){//return largest sequence
 	vector<int> ans;
 	if(v.size()==0) return ans;
 	vector<int> tail(v.size(),0);
@@ -30,7 +30,7 @@ vector<int> LIS(vector<int> &v){//retorna maior sequencia
 	return ans;
 }
 
-vi getlen(vi &v){//pega o tamanho da lis terminada em cada elemento
+vi getlen(vi &v){//return lis size ending at each element
 	vi L;
 	vi len(v.size(),0);
 	fr(i,0,v.size()-1){
