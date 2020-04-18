@@ -81,6 +81,7 @@ class Trie{
     }
 
     int getid(char c) {//carefull if alphabet is different from [a-z]
-      return c - 'a';
+      //write get here      
+
     }
 };

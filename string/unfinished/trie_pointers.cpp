@@ -55,6 +55,9 @@ class Trie{
       return cur->isword;
     }
 
+    /*
+     *seems that remove does not work
+     * */
     void remove(string &s, bool removeAll = false){//remove one or all occurrences
       Node *cur = root;
       vector<Node*> parent = {cur};
@@ -97,7 +100,9 @@ class Trie{
 
   private:
     int getid(char c){
-      return (int)c-'a';
+      //write get here
+
+
     }
 
     void freeChildren(Node *cur){
