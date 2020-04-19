@@ -1,4 +1,5 @@
 
+//---------------------------
 int timer=1;
 /*
    vis[u]<timer ==> u nao visitado
@@ -11,6 +12,7 @@ const int inf = 1e8+5;
 vector<int> dis, vis; 
 vector<vector<int>> g;
 vector<ii> eds;
+//----------------------------
 
 //PLS USE 0 INDEXED VERTICES
 void add(int u, int v){
@@ -20,9 +22,9 @@ void add(int u, int v){
   //  eds.pb({u,v});
 }
 
-void cleargraph(){
-  g.assign(ms, vector<int>(0));
-  dis.assign(ms,inf);
-  if(vis.empty()) vis.assign(ms,0);
+void cleargraph(int n = ms){
+  g.assign(n, vector<int>());
+  dis.assign(n,inf);
+  if(vis.empty()) vis.assign(n,0);
 }
 

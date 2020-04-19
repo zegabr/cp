@@ -1,12 +1,23 @@
+
 //for directed graphs
 //pls use 0 indexed vertices
-vector<ii> eds;
+//import ./init.cpp
 queue<int> order;
-vector<int> component;
+vector<int> comp;
 vector<vector<int>> sccs;
 
+void init(int n){
+  cleargraph(n);//from ./init.cpp
+  while(order.size())
+    order.pop();
+  timer++;
+  sccs.clear();
+  eds.clear();
+  comp.assign(n,-1);
+}
+
 void dfs1(int u){
-  vis[u]=1;
+  vis[u]=timer;
   for(auto v : g[u]){
     if(vis[v]<timer){
       dfs1(v);
@@ -15,43 +26,29 @@ void dfs1(int u){
   order.push(u);
 }
 
-void dfs2(int u){
-  vis[u]=1;
-  component.pb(u);
+void dfs2(int u, int component){
+  vis[u]=timer;
+  comp[u]=component;
   for(auto v : g[u]){
     if(vis[v]<timer){
-      dfs2(v);
+      dfs2(v, component);
     }
   }
-}
-
-void init(int n){
-  for(int i=0;i<n;i++){
-    g[i].clear();
-  }
-  while(order.size())order.pop();
-  vis.clear();
-  sccs.clear();
-  eds.clear();
-  component.clear();
 }
 
 void getsccs(int n){
-  vis.assign(n,0);
-  for(int i=0;i<n;i++){
+  timer++;
+  for(int i=0;i<n;i++)
     if(vis[i]<timer) 
       dfs1(i);
-  }
 
-  vis.assign(n,0);
+
+  timer++;
   while(order.size()){
     int u = order.front();
     order.pop();
-    if(vis[u]<timer){
-      dfs2(u);
-      sccs.pb(component);//storing scc here
-      component.clear();
-    }
+    if(vis[u]<timer) 
+      dfs2(u,order.size());//order.size will be the number of the component
   }
 }
 
