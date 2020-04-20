@@ -4,7 +4,7 @@
    vis[u]==timer ==> u has been visited
    timer++ ==> unvisit every node
    */
-int timer=1;
+int timer=0;;
 const int ms= 300000;
 const int inf = 1e8+5;
 vector<int> dis, vis; 
@@ -17,9 +17,10 @@ void add(int u, int v, bool bi=0){ //PLS USE 0 INDEXED VERTICES
   //eds.pb({u,v});
 }
 
-void reset_graph(int n = ms){
+void init(int n = ms){
   g.assign(n, vector<int>());
   dis.assign(n,inf);
   if(vis.empty()) vis.assign(n,0);
+  timer++;
 }
 //----------------------------

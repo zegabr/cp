@@ -6,14 +6,6 @@ queue<int> order;//store topological reversal order
 vector<int> comp;//store components
 vector<int> assignment;//store 2-SAT solution
 
-void init(int n){
-  reset_graph(n);
-  while(order.size())
-    order.pop();
-  timer++;
-  comp.assign(n,-1);
-}
-
 void dfs1(int u){
   vis[u] = timer;
   for(auto v : g[u]){
@@ -35,6 +27,7 @@ void dfs2(int u, int c){
 }
 
 void getsccs(int n){//get sccs using kosaraju
+  comp.assign(n,-1);
   timer++;
   for(int i = 0; i < n; i++)
     if(vis[i] < timer) 
@@ -58,11 +51,11 @@ void add_clause(int a, int b){//a and b has to be already at form 2k or 2k+1
 }
 
 bool is_2SAT(int n){//solve 2-SAT (n has to be 2 times number of variables)
-    assignment.assign(n/2, false);
-    for(int i=0;i<n;i+=2){
-      if(comp[i] == comp[i+1])
-        return false;
-      assignment[i/2] = comp[i] > comp[i+1];
-    }
+  assignment.assign(n/2, false);
+  for(int i=0;i<n;i+=2){
+    if(comp[i] == comp[i+1])
+      return false;
+    assignment[i/2] = comp[i] > comp[i+1];
+  }
   return true;
 }
