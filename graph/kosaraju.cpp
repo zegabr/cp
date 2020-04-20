@@ -34,13 +34,7 @@ void dfs2(int u, int c){
   }
 }
 
-void add_clause(int a, int b){//a and b has to be already at form 2k or 2k+1
-  //a V b
-  add(a^1, b);//not( a) => b
-  add(b^1, a);//not( b) => a
-}
-
-void getsccs(int n){//get sccs by kosaraju
+void getsccs(int n){//get sccs using kosaraju
   timer++;
   for(int i = 0; i < n; i++)
     if(vis[i] < timer) 
@@ -54,6 +48,13 @@ void getsccs(int n){//get sccs by kosaraju
     if(vis[u] < timer) 
       dfs2(u, j++);//j will be the number of the component
   }
+}
+
+//2-sat below
+void add_clause(int a, int b){//a and b has to be already at form 2k or 2k+1
+  //a V b
+  add(a^1, b);//not( a) => b
+  add(b^1, a);//not( b) => a
 }
 
 bool is_2SAT(int n){//solve 2-SAT (n has to be 2 times number of variables)
