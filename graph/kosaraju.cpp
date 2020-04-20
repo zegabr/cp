@@ -1,4 +1,5 @@
 
+//---------KOSARAJU
 //for directed graphs
 //PLS USE 0 INDEXED VERTICES
 queue<int> order;//store topological reversal order
@@ -6,11 +7,10 @@ vector<int> comp;//store components
 vector<int> assignment;//store 2-SAT solution
 
 void init(int n){
-  reset_graph(n);//from ./init.cpp
+  reset_graph(n);
   while(order.size())
     order.pop();
   timer++;
-  eds.clear();
   comp.assign(n,-1);
 }
 
@@ -40,7 +40,7 @@ void add_clause(int a, int b){//a and b has to be already at form 2k or 2k+1
   add(b^1, a);//not( b) => a
 }
 
-bool scc(int n){//get sccs and solve 2-SAT (n has to be 2 times number of variables)
+void getsccs(int n){//get sccs by kosaraju
   timer++;
   for(int i = 0; i < n; i++)
     if(vis[i] < timer) 
@@ -54,15 +54,14 @@ bool scc(int n){//get sccs and solve 2-SAT (n has to be 2 times number of variab
     if(vis[u] < timer) 
       dfs2(u, j++);//j will be the number of the component
   }
+}
 
-  if(n%2==0){//solving 2-SAT here
+bool is_2SAT(int n){//solve 2-SAT (n has to be 2 times number of variables)
     assignment.assign(n/2, false);
     for(int i=0;i<n;i+=2){
       if(comp[i] == comp[i+1])
         return false;
       assignment[i/2] = comp[i] > comp[i+1];
     }
-  }
   return true;
-
 }
