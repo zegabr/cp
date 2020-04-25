@@ -50,6 +50,18 @@ void add_clause(int a, int b){//a and b has to be already at form 2k or 2k+1
   add(b^1, a);//not( b) => a
 }
 
+void add_coincidence(int a, int b){
+  //~a V b and ~b V a
+  add_clause(a, b^1);
+  add_clause(b, a^1);
+}
+
+void add_xor(int a, int b){
+  //a V b and ~a V ~b
+  add_clause(a, b);
+  add_clause(a^1, b^1);
+}
+
 bool is_2SAT(int n){//solve 2-SAT (n has to be 2 times number of variables)
   assignment.assign(n/2, false);
   for(int i=0;i<n;i+=2){
