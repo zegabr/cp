@@ -36,7 +36,7 @@ void main2(int caso=0){
 }
 int32_t main(){
     ios::sync_with_stdio(0); cin.tie(0);
-    cout<<setprecision(7)<<endl;
+    cout<<setprecision(7);
     int t; 
 #ifdef TESTCASE
     cin>>t;
