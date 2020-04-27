@@ -19,10 +19,10 @@ using namespace std;
 #define ii pair<int,int>
 #define ull unsigned long long
 #define all(k) k.begin(),k.end()
-#define fall(a,c) for(auto &a : c)
+#define fa(a,c) for(auto &a : c)
 #define rall(k) k.rbegin(),k.rend()
 #define db(x) cerr<<#x<<" = "<<x<<endl
-#define CT(k) cout<<"Case #"<<k<<": ";
+#define CT(k) cout<<"Case #"<<k<<": "
 #define len(v) ((int)v.size())
 #define endl '\n'
 
