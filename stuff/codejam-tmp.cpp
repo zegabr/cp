@@ -31,6 +31,7 @@ using namespace std;
 
 
 void main2(int caso=0){
+    codejam(caso);
 
 
 }
