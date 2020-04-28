@@ -10,11 +10,7 @@ main(){
 main(){
 	ios::sync_with_stdio(0);cin.tie(0);
 }
-//===========SETPRECISION=========================
-#include <iomanip>
-main(){
-	cout<<fixed<<setprecision(48);
-}
+
 //=================GETLINE================
 char str[20];
 str[0]=cin.get();//get 1 char
@@ -71,19 +67,6 @@ do{
 	(1<<n)-1 		// seta os n bits menos significativos
 	num&1 			//num é ímpar?
 	~num&1 			//num é par?
-
-//===================RANDOM=======================
-#include<chrono>
-#include<random>
-// mt19937_64 se LL
-mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-// Random_Shuffle
-shuffle(v.begin(), v.end(), rng);
-// Random number in interval
-int randomInt = uniform_int_distribution<int>(i, j)(rng);
-double randomDouble = uniform_real_distribution<double>(0, 1)(rng);
-// bernoulli_distribution, binomial_distribution, geometric_distribution
-// normal_distribution, poisson_distribution, exponential_distribution
 
 //==================BITSET=========================
 bitset<10> a(10);//bitset de tamanho 10 com o valor 10 atribuido
