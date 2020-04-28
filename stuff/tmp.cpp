@@ -9,6 +9,7 @@
 using namespace std;
 #define x first
 #define y second
+#define ii pair<int,int>
 #define pb push_back
 #define ppb pop_back
 #define pf push_front
