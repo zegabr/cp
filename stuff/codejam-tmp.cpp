@@ -1,3 +1,4 @@
+#define TESTCASE
 #include <set>
 #include <map>
 #include <cmath>
@@ -22,15 +23,25 @@ using namespace std;
 #define no cout<<"NO"<<endl
 #define yes cout<<"YES"<<endl
 #define db(x) cerr<<#x<<" = "<<x<<endl
+#define codejam(k) cout<<"Case #"<<k<<": "
 #define endl '\n'
 
 
 
 
+
+void main2(int caso=0){
+
+
+}
 int32_t main(){
     ios::sync_with_stdio(0); cin.tie(0);
-
-
-
-
+    cout<<setprecision(7);
+    int t; 
+#ifdef TESTCASE
+    cin>>t;
+#else 
+    t = 1;
+#endif
+    for(int i=1;i<=t;i++) main2(i);
 }
