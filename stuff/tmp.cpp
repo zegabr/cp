@@ -16,7 +16,7 @@ using namespace std;
 #define ppf pop_front
 #define ll long long
 #define ld long double
-#define sz(v) ((int)v.size())
+#define len(v) ((int)v.size())
 #define fa(a,c) for(auto &a : c)
 #define all(k) k.begin(),k.end()
 #define rall(k) k.rbegin(),k.rend()
