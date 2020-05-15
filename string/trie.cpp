@@ -1,6 +1,6 @@
 
-#define maxsize 21111111
-#define alfa 26
+#define maxsize 2111111
+#define alfa 128 //can use all ascii characters
 
 class Trie{
     public:
@@ -81,6 +81,7 @@ class Trie{
         }
 
         int getid(char c) {//carefull if alphabet is different from [a-z]
+            if(alfa == 128) return c;
             //write get here      
 
         }
