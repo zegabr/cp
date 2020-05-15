@@ -26,12 +26,15 @@ using namespace std;
 #define endl '\n'
 
 
+void main2(){
 
+
+
+}
 
 int32_t main(){
     ios::sync_with_stdio(0); cin.tie(0);
-
-
-
-
+    int t;
+    cin>>t;
+    while(t--) main2();
 }
