@@ -22,6 +22,7 @@ using namespace std;
 #define rall(k) k.rbegin(),k.rend()
 #define no cout<<"NO"<<endl
 #define yes cout<<"YES"<<endl
+#define codejam(k) cout<<"Case #"<<k<<": "
 #define db(x) cerr<<#x<<" = "<<x<<endl
 #define endl '\n'
 

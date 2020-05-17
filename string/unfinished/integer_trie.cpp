@@ -1,17 +1,17 @@
 
-#define alfa 128
+#define alfa 2
 
 class Node{  
     public: 
         int data;
         int isword;//count many insertions
-        int pref;
+        int prefix_count;
         Node *child[alfa];
 
         Node(){
             fill(child, child + alfa, (Node *)NULL);
             isword = 0;
-            pref = 0;
+            prefix_count = 0;
         }
 };
 
@@ -26,43 +26,40 @@ class Trie{
             freeChildren(root);
         }
 
-        void insert(string &s){
+        void insert(int s){
             Node *cur = root;
-            root->pref++;
-            for(char &c : s){
-                int id = getid(c);
+            root->prefix_count++;
+            for(int i=31;i>=0;i--){
+                int id = getid(s,i);
                 if(!cur->child[id]){
                     cur->child[id] = new Node();
                 }
                 cur = cur->child[id];
                 cur->data = id;
-                cur->pref++;
+                cur->prefix_count++;
             }
             cur->isword++;
         }
 
-        int count(string &s, bool isPrefix = false){
-            //count how many times s was inserted or how many words has s as prefix
+        int count(int s){
             Node *cur = root;
-            for(char &c : s){
-                int id = getid(c);
+            for(int i=31;i>=0;i--){
+                int id = getid(s,i);
                 if(!cur->child[id]){
                     return 0;
                 }
                 cur = cur->child[id];
             }
-            if(isPrefix) return cur->pref;
             return cur->isword;
         }
 
-        /*
-         *seems that remove does not work
-         * */
-        void remove(string &s, bool removeAll = false){//remove one or all occurrences
+        void remove(int s, bool removeAll = false){
+            //remove one or all occurrences
+            //TODO: make it work
             Node *cur = root;
             vector<Node*> parent = {cur};
-            for(char &c : s){
-                int id = getid(c);
+            for(int i=31;i>=0;i--){
+                int id = getid(s,i);
                 if(!cur->child[id]) 
                     return;
 
@@ -71,43 +68,53 @@ class Trie{
             }
 
             int quantity=1;
+            cur->isword = max(0,cur->isword - 1);//remove one
+
             if(removeAll){
                 quantity = cur->isword;
                 cur->isword = 0;//remove all
-            }else{
-                cur->isword--;//remove one
             }
 
             while(len(parent)>1){
                 cur = parent.back();
                 parent.ppb();
-                id = cur->data;
-                cur->pref-=quantity;
-                if(cur->isword>0 or cur->pref>0) 
+                cur->prefix_count-=quantity;
+                if(cur->isword>0 or cur->prefix_count>0) 
                     continue;
 
-                bool haschild=false;
-                for(int i=0;!haschild and i<alfa;i++){
-                    haschild |= (cur->child[i]!=NULL);
+                bool hasChild=false;
+                for(int i=0;!hasChild and i<alfa;i++){
+                    hasChild |= (cur->child[i]!=NULL);
                 }
-                if(!haschild){
-                    id = cur->data;
-                    freeChildren(parent.back()->child[id]);
+                if(!hasChild){
+                    int id = cur->data;
                     parent.back()->child[id]=NULL;
+                    //freeChildren(cur);
                 }
             }
         }
 
-    private:
-        int getid(char c){
-            if(alfa == 128) return c;
-            //write get here
-
-
+        int maximizeXorWith(int s){
+            int res = 0;
+            Node *cur = root;
+            for(int i=31;i>=0;i--){
+                int id = getid(s,i);
+                if(cur->child[!id]){
+                    res += (1<<i);
+                    cur = cur->child[!id];
+                }else if(cur->child[id]){
+                    cur = cur->child[id];
+                }
+            }
+            return res;
         }
 
+    private:
+        int getid(int &s, int i){
+            return (s>>i)&1;
+        }
         void freeChildren(Node *cur){
-            if(cur==(Node*)NULL)
+            if(cur==NULL)
                 return;
             for(Node *it : cur->child){
                 freeChildren(it);
@@ -115,5 +122,4 @@ class Trie{
             delete cur;
         }
 };
-
 
