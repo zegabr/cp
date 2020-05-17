@@ -12,15 +12,15 @@ vector<vector<int>> g;
 vector<ii> eds;
 
 void add(int u, int v, bool bi=0){ //PLS USE 0 INDEXED VERTICES
-  g[u].pb(v);
-  if(bi) g[v].pb(u);
-  //eds.pb({u,v});
+    g[u].pb(v);
+    if(bi) g[v].pb(u);
+    //eds.pb({u,v});
 }
 
 void init(int n = ms){
-  g.assign(n, vector<int>());
-  dis.assign(n,inf);
-  if(vis.empty()) vis.assign(n,0);
-  timer++;
+    g.assign(n, {});
+    dis.assign(n,inf);
+    if(vis.empty()) vis.assign(n,0);
+    timer++;
 }
 //----------------------------
