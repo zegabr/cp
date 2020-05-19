@@ -27,7 +27,7 @@ using namespace std;
 #define endl '\n'
 
 
-void main2(){
+void main2(int test_case){
 
 
 
@@ -36,6 +36,8 @@ void main2(){
 int32_t main(){
     ios::sync_with_stdio(0); cin.tie(0);
     int t;
+    t=1;
     cin>>t;
-    while(t--) main2();
+    db(t);
+    for(int i=1;i<=t;i++) main2(t);
 }
