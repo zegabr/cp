@@ -11,7 +11,7 @@ class Trie{
     int z;
 
     Trie() {
-      trie.assign(alfa,vector<int>(maxsize,0));
+      trie.assign(maxsize,vector<int>(alfa,0));
       word.assign(maxsize,0);
       pref.assign(maxsize,0);
       data.assign(maxsize,0);
@@ -23,11 +23,11 @@ class Trie{
       pref[cur]++;
       for(int i = 31; i >= 0;i--) {
         id = getid(s,i);
-        if(!trie[id][cur]) {
+        if(!trie[cur][id]) {
           reset(z);
-          trie[id][cur] = z++;
+          trie[cur][id] = z++;
         }
-        cur = trie[id][cur];
+        cur = trie[cur][id];
         data[cur]=id;
         pref[cur]++;
       }
@@ -38,8 +38,8 @@ class Trie{
       int cur = 0, id;
       for(int i = 31; i >= 0; i--) {
         id = getid(s,i);
-        if(!trie[id][cur]) return 0;
-        cur = trie[id][cur];
+        if(!trie[cur][id]) return 0;
+        cur = trie[cur][id];
       }
       return word[cur];
     }
@@ -51,8 +51,8 @@ class Trie{
       parentstack.pb(cur);
       for(int i = 31; i >= 0; i--) {
         id = getid(s,i);
-        if(!trie[id][cur]) return;
-        cur = trie[id][cur];
+        if(!trie[cur][id]) return;
+        cur = trie[cur][id];
         parentstack.pb(cur);
       }
 
@@ -68,7 +68,7 @@ class Trie{
           continue;
         } else{
           //not a prefix, hence has no child
-          trie[data[cur]][parentstack.back()]=0;
+          trie[parentstack.back()][data[cur]]=0;
         }
       }
     }
@@ -77,11 +77,11 @@ class Trie{
       int res = 0, id, cur=0;
       for(int i=31;i>=0;i--){
         id = getid(s,i);
-        if(trie[!id][cur]){
+        if(trie[cur][!id]){
           res += (1<<i);
-          cur = trie[!id][cur];
+          cur = trie[cur][!id];
         }else{
-          cur = trie[id][cur];
+          cur = trie[cur][id];
         }
       }
       return res;
