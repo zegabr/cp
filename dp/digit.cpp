@@ -2,7 +2,7 @@
 vector<int> num;
 const int dig = 11;//tamanho do input +1
 const int maxsum = dig*9+1;
-ll dp[2][dig][maxsum];//qtd digitos, soma maxima dos digitos, limitado ou nao
+ll dp[dig][maxsum][2];//qtd digitos, soma maxima dos digitos, limitado ou nao
 
 void init(){
   memset(dp,-1,sizeof dp);
@@ -23,7 +23,7 @@ ll solve(int pos, int sum, int e){
     return sum;
   }
 
-  ll &res = dp[e][pos][sum];
+  ll &res = dp[pos][sum][e];
   if(res != -1)	return res;
 
   res = 0;
