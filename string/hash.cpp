@@ -1,5 +1,5 @@
 
-typedef pair<long long, unsigned long long> Hash;
+typedef pair<long long, unsigned long long> Hash;//double hash > single hash
 
 class Hasher{
     private:

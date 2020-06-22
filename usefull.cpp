@@ -77,7 +77,7 @@ a.count();//retorna quantidade de bits 1
 a.test(i);//retorna 1 se o i-ésimo bit está setado
 a.any();//true se algum bit está setado
 a.none();// true se nenhum bit setado
-a.all;//true se todos os bits setados
+a.all();//true se todos os bits setados
 
 a.set(k,i);//seta k bits partindo do i-esimo
 a.set(i);//seta i-esimo

@@ -9,7 +9,6 @@ int getmex(unordered_map<int,bool> &s){
 	return mex;
 }
 
-
 unordered_map<int,int> Grund;//pd
 int grundy(int n){//varia dependendo do jogo, deve retornar 0 se for estado de perda, numero grande se for estado de vencimento
 	//caso base
@@ -27,6 +26,7 @@ int newgrundy(int n){
 	//em caso de TLE, achar padrao e inserir aqui
 	return 0;
 }
+
 //======================================
 //=============GAMES ON ARBITRARY GRAPHS=======
 vector<vector<int>> adj_rev;//reversed edges graph

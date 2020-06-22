@@ -1,5 +1,4 @@
 
-//===================RANDOM=======================
 #include<chrono>
 #include<random>
 // mt19937_64 se LL
@@ -20,12 +19,4 @@ inline double random_double(int i, int j){
 // bernoulli_distribution, binomial_distribution, geometric_distribution
 // normal_distribution, poisson_distribution, exponential_distribution
 
-//========================outro random (funciona no leetcode)==============
-void reset_seed(){
-    srand(unsigned(time(NULL)));
-}
-
-int randint(int l, int r){//random from l to r inclusive
-    return rand() % (r+1) + l;   
-}
 
