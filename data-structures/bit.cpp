@@ -6,12 +6,12 @@ class Bit{//cumulative sum
 
     public:
         Bit(vector<T> &v){
-            Bit.assign(v.size()+2,0);
+            bit.assign(v.size()+2,0);
             for(int i=0;i<v.size();i++)
                 upd(i,v[i]);
         }
         Bit(int tam){
-            Bit.assign(tam+2,0);
+            bit.assign(tam+2,0);
         }
 
         T get(int i){
