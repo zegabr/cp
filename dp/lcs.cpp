@@ -1,21 +1,12 @@
-string a,b;
-int dp[1010][1010];
 
-void init(){
-  memset(dp, -1, sizeof dp);
-}
-
-int lcs(int i, int j){
-  if(i==-1 or j==-1) return 0;
-
-  int &res = dp[i][j];
-  if(res!=-1) return res;
-
-  if(a[i]==b[j]){
-    res = max({res, 1+lcs(i-1,j-1)});
-  }else{
-    res = max({res, lcs(i,j-1), lcs(i-1,j)});
-  }
-
-  return res;
-}
+int lcs(string &s, string &t, int i, int j, vector<vector<int>> &dp){//initialize dp with -1
+        if(i == -1 or j == -1) return 0;
+  
+        int &result = dp[i][j];
+        if(result != -1) return result;
+        
+        if(s[i] == t[j])
+            result = 1 + lcs(s, t, i-1, j-1, dp);
+  
+        return result = max({result, lcs(s,t, i-1, j, dp), lcs(s,t,i,j-1, dp)});
+ }
