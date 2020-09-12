@@ -37,3 +37,15 @@ void pascaltriangle(int n){
     }
 }
 
+int binomialCoeff(int n, int k) { //O(k) time O(1) space 
+    // C(n, k) = C(n, n-k) 
+    if (k > n - k) k = n - k; 
+  
+    // [n * (n-1) *---* (n-k+1)] / [k * (k-1) *----* 1] 
+    int res = 1;
+    for (int i = 0; i < k; ++i) { 
+        res *= (n - i); 
+        res /= (i + 1); 
+    } 
+    return res; 
+} 
