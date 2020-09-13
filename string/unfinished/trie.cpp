@@ -8,10 +8,9 @@ class Node{
         int pref;
         Node *child[alfa];
 
-        Node(){
+        Node() : data(0), isword(0), pref(0) 
+        {
             fill(child, child + alfa, (Node *)NULL);
-            isword = 0;
-            pref = 0;
         }
 };
 
@@ -19,9 +18,8 @@ class Trie{
     public:
         Node *root;
 
-        Trie(){
-            root = new Node();
-        }
+        Trie() : root(new Node()) {}
+
         ~Trie(){
             freeChildren(root);
         }
@@ -83,7 +81,7 @@ class Trie{
             while(len(parent)>1){
                 cur = parent.back();
                 parent.ppb();
-                id = cur->data;
+                int id = cur->data;
                 cur->pref-=quantity;
                 if(cur->isword>0 or cur->pref>0) 
                     continue;
