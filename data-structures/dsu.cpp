@@ -8,13 +8,13 @@ class Dsu{
         for(int i=0; i <= v;i++) ds[i] = i;
     }
 
-    int pai(int i){//find
-        if(ds[i] != i) ds[i] = pai(ds[i]);
+    int par(int i){//find
+        if(ds[i] != i) ds[i] = par(ds[i]);
         return ds[i];
     }
 
     bool uni(int a, int b){//union
-        a = pai(a), b = pai(b);
+        a = par(a), b = par(b);
         if(a == b) return false;
         if(sz[a] < sz[b])swap(a,b);
         sz[a] += sz[b];
@@ -23,11 +23,11 @@ class Dsu{
     }
 
     bool same(int a, int b){
-        return pai(a) == pai(b);
+        return par(a) == par(b);
     }
 
     int size(int a){
-        return sz[pai(a)];
+        return sz[par(a)];
     }
 };
 
