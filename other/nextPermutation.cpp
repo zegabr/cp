@@ -1,22 +1,22 @@
 void nextPermutation(vector<int>& nums) {
-        int ds = nums.size() - 1;
-        while(ds > 0 and nums[ds - 1] >= nums[ds])
-            ds--;
-        if(ds == 0){
+        int decreasingStart = nums.size() - 1;
+        while(decreasingStart > 0 and nums[decreasingStart - 1] >= nums[decreasingStart])
+            decreasingStart--;
+        if(decreasingStart == 0){
             reverse(nums.begin(), nums.end());
             return;
         }
         
-        int ie = ds - 1;
-        int mb = nums[ds] , mbp=ds;
-        for(int i = ds; i < nums.size(); i++){
-            if(nums[i] > nums[ie]){
+        int increasingEnd = decreasingStart - 1;
+        int mb = nums[decreasingStart] , mbp = decreasingStart;
+        for(int i = decreasingStart; i < nums.size(); i++){
+            if(nums[i] > nums[increasingEnd]){
                 mb = max(mb, nums[i]);
                 mbp = i;
             }    
         }
         
-        swap(nums[ie], nums[mbp]);
-        reverse(nums.begin() + ds, nums.end());
+        swap(nums[increasingEnd], nums[mbp]);
+        reverse(nums.begin() + decreasingStart, nums.end());
         return;
  }
