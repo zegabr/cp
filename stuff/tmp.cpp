@@ -12,7 +12,7 @@ using namespace std;
 #define ppb pop_back
 #define pf push_front
 #define ppf pop_front
-#define ll long long
+#define long long long
 #define ld long double
 #define ii pair<int,int>
 #define len(v) ((int)v.size())
