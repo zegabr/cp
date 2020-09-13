@@ -10,8 +10,8 @@ bool findCycle(int u){
     if(vis[u] == VISITING) return true;//found cycle
 
     vis[u] = VISITING;
+    
     bool res = false;
-
     for(int &v : g[u])
         res |= findCycle(v);
 
