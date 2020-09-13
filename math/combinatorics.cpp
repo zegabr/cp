@@ -15,13 +15,13 @@
 */
 
 const int ms=10000;
-vector<vector<ll>> c;
+vector<vector<long>> c;
 
 void initcomb(){
     c.resize(ms+1,vector<ll>(ms/2+1,0));
 }
 
-ll comb(int n,int k){//combinacao de n, escolhendo k
+long comb(int n,int k){//combinacao de n, escolhendo k
     if(k==0 or k==n) return 1;
     k = min(k,n-k);
     if(c[n][k]) return c[n][k];

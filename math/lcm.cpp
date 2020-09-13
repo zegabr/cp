@@ -1,4 +1,4 @@
 
-inline ll lcm(const ll &a, const ll &b) {
+inline long lcm(const long &a, const long &b) {
 	return (a / __gcd(a, b)) * b; 
 }

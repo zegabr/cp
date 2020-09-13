@@ -1,8 +1,8 @@
 
-ll sumdiv(ll n){
-	ll pri = 0, prf = primes[pri], ans=1;
+long sumdiv(long n){
+	long pri = 0, prf = primes[pri], ans=1;
 	while(prf*prf <= n){
-		ll power=0;
+		long power=0;
 		while(n%prf==0){n/=prf; power++;}
 		ans*=((ll)pow((double)prf, power+1.0) - 1)/(prf-1);
 		prf = primes[++pri];
@@ -11,9 +11,9 @@ ll sumdiv(ll n){
 	return ans;
 }
 
-ll countdiv(ll n){//O(sqrt(n))
-	ll c=0;
-	for(ll i=1; i*i<=n; i++){
+long countdiv(long n){//O(sqrt(n))
+	long c=0;
+	for(long i=1; i*i<=n; i++){
 		if(n%i==0){
 			if(n/i==i)c++; //count one divisor
 			else c+=2; // count 2 divisors: i and n/i

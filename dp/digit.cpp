@@ -2,13 +2,13 @@
 vector<int> num;
 const int dig = 11;//tamanho do input +1
 const int maxsum = dig*9+1;
-ll dp[dig][maxsum][2];//qtd digitos, soma maxima dos digitos, limitado ou nao
+long dp[dig][maxsum][2];//qtd digitos, soma maxima dos digitos, limitado ou nao
 
 void init(){
   memset(dp,-1,sizeof dp);
 }
 
-void getnum(ll n){
+void getnum(long n){
   num.clear();
   while(n){
     num.pb(n%10);
@@ -18,12 +18,12 @@ void getnum(ll n){
 }
 
 //return sum of digits for all number from 0 to num
-ll solve(int pos, int sum, int e){
+long solve(int pos, int sum, int e){
   if(pos == num.size()){//check property here
     return sum;
   }
 
-  ll &res = dp[pos][sum][e];
+  long &res = dp[pos][sum][e];
   if(res != -1)	return res;
 
   res = 0;
@@ -37,14 +37,14 @@ ll solve(int pos, int sum, int e){
 }
 
 //solve from 0 to n
-ll solve(ll n){
+long solve(long n){
   init();
   getnum(n);
   return solve(0,0,0);
 }
 
 //solve from a to b inclusively
-ll solve(ll a, ll b){
+long solve(long a, long b){
   if(a==0)return solve(b);
   return solve(b) - solve(a-1);
 }

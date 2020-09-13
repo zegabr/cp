@@ -1,16 +1,16 @@
 
-typedef pair<long long, unsigned long long> Hash;//double hash > single hash
+typedef pair<long, unsigned long> Hash;//double hash better than single hash
 
 class Hasher{
     private:
-        const long long base = 137;//cover all ascii values
-        const unsigned long long mod = (1ll<<31)-1ll; //mod2 = 1<<64
+        const long base = 137;//cover all ascii values
+        const unsigned long mod = (1ll<<31)-1ll; //mod2 = 1<<64
 
-        vector<long long> h1;
-        vector<unsigned long long> h2;
+        vector<long> h1;
+        vector<unsigned long> h2;
         bool isReversed;
 
-        void buildpot1(vector<long long> & pot1, int maxsize = 2000000){
+        void buildpot1(vector<long> & pot1, int maxsize = 2000000){
             int last = max(1,(int)pot1.size());
             pot1.resize(maxsize);
             pot1[0] = 1;
@@ -19,7 +19,7 @@ class Hasher{
             }   
         }
 
-        void buildpot2(vector<unsigned long long> & pot2, int maxsize = 2000000){
+        void buildpot2(vector<unsigned long> & pot2, int maxsize = 2000000){
             int last = max(1,(int)pot2.size());
             pot2.resize(maxsize);
             pot2[0] = 1;
@@ -28,16 +28,16 @@ class Hasher{
             }   
         }
 
-        long long getpot1(int i){
-            static vector<long long> pot1;
+        long getpot1(int i){
+            static vector<long> pot1;
             if(i > pot1.size()){
                 buildpot1(pot1, i+1);
             }
             return pot1[i];
         }
 
-        unsigned long long getpot2(int i){
-            static vector<unsigned long long> pot2;
+        unsigned long getpot2(int i){
+            static vector<unsigned long> pot2;
             if(i > pot2.size()){
                 buildpot2(pot2, i+1);
             }
@@ -59,14 +59,14 @@ class Hasher{
         Hash get(int l, int r){
             int n = h1.size();
             if(isReversed){
-                int R=r,L=l;
-                r = n-L-1;
-                l = n-R-1;
+                int R = r,L = l;
+                r = n - L - 1;
+                l = n - R - 1;
             }
-            long long res1 = h1[r];
-            unsigned long long res2 = h2[r];
+            long res1 = h1[r];
+            unsigned long res2 = h2[r];
             if(l>0){
-                res1 = (res1 - getpot1(r-l+1)*h1[l-1]%mod + mod)%mod;
+                res1 = (res1 - getpot1(r-l+1) * h1[l-1] % mod + mod) % mod;
                 res2 = res2 - getpot2(r-l+1) * h2[l-1];
             } 
             return Hash(res1,res2);

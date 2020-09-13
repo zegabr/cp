@@ -1,16 +1,16 @@
 
 //requires fexp.cpp
-bool overflow(ll a, ll b) {
-  return b && (a >= (1ll << 62) / b);
+bool overflow(long a, long b) {
+  return b && (a >= (1long << 62) / b);
 }
 
-ll add(ll a, ll b, ll mod) {
+long add(long a, long b, long mod) {
   return (a + b) % mod;
 }
 
-ll mul(ll a, ll b, ll mod) {
+long mul(long a, long b, long mod) {
   if (!overflow(a, b)) return (a * b) % mod;
-  ll ans = 0;
+  long ans = 0;
   while(b) {
     if (b & 1) ans = add(ans, a, mod);
     a = add(a, a, mod);
@@ -19,20 +19,20 @@ ll mul(ll a, ll b, ll mod) {
   return ans;
 }
 
-ll my_rand() {
-  ll ans = rand();
+long my_rand() {
+  long ans = rand();
   ans = (ans << 31) | rand();
   return ans;
 }
 
-bool miller(ll p, int precision) {//check primality
+bool miller(long p, int precision) {//check primality
   if(p < 2) return 0;
   if(p % 2 == 0) return (p == 2);
-  ll s = p - 1;
+  long s = p - 1;
   while(s % 2 == 0) s >>= 1;
   for(int i = 0; i < precision; i++) {
-    ll a = rand() % (p - 1) + 1, temp = s;
-    ll mod = fexp(a, temp, p);
+    long a = rand() % (p - 1) + 1, temp = s;
+    long mod = fexp(a, temp, p);
     while(temp != p - 1 && mod != 1 && mod != p - 1) {
       mod = mul(mod, mod, p);
       temp <<= 1;
@@ -42,12 +42,12 @@ bool miller(ll p, int precision) {//check primality
   return 1;
 }
 
-ll rho(ll n) {//find a prime factor
+long rho(long n) {//find a prime factor
   if (n == 1 || miller(n, 10)) return n;
   if (n % 2 == 0) return 2;
   while(1) {
-    ll x = my_rand() % (n - 2) + 2, y = x;
-    ll c = 0, cur = 1;
+    long x = my_rand() % (n - 2) + 2, y = x;
+    long c = 0, cur = 1;
     while(c == 0) {
       c = my_rand() % (n - 2) + 1;
     }

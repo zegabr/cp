@@ -4,16 +4,16 @@
 using namespace std;
 typedef long long ll;
 const int N = 20;
-inline ll LCM(ll a, ll b) { return a / __gcd(a, b) * b; }
-inline ll normalize(ll x, ll mod) { x %= mod; if (x < 0) x += mod; return x; }
-struct GCD_type { ll x, y, d; };
-GCD_type ex_GCD(ll a, ll b){
+inline long LCM(long a, long b) { return a / __gcd(a, b) * b; }
+inline long normalize(long x, long mod) { x %= mod; if (x < 0) x += mod; return x; }
+struct GCD_type { long x, y, d; };
+GCD_type ex_GCD(long a, long b){
 	if (b == 0) return {1, 0, a};
 	GCD_type pom = ex_GCD(b, a % b);
 	return {pom.y, pom.x - a / b * pom.y, pom.d};
 }
 int t;
-ll a[N], n[N], ans, lcm;
+long a[N], n[N], ans, lcm;
 int main()
 {
 	ios_base::sync_with_stdio(0);
