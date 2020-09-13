@@ -4,11 +4,12 @@ void bfs(int start){//O(V+E)
   dis.assign(ms, inf);
   dis[start]=0;
   queue<int> q({start});
+  
   while(q.size()){
     int u = q.front(); q.pop();
-    for(auto v : g[u]){
-      if(dis[v]>dis[u]+1){
-        dis[v]=dis[u]+1;
+    for(auto &v : g[u]){
+      if(dis[v] > dis[u] + 1){
+        dis[v] = dis[u] + 1;
         q.push(v);
       }
     }
