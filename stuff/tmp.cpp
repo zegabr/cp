@@ -12,14 +12,12 @@ using namespace std;
 #define ppb pop_back
 #define pf push_front
 #define ppf pop_front
-#define long long long
+#define ll long long
 #define ld long double
 #define ii pair<int,int>
-#define len(v) ((int)v.size())
 #define fa(a,c) for(auto &a : c)
 #define all(k) k.begin(),k.end()
 #define rall(k) k.rbegin(),k.rend()
-
 #define db(x) cerr<<#x<<" = "<<x<<endl
 #define flush cout.flush()
 

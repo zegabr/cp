@@ -1,75 +1,68 @@
 
-typedef pair<long, unsigned long> Hash;//double hash better than single hash
+typedef pair<long, unsigned long> Hash;//double hash is better than single hash
 
 class Hasher{
     private:
         const long base = 137;//cover all ascii values
-        const unsigned long mod = (1ll<<31)-1ll; //mod2 = 1<<64
+        const unsigned long mod = (1ll<<31)-1; //mod2 = 1<<64
 
-        vector<long> h1;
-        vector<unsigned long> h2;
         bool isReversed;
+        vector<Hash> H;
 
-        void buildpot1(vector<long> & pot1, int maxsize = 2000000){
-            int last = max(1,(int)pot1.size());
-            pot1.resize(maxsize);
-            pot1[0] = 1;
-            for(int i = last;i < maxsize;i++){
-                pot1[i] = pot1[i-1] * base % mod;
+        void buildPow(vector<Hash> &POW, int maxsize = 2000000){
+            int nexPosition = max(1,(int)POW.size());
+            POW.resize(maxsize);
+            POW[0].first = POW[0].second = 1;
+            for(int i = nexPosition; i < maxsize; i++){
+                POW[i].first = POW[i-1].first * base % mod;
+                POW[i].second = POW[i-1].second * base;
             }   
         }
 
-        void buildpot2(vector<unsigned long> & pot2, int maxsize = 2000000){
-            int last = max(1,(int)pot2.size());
-            pot2.resize(maxsize);
-            pot2[0] = 1;
-            for(int i = last;i < maxsize;i++){
-                pot2[i] = pot2[i-1] * base;
-            }   
+        Hash getPow(int i){
+            static vector<Hash> POW;
+            if(i >= (int)POW.size()) {//prevent out of bounds
+                buildPow(POW, i+1);
+            }
+            return POW[i];
         }
 
-        long getpot1(int i){
-            static vector<long> pot1;
-            if(i > pot1.size()){
-                buildpot1(pot1, i+1);
-            }
-            return pot1[i];
+        void addChar(Hash &hash, char &c){//add char to cumulative hash
+            hash.first = (hash.first * base % mod + c) %mod;
+            hash.second = (hash.second * base + c);
         }
 
-        unsigned long getpot2(int i){
-            static vector<unsigned long> pot2;
-            if(i > pot2.size()){
-                buildpot2(pot2, i+1);
-            }
-            return pot2[i];
+        Hash subtract(Hash &head, Hash &tail, int patternSize){//used to get hash of window
+            Hash power = getPow(patternSize);
+            long a = (head.first - tail.first * power.first % mod + mod) % mod;
+            unsigned long b = head.second - tail.second * power.second;
+            return Hash(a,b);
         }
-    public:
-        Hasher(string &s, bool reversed = false){
-            isReversed = reversed;
+
+    public: 
+        // full string hash O(N)
+        Hasher(string &s, bool reversed = false): isReversed(reversed) {
             int n = s.size();
-            h1.resize(n);
-            h2.resize(n);
-            h1[0] = h2[0] = s[0];
+            H.resize(n);
+            H[0].first = H[0].second = s[0];
             for(int i = 1;i < n;i++){
-                h1[i] = (h1[i-1] * base % mod + s[i]) % mod;
-                h2[i] = h2[i-1] * base + s[i];
+                H[i] = H[i-1];
+                addChar(H[i], s[i]);
             }
         }
 
+        //window string hash O(1)
         Hash get(int l, int r){
-            int n = h1.size();
+            int n = H.size();
             if(isReversed){
                 int R = r,L = l;
                 r = n - L - 1;
                 l = n - R - 1;
             }
-            long res1 = h1[r];
-            unsigned long res2 = h2[r];
-            if(l>0){
-                res1 = (res1 - getpot1(r-l+1) * h1[l-1] % mod + mod) % mod;
-                res2 = res2 - getpot2(r-l+1) * h2[l-1];
-            } 
-            return Hash(res1,res2);
+
+            Hash res = H[r];
+            if(l>0) res = subtract(res, H[l-1], r-l+1);
+            return res;
         }
 
         Hash getpref(int m){
@@ -77,11 +70,37 @@ class Hasher{
         }
 
         Hash getsuff(int m){
-            int n = h1.size();
+            int n = H.size();
             return get(n-m,n-1);
         }
 
-        int size(){
-            return h1.size();
+    public: 
+        //rabin karp constructor
+        Hasher(){}
+
+        Hash getUniqueHash(string &s){
+            Hash hash = {0,0};
+            for(char c : s) addChar(hash, c);
+            return hash;
+        }
+
+        int findFirst(string &text, string &pattern){// find first pattern in text O(N)
+            int n = text.size(), m = pattern.size();
+            if(m == 0) return 0;
+
+            Hash patternHash, cumulativeHead, cumulativeTail;
+            patternHash = getUniqueHash(pattern);
+
+            for(int i = 0; i < n; i++){
+                if(i >= m) addChar(cumulativeTail, text[i-m]);
+                addChar(cumulativeHead, text[i]);
+
+                Hash currHash = subtract(cumulativeHead, cumulativeTail, m);
+                if(i >= m-1 and currHash == patternHash) return i - m + 1;
+            }
+
+            return -1;
         }
 };
+
+
