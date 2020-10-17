@@ -1,10 +1,10 @@
 
-typedef pair<long, unsigned long> Hash;//double hash is better than single hash
+typedef pair<long long, unsigned long long> Hash;//double hash is better than single hash
 
 class Hasher{
     private:
-        const long base = 137;//cover all ascii values
-        const unsigned long mod = (1ll<<31)-1; //mod2 = 1<<64
+        const long long base = 137;//cover all ascii values
+        const unsigned long long mod = (1ll<<31)-1; //mod2 = 1<<64
 
         bool isReversed;
         vector<Hash> H;
@@ -34,8 +34,8 @@ class Hasher{
 
         Hash subtract(Hash &head, Hash &tail, int patternSize){//used to get hash of window
             Hash power = getPow(patternSize);
-            long a = (head.first - tail.first * power.first % mod + mod) % mod;
-            unsigned long b = head.second - tail.second * power.second;
+            long long a = (head.first - tail.first * power.first % mod + mod) % mod;
+            unsigned long long b = head.second - tail.second * power.second;
             return Hash(a,b);
         }
 

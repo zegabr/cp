@@ -1,2 +1,2 @@
-#define PREC cout<<fixed<<setprecision(48)
+#define PREC cout << fixed << setprecision(48)
 
