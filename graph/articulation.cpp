@@ -3,11 +3,11 @@
 int dfsroot, rootchildren;
 vector<int>num, low, par, cutvertex;
 
-inline void iscutvertex(int v){
+void iscutvertex(int v){
     cutvertex[v]=true;
 }
 
-inline void isbridge(int u, int v){
+void isbridge(int u, int v){
 
 }
 

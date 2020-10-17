@@ -1,19 +1,20 @@
-//---------------------------
+
 /*
    vis[u]<timer ==> u has not been visited
    vis[u]==timer ==> u has been visited
    timer++ ==> unvisit every node
-   */
-int timer=0;;
-const int ms= 300000;
+*/
+
+int timer = 0;;
+const int ms = 300000;
 const int inf = 1e8+5;
 vector<int> dis, vis; 
 vector<vector<int>> g;
 vector<ii> eds;
 
-void add(int u, int v, bool bi=0){ //PLS USE 0 INDEXED VERTICES
+void add(int u, int v, bool bidirectional = 0){ //PLS USE 0 INDEXED VERTICES
     g[u].pb(v);
-    if(bi) g[v].pb(u);
+    if(bidirectional) g[v].pb(u);
     //eds.pb({u,v});
 }
 
@@ -23,4 +24,4 @@ void init(int n = ms){
     if(vis.empty()) vis.assign(n,0);
     timer++;
 }
-//----------------------------
+

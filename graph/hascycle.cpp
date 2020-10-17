@@ -1,7 +1,4 @@
 
-vector<vector<int>> g;
-vector<int> vis;
-
 #define VISITING 1
 #define VISITED 2
 
