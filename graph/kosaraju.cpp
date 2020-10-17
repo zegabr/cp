@@ -2,7 +2,7 @@
 //---------KOSARAJU
 //for directed graphs
 //PLS USE 0 INDEXED VERTICES
-queue<int> order;//store topological reversal order
+vector<int> order;//store topological reversal order
 vector<int> comp;//store components
 vector<int> assignment;//store 2-SAT solution
 
@@ -13,13 +13,13 @@ void dfs1(int u){
             dfs1(v);
         }
     }
-    order.push(u);
+    order.push_back(u);
 }
 
 void dfs2(int u, int c){
     vis[u] = timer;
     comp[u] = c;
-    for(auto v : g[u]){
+    for(auto v : inv[u]){
         if(vis[v] < timer){
             dfs2(v, c);
         }
@@ -36,9 +36,9 @@ void getsccs(int n){//get sccs using kosaraju
     timer++;
     int j = 0;
     while(order.size()){
-        int u = order.front();
-        order.pop();
-        if(vis[u] < timer) 
+        int u = order.back();
+        order.ppb();
+        if(vis[u] < timer)
             dfs2(u, j++);//j will be the number of the component
     }
 }
@@ -46,8 +46,8 @@ void getsccs(int n){//get sccs using kosaraju
 //2-sat below
 void add_clause(int a, int b){//a and b has to be already at form 2k or 2k+1
     //a V b
-    add(a^1, b);//not( a) => b
-    add(b^1, a);//not( b) => a
+    add(a^1, b, false, true);//not( a) => b
+    add(b^1, a, false, true);//not( b) => a
 }
 
 void add_coincidence(int a, int b){

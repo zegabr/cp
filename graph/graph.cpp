@@ -9,19 +9,24 @@ int timer = 0;;
 const int ms = 300000;
 const int inf = 1e8+5;
 vector<int> dis, vis; 
-vector<vector<int>> g;
-vector<ii> eds;
+vector<vector<int>> g, inv;
+vector<pair<int,int>> eds;
 
-void add(int u, int v, bool bidirectional = 0){ //PLS USE 0 INDEXED VERTICES
-    g[u].pb(v);
-    if(bidirectional) g[v].pb(u);
-    //eds.pb({u,v});
+void add(int u, int v, bool bidirectional = 0, bool usingInverseGraph = false){ //USE 0 INDEXED VERTICES
+    g[u].push_back(v);
+    if(usingInverseGraph) inv[v].push_back(u);
+    if(bidirectional){
+        g[v].push_back(u);
+        if(usingInverseGraph) inv[u].push_back(v);
+    } 
+    //eds.push_back({u,v});
 }
 
-void init(int n = ms){
+void init(int n = ms, bool usingInverseGraph = false){
+    if(usingInverseGraph) inv.assign(n,{});
     g.assign(n, {});
     dis.assign(n,inf);
-    if(vis.empty()) vis.assign(n,0);
+    if(vis.size() < n) vis.resize(n);
     timer++;
 }
 
