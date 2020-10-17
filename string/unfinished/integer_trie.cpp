@@ -53,47 +53,6 @@ class Trie{
             return cur->isword;
         }
 
-        void remove(int s, bool removeAll = false){
-            //remove one or all occurrences
-            //TODO: make it work
-            Node *cur = root;
-            vector<Node*> parent = {cur};
-            for(int i=31;i>=0;i--){
-                int id = getid(s,i);
-                if(!cur->child[id]) 
-                    return;
-
-                cur = cur->child[id];
-                parent.pb(cur);
-            }
-
-            int quantity=1;
-            cur->isword = max(0,cur->isword - 1);//remove one
-
-            if(removeAll){
-                quantity = cur->isword;
-                cur->isword = 0;//remove all
-            }
-
-            while(len(parent)>1){
-                cur = parent.back();
-                parent.ppb();
-                cur->prefix_count-=quantity;
-                if(cur->isword>0 or cur->prefix_count>0) 
-                    continue;
-
-                bool hasChild=false;
-                for(int i=0;!hasChild and i<alfa;i++){
-                    hasChild |= (cur->child[i]!=NULL);
-                }
-                if(!hasChild){
-                    int id = cur->data;
-                    parent.back()->child[id]=NULL;
-                    //freeChildren(cur);
-                }
-            }
-        }
-
         int maximizeXorWith(int s){
             int res = 0;
             Node *cur = root;
