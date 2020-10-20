@@ -1,6 +1,6 @@
 
-long fexp(long a, long b) {//O(logb)
-	long ans = 1;
+long long fexp(long long a, long long b) {//O(logb)
+	long long ans = 1;
 	while(b) {
 		if(b & 1) ans = ans * a;
 		a = a * a;
@@ -9,8 +9,8 @@ long fexp(long a, long b) {//O(logb)
 	return ans;
 }
 
-long fexp(long a, long b, long mod) {//O(logb)
-	long ans = 1;
+long long fexp(long long a, long long b, long long mod) {//O(logb)
+	long long ans = 1;
 	while(b) {
 		if(b & 1) ans = ans * a % mod;
 		a = a * a % mod;
@@ -19,6 +19,6 @@ long fexp(long a, long b, long mod) {//O(logb)
 	return ans;
 }
 
-long invmod(long a, long mod){//mod has to be prime
+long long invmod(long long a, long long mod){//mod has to be prime
 	return fexp(a,mod-2,mod);
 }

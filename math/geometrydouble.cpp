@@ -100,9 +100,9 @@ PT ComputeCircleCenter(PT a, PT b, PT c) {
 // Determina se o ponto p esta dentro do triangulo (a, b, c)
 bool ptInsideTriangle(PT p, PT a, PT b, PT c) {
   if(cross(b-a, c-b) < 0) swap(a, b);
-  long x = cross(b-a, p-b);
-  long y = cross(c-b, p-c);
-  long z = cross(a-c, p-a);
+  long long x = cross(b-a, p-b);
+  long long y = cross(c-b, p-c);
+  long long z = cross(a-c, p-a);
   if(x > 0 && y > 0 && z > 0) return true;
   if(!x) return ptInSegment(a,b,p);
   if(!y) return ptInSegment(b,c,p);

@@ -1,15 +1,15 @@
 
 #define TAM 3 // base size
-long mod = 1e9+9;
-long base[TAM] = {0,1,2};//base cases
-long Tbase[TAM][TAM] = {//transformation
+long long mod = 1e9+9;
+long long base[TAM] = {0,1,2};//base cases
+long long Tbase[TAM][TAM] = {//transformation
 	{0,1,0},
 	{0,0,1},
 	{1,1,1}
 };
 
 struct Matrix { 
-	long mat[TAM][TAM];
+	long long mat[TAM][TAM];
 	Matrix operator * (const Matrix &p) {
 		Matrix ans;
 		for(int i = 0; i < TAM; i++)
@@ -20,7 +20,7 @@ struct Matrix {
 	}
 };
 
-Matrix fexp(Matrix a, long b) {
+Matrix fexp(Matrix a, long long b) {
 	b-=TAM-1;//subtracts some value that gives right answer(generally is TAM-1 so it returns base cases if is less than TAM)
 	Matrix ans;//identity matrix
 	for(int i = 0; i < TAM; i++) 
@@ -35,14 +35,14 @@ Matrix fexp(Matrix a, long b) {
 }
 
 Matrix T;
-long solve(long n){
+long long solve(long long n){
 	n--;//depends on indexing
 	if(n < TAM) return base[n];//base case
 
 	memcpy(T.mat, Tbase, sizeof T.mat);//T = Tbase
 	T = fexp(T, n);//T = T^n
 
-	long ans = 0;
+	long long ans = 0;
 	for(int i=0;i<TAM;i++)
 		ans=(ans+ T.mat[TAM-1][i] * base[i] % mod  )%mod;
 

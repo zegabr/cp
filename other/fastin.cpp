@@ -11,7 +11,7 @@ void sc(int &num){//scan int
 	if(neg)num*=-1;
 }
 
-void sc(long &num){//scan ll
+void sc(long long &num){//scan ll
 	num=0ll;
 	bool neg=0;
 	int c = getchar();
