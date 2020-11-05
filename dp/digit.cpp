@@ -11,10 +11,10 @@ void init(){
 void getnum(long n){
   num.clear();
   while(n){
-    num.pb(n%10);
+    num.push_back(n%10);
     n/=10;
   }
-  reverse(all(num));
+  reverse(num.begin(), num.end());
 }
 
 //return sum of digits for all number from 0 to num

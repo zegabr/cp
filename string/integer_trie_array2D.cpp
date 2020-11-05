@@ -48,12 +48,12 @@ class Trie{
       //remove one or all ocurrences of s
       int cur = 0, id;
       vector<int> parentstack;
-      parentstack.pb(cur);
+      parentstack.push_back(cur);
       for(int i = 31; i >= 0; i--) {
         id = getid(s,i);
         if(!trie[cur][id]) return;
         cur = trie[cur][id];
-        parentstack.pb(cur);
+        parentstack.push_back(cur);
       }
 
       int toRemove = removeAll ? word[cur] : 1;
@@ -61,7 +61,7 @@ class Trie{
 
       while(len(parentstack)>1){
         cur = parentstack.back();
-        parentstack.ppb();
+        parentstack.pop_back();
         pref[cur] -= toRemove;
 
         if(pref[cur]){

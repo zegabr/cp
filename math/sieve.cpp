@@ -9,7 +9,7 @@ void sieve (){
 		for(long long i=p*p; i<=P; i+=p)
 			prime[i]=0; 
 	}
-	primes.pb(2);
+	primes.push_back(2);
 	for(int i=3;i<=P;i+=2)
 		if(prime[i])
 			primes.push_back(i);

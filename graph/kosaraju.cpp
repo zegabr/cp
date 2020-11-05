@@ -37,7 +37,7 @@ void getsccs(int n){//get sccs using kosaraju
     int j = 0;
     while(order.size()){
         int u = order.back();
-        order.ppb();
+        order.pop_back();
         if(vis[u] < timer)
             dfs2(u, j++);//j will be the number of the component
     }

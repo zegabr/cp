@@ -27,8 +27,8 @@ void dfs2(int u, int distu=0, int par=-1){
 void dfs3(int u, int distu=0, int par=-1){
     if(distu==len){
         if(findnode[u]){
-            center.pb(u);
-            center.pb(par);
+            center.push_back(u);
+            center.push_back(par);
         }
         return;
     }	
@@ -67,7 +67,7 @@ void findcenters(int n){
     }else{
         dfs2(start);
         dfs3(end);
-        center.ppb();
+        center.ppush_back();
     }
 
     //finding most distant nodes from center

@@ -1,13 +1,13 @@
 
-ll inf = 0x3f3f3f3f;//atualizar com fluxo maximo possivel em caso de runtime error
+long long inf = 0x3f3f3f3f;//atualizar com fluxo maximo possivel em caso de runtime error
 const int ms = 5555; // Quantidade maxima de vertices
 const int me = 63333; // Quantidade maxima de arestas
 
 int to[me], ant[me], z;
 int adj[ms], copy_adj[ms], fila[ms], level[ms];
-ll wt[me];
+long long wt[me];
 
-void add(int u, int v, ll k,ll rev =0) {//adiciona aresta e aresta residual (2 arestas)
+void add(int u, int v, long long k,long long rev =0) {//adiciona aresta e aresta residual (2 arestas)
 	//chamar add(a,b,cap) se direcionado
 	//chamar add(a,b,cap,cap) se nao direcionado
 	to[z] = v;
@@ -38,9 +38,9 @@ int bfs(int source, int sink) {
 	return level[sink] != -1;
 }
 
-ll dfs(int v, int sink, ll flow) {
+long long dfs(int v, int sink, long long flow) {
 	if(v == sink) return flow;
-	ll f;
+	long long f;
 	for(int &i = copy_adj[v]; i != -1; i = ant[i]) {
 		if(wt[i] && level[to[i]] == level[v] + 1 and
 		(f = dfs(to[i], sink, min(flow, wt[i])))) {
@@ -52,8 +52,8 @@ ll dfs(int v, int sink, ll flow) {
 	return 0;
 }
 
-ll maxflow(int source, int sink) {
-	ll ret = 0, flow;
+long long maxflow(int source, int sink) {
+	long long ret = 0, flow;
 	while(bfs(source, sink)) {
 		memcpy(copy_adj, adj, sizeof adj);
 		while((flow = dfs(source, sink, inf))) {
