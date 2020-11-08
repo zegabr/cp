@@ -1,6 +1,6 @@
 #! /bin/bash
 #r de reset
-
+# MUST RUN AT ../cp
 cp ./cp/stuff/Makefile ./
 
 

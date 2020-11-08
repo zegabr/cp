@@ -1,3 +1,9 @@
 
-cp ./cp/stuff/r.sh ./r.sh
+source a.sh
+cp ./stuff/r.sh ../r.sh
+
+cd .. # go basck to ../cp
+
 source r.sh
+echo "cp folder has:"
+ls cp/
