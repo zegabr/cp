@@ -1,17 +1,18 @@
+#!/bin/sh
 # a for aliases
 # add aliases for bash terminal
 
 git clone https://github.com/zegabr/pyutils
 
-FILE=~/.oh-my-zsh/oh-my-zsh.sh
+python3 pyutils/replace_content_in_tag.py ~/.bashrc ./stuff/aliases.sh "##COMPETITIVE"
 
-if [ -f "$FILE" ]; then
-    python3 pyutils/replace_content_in_tag.py ~/.oh-my-zsh/oh-my-zsh.sh ./stuff/aliases.sh "##COMPETITIVE"
+
+if [ -x "$(command -v zsh)" ]; then
     echo "============you have new aliases for zsh==========="
-    source ~/.oh-my-zsh/oh-my-zsh.sh
+    python3 pyutils/replace_content_in_tag.py ~/.zshrc ./stuff/aliases.sh "##COMPETITIVE"
+    source ~/.zshrc
 else 
-    echo "$FILE does not exist."
-    python3 pyutils/replace_content_in_tag.py ~/.bashrc ./stuff/aliases.sh "##COMPETITIVE"
+    echo "zsh not installed."
     echo "============you have new aliases for bash==========="
     source ~/.bashrc
 fi
