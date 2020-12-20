@@ -8,6 +8,7 @@
 using namespace std;
 #define x first
 #define y second
+#define PI acos(-1)
 #define pb push_back
 #define ppb pop_back
 #define pf push_front
@@ -15,10 +16,11 @@ using namespace std;
 #define ll long long
 #define ld long double
 #define ii pair<int,int>
+#define flush cout.flush()
 #define all(k) k.begin(),k.end()
 #define rall(k) k.rbegin(),k.rend()
 #define db(x) cerr<<#x<<" = "<<x<<endl
-#define flush cout.flush()
+#define PREC cout << fixed << setprecision(48)
 
 
 
