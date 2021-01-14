@@ -1,6 +1,6 @@
 
 //for undirected graph
-//TODO: relearn how it works
+//TODO: relearn how it works, is this tarjan??? i dont remenber. If it can find SCCs, remove kosaraju.cpp and add 2sat and SCCs here
 int dfsroot, rootchildren;
 vector<int>num, low, par, cutvertex;
 
