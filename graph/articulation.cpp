@@ -1,5 +1,6 @@
 
 //for undirected graph
+//TODO: relearn how it works
 int dfsroot, rootchildren;
 vector<int>num, low, par, cutvertex;
 
