@@ -26,7 +26,7 @@ void dfs2(int u, int c){
     }
 }
 
-void getsccs(int n){//get sccs using kosaraju
+int getsccs(int n){//get sccs using kosaraju
     comp.assign(n,-1);
     timer++;
     for(int i = 0; i < n; i++)
@@ -41,6 +41,7 @@ void getsccs(int n){//get sccs using kosaraju
         if(vis[u] < timer)
             dfs2(u, j++);//j will be the number of the component
     }
+    return j; //number of SCCs
 }
 
 //2-sat below
