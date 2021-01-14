@@ -3,9 +3,9 @@
    vis[u]<timer ==> u has not been visited
    vis[u]==timer ==> u has been visited
    timer++ ==> unvisit every node
-*/
+   */
 
-int timer = 0;;
+int timer = 0;
 const int ms = 300000;
 const int inf = 1e8+5;
 vector<int> dis, vis; 
