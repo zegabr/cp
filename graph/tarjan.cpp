@@ -7,13 +7,13 @@ vector<int> num, low, par, criticalNode; // for SCC, bridges and cut vertexes
     void tarjanSCC(int u){// DFS
         low[u] = num[u] = dfsId++; 
         S.push_back(u);
-        vis[u] = timer;
+        vis[u] = 1;
         
         for(int v : g[u]){
             if(num[v] == 0) 
                 tarjanSCC(v);
             
-            if(vis[v] == timer) 
+            if(vis[v] == 1) 
                 low[u] = min(low[u], low[v]);
         }
         
@@ -22,7 +22,7 @@ vector<int> num, low, par, criticalNode; // for SCC, bridges and cut vertexes
             while(1){
                 int v = S.back();
                 S.pop_back();
-                vis[v] = timer - 1;
+                vis[v] = 0;
                 comp[v] = numSCC;
                 if(u == v) break;
             }
@@ -33,6 +33,7 @@ vector<int> num, low, par, criticalNode; // for SCC, bridges and cut vertexes
         dfsId = 1;
         num.assign(n+1,0);
         low.assign(n+1,0);
+        vis.assign(n+1,0);
     }
 
     void findSCCs(int n){
