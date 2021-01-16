@@ -1,6 +1,5 @@
 
-//---------KOSARAJU
-//for directed graphs
+// finds SCC and solve 2 - SAT (same as tarjanSCC.cpp)
 //PLS USE 0 INDEXED VERTICES
 vector<int> order;//store topological reversal order
 vector<int> comp;//store components

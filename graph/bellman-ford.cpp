@@ -1,7 +1,7 @@
 
 vector<pair<int,int>> G[ms];//G[u] contains {w, v}
 
-dis[s]=0;
+dis[s] = 0;
 for(int i = 0; i < V - 1 ; i++){
     for(int u = 0; u < V ; u++){
         for(auto &p : G[u]){

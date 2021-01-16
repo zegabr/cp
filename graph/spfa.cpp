@@ -1,16 +1,16 @@
 
-//generally as fast as dijkstra
+// generally as fast as dijkstra
 vector<bool> inq(ms);
-vector<pair<int,int>> G[ms];//G[u] contains {w, v}
+vector<pair<int,int>> G[ms];// G[u] contains {w, v}
 const int inf = 0x3f3f3f3f;
-int V;//number of vertices, update in main
+int V;// number of vertices, update in main
 
 int spfa(int S, int T){
     bool way = false;
     dis.assign(ms, inf);
     inq.assign(ms,0);
     vis.assign(ms,0);
-    
+
     queue<int> q({S});
     dis[S]=0;
     inq[S]=1;
