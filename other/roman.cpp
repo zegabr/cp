@@ -1,21 +1,33 @@
-
 string AtoR(int A) {
-    map<int, string> cvt;
-    cvt[1000] = "M"; cvt[900] = "CM"; cvt[500] = "D"; cvt[400] = "CD";
-    cvt[100]  = "C"; cvt[90]  = "XC"; cvt[50]  = "L"; cvt[40]  = "XL";
-    cvt[10]   = "X"; cvt[9]   = "IX"; cvt[5]   = "V"; cvt[4]   = "IV";
-    cvt[1]    = "I";
-    // process from larger values to smaller values
-    string ans="";
-    for (auto i = cvt.rbegin();i != cvt.rend(); i++)
-        while (A >= i->first) {
-            ans+=(string)i->second;
-            A -= i->first; 	
+    vector<pair<int,string>> vals = {
+        {1000,  "M"},
+        {900,   "CM"},
+        {500,   "D"},
+        {400,   "CD"},
+        {100,   "C"},
+        {90,    "XC"},
+        {50,    "L"},
+        {40,    "XL"},
+        {10,    "X"},
+        {9,     "IX"},
+        {5,     "V"},
+        {4,     "IV"},
+        {1,     "I"}
+    };
+    string res = "";
+    int pos = 0;
+    while(num){
+        if(num >= vals[pos].first){
+            num -= vals[pos].first; // integer
+            res += vals[pos].second; // string
+        }else{
+            pos++;
         }
-    return ans;
+    }
+    return res;
 }
 
-int RtoA(string R) {
+int RtoA(string R) {// TODO: understand this
     map<char, int> RtoA;
     RtoA['I'] = 1;   RtoA['V'] = 5;   RtoA['X'] = 10;   RtoA['L'] = 50;
     RtoA['C'] = 100; RtoA['D'] = 500; RtoA['M'] = 1000;
