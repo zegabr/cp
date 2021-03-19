@@ -11,7 +11,7 @@ long long sumdiv(long long n){
 	return ans;
 }
 
-long long countdiv(long long n){//O(sqrt(n))
+long long countDiv(long long n){//O(sqrt(n))
 	long long c=0;
 	for(long long i=1; i*i<=n; i++){
 		if(n%i==0){
@@ -19,5 +19,21 @@ long long countdiv(long long n){//O(sqrt(n))
 			else c+=2; // count 2 divisors: i and n/i
 		}
 	}
+	return c;
+}
+
+long long countDivUsingPrimes(long long n){ // n = P1^a1*P2^a2*...*Pk^ak => countDiv = (a1 + 1)(a2 + 1)..(ak + 1)
+	long long c=0;
+	long long power;
+	for(long long p : primes){
+		if(p*p > n) break;
+		power = 0;
+		while( n % p == 0){n /= p; power++;}
+		if(power > 0){
+			if(c == 0) c = 1;
+			c *= (power + 1);
+		}
+	}
+	if(n != 1) c *= 2;
 	return c;
 }
