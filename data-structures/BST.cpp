@@ -28,15 +28,9 @@ class BST{
 				return new Node(val);
 			}
 			if(val < node->val){
-				if(node->left == NULL){
-					node->left = new Node(val);
-					return node;
-				}else node->left = insert(node->left, val);
+				node->left = insert(node->left, val);
 			}else if(val > node->val){
-				if(node->right == NULL){
-					node->right = new Node(val);
-					return node;
-				}else node->right = insert(node->right, val);
+				node->right = insert(node->right, val);
 			}
 			return node;
 		}
@@ -45,7 +39,7 @@ class BST{
 			if(node == NULL) return NULL;
             if(val < node->val) node->left = remove(node->left, val);
             else if(val > node->val) node->right = remove(node->right, val);
-            else{
+            else{// node->val == val
                 if(!node->left) return node->right;
                 if(!node->right) return node->left;
                 
