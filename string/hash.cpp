@@ -95,7 +95,12 @@ class Hasher{
                 if(i >= m) addChar(cumulativeTail, text[i-m]);
                 addChar(cumulativeHead, text[i]);
 
-                Hash currHash = subtract(cumulativeHead, cumulativeTail, m);
+                Hash currHash = subtract(cumulativeHead, cumulativeTail, m); 
+                // this can be done as:
+                // addnextchar(cumulative, text[i]); 
+                // removefirstchar(cumulative, text[i-m], m); -> cumulative = (cumulative - text[i-m] * b^m + mod) % mod;
+                // advantages: does not need to use cumulativeTail uhuu
+                
                 if(i >= m-1 and currHash == patternHash) return i - m + 1;
             }
 
