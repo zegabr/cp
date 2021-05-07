@@ -3,8 +3,8 @@ typedef pair<long long, unsigned long long> Hash;//double hash is better than si
 
 class Hasher{
     private:
-        const long long base = 137;//cover all ascii values
-        const unsigned long long mod = (1ll<<31)-1; //mod2 = 1<<64
+        static const long long base = 137;//cover all ascii values
+        static const unsigned long long mod = (1ll<<31)-1; //mod2 = 1<<64
 
         bool isReversed;
         vector<Hash> H;
