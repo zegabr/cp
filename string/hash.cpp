@@ -27,15 +27,23 @@ class Hasher{
             return POW[i];
         }
 
-        void addChar(Hash &hash, char &c){//add char to cumulative hash
-            hash.first = (hash.first * base % mod + c) %mod;
-            hash.second = (hash.second * base + c);
+        Hash addChar(Hash &hash, char &c){//add char to cumulative hash
+            long long a = (hash.first * base % mod + c) %mod;
+            unsigned long long b = (hash.second * base + c);
+            return Hash(a,b);
         }
 
-        Hash subtract(Hash &head, Hash &tail, int patternSize){//used to get hash of window
+        Hash subtract(Hash &head, Hash &tail, int patternSize){//used to get hash of window/substring
             Hash power = getPow(patternSize);
             long long a = (head.first - tail.first * power.first % mod + mod) % mod;
             unsigned long long b = head.second - tail.second * power.second;
+            return Hash(a,b);
+        }
+
+        Hash removeFromLeft(Hash &window, char c, int patternSize){// if sliding window must use after adding char
+            Hash power = getPow(patternSize);
+            long long a = (window.first - c * power.first % mod + mod) %mod;
+            unsigned long long b = window.second - c * power.second;
             return Hash(a,b);
         }
 
@@ -46,15 +54,14 @@ class Hasher{
             H.resize(n);
             H[0].first = H[0].second = s[0];
             for(int i = 1;i < n;i++){
-                H[i] = H[i-1];
-                addChar(H[i], s[i]);
+                H[i] = addChar(H[i-1], s[i]);
             }
         }
 
         //window string hash O(1)
         Hash get(int l, int r){
             int n = H.size();
-            if(isReversed){
+            if(isReversed){ // TODO: add an explanation for this
                 int R = r,L = l;
                 r = n - L - 1;
                 l = n - R - 1;
@@ -80,7 +87,7 @@ class Hasher{
 
         Hash getUniqueHash(string &s){
             Hash hash = {0,0};
-            for(char c : s) addChar(hash, c);
+            for(char c : s) hash = addChar(hash, c);
             return hash;
         }
 
@@ -88,22 +95,18 @@ class Hasher{
             int n = text.size(), m = pattern.size();
             if(m == 0) return 0;
 
-            Hash patternHash, cumulativeHead, cumulativeTail;
+            Hash patternHash, window = {0,0};
             patternHash = getUniqueHash(pattern);
 
-            for(int i = 0; i < n; i++){
-                if(i >= m) addChar(cumulativeTail, text[i-m]);
-                addChar(cumulativeHead, text[i]);
-
-                Hash currHash = subtract(cumulativeHead, cumulativeTail, m); 
-                // this can be done as:
-                // addnextchar(cumulative, text[i]); 
-                // removefirstchar(cumulative, text[i-m], m); -> cumulative = (cumulative - text[i-m] * b^m + mod) % mod;
-                // advantages: does not need to use cumulativeTail uhuu
-                
-                if(i >= m-1 and currHash == patternHash) return i - m + 1;
+            for(int i = 0; i < m; i++) window = addChar(window, text[i]);
+            if(window == patternHash) return 0; // is at the beggining
+        
+            for(int i = m; i < n; i++){
+                window = addChar(window, text[i]); // add next
+                window = removeFromLeft(window, text[i-m], m); // remove first
+                if(window == patternHash) return i - m + 1; // if i = m, return 1 and so on
             }
-
+        
             return -1;
         }
 };
