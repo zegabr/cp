@@ -23,10 +23,11 @@ using namespace std;
 #define PREC cout << fixed << setprecision(48)
 
 
-
+// comentario da branch 2, pegue isso
 
 int32_t main(){
-    ios::sync_with_stdio(0); cin.tie(0);
+    // será se eu deixo isso
+    ios::sync_with_stdio(false); cin.tie(false);
 
 
 
