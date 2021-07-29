@@ -22,11 +22,13 @@ using namespace std;
 #define db(x) cerr<<#x<<" = "<<x<<endl
 #define PREC cout << fixed << setprecision(48)
 
-
+// comentario da branch 1, pegue isso aqui
 
 
 int32_t main(){
-    ios::sync_with_stdio(0); cin.tie(0);
+    ios::sync_with_stdio(0); 
+    // modificacao branch 1
+    cin.tie(0);
 
 
 
