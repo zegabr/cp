@@ -1,8 +1,6 @@
 #include<iostream>
 using namespace std;
 
-
-
 class Node{
 	public:
 		int val;
@@ -12,7 +10,6 @@ class Node{
 			left = right = NULL;
 		}
 };
-
 
 class BST{
 	private:
@@ -68,24 +65,21 @@ class BST{
 		void remove(int data) {root = remove(root, data);}
 };
 
-int main(){
-	BST s;
+// int main(){
+// 	BST s;
 
-	s.insert(10);
-	s.insert(11);
-	s.insert(5);
-	s.insert(20);
-	s.insert(1);
-	s.inorder(); cout << endl;
-	s.remove(5);
-	s.remove(20);
-	s.remove(11);
-	s.remove(10);
-	s.inorder(); cout << endl;
-	s.remove(1);
-	s.remove(5);
-	s.inorder(); cout << endl;
-	
-
-
-}
+// 	s.insert(10);
+// 	s.insert(11);
+// 	s.insert(5);
+// 	s.insert(20);
+// 	s.insert(1);
+// 	s.inorder(); cout << endl;
+// 	s.remove(5);
+// 	s.remove(20);
+// 	s.remove(11);
+// 	s.remove(10);
+// 	s.inorder(); cout << endl;
+// 	s.remove(1);
+// 	s.remove(5);
+// 	s.inorder(); cout << endl;
+// }

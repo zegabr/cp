@@ -7,13 +7,13 @@ template<typename T>
 class segtree{
     private:
         T none; //valor que nao atrapalhe
-        vector<T> seg;//0 indexed
+        std::vector<T> seg;//0 indexed
         int tam;//tamanho
         int op;
 
         T merge(T e, T d){
-            if(op==MIN) return min(e,d);
-            else if(op==MAX) return max(e,d);
+            if(op==MIN) return std::min(e,d);
+            else if(op==MAX) return std::max(e,d);
             else if(op==SUM) return e+d;
         }
 
@@ -36,7 +36,7 @@ class segtree{
             return merge(get(a, b, e, l, m), get(a, b, d, m + 1, r)); 
         }
 
-        void build(vector<T> &v, int x, int l, int r) {
+        void build(std::vector<T> &v, int x, int l, int r) {
             if(l == r) {
                 seg[x] = v[l];
                 return;
@@ -48,7 +48,7 @@ class segtree{
         }
 
     public:
-        segtree(vector<T> &v, int opp){
+        segtree(std::vector<T> &v, int opp){
             seg.resize(4*v.size());
             op = opp;
             tam = v.size();

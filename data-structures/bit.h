@@ -1,16 +1,17 @@
 
 template<typename T>
-class Bit{//cumulative sum
+class BIT{//cumulative sum
     private:
-        vector<T> bit;
+        std::vector<T> bit;
 
     public:
-        Bit(vector<T> &v){
+        BIT(std::vector<T> &v){
             bit.assign(v.size()+2,0);
             for(int i=0;i<v.size();i++)
-                upd(i,v[i]);
+                update(i,v[i]);
         }
-        Bit(int tam){
+
+        BIT(int tam){
             bit.assign(tam+2,0);
         }
 
@@ -28,7 +29,7 @@ class Bit{//cumulative sum
             return get(j+1) - get(i);
         }
 
-        void upd(int i,T val){
+        void update(int i,T val){
             i++;
             while(i<bit.size()-1){
                 bit[i]+=val;

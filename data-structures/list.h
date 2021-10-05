@@ -10,7 +10,7 @@ class Node{
 };
 
 template<typename T>
-class List{
+class Deque{
     private:
         int sz = 0;
         Node<T>* frontNode = nullptr;
@@ -81,58 +81,58 @@ class List{
 template<typename T>
 class Queue{
     private:
-        List<T>* list;
+        Deque<T>* deque;
 
     public:
         Queue(){
-            list = new List<T>();
+            deque = new deque<T>();
         }
 
         T front(){
-            return list->front();
+            return deque->front();
         }
 
         T back(){
-            return list->back();
+            return deque->back();
         }
 
         T pop(){
-            return list->pop_front();
+            return deque->pop_front();
         }   
 
         void push(T val){
-            list->push_back(val);
+            deque->push_back(val);
         }
 
         int size(){
-            return list->size();
+            return deque->size();
         }
 };
 
 template<typename T>
 class Stack{
     private:
-        List<T>* list;
+        Deque<T>* deque;
 
     public:
         Stack(){
-            list = new List<T>();
+            deque = new deque<T>();
         }
 
         T top(){
-            return list->front();
+            return deque->front();
         }
 
         T pop(){
-            return list->pop_front();
+            return deque->pop_front();
         }   
 
         void push(T val){
-            list->push_front(val);
+            deque->push_front(val);
         }
 
         int size(){
-            return list->size();
+            return deque->size();
         }
 };
 

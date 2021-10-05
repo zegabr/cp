@@ -117,15 +117,15 @@ void inorder(Node *root) {
 	}
 }
 
-int main(){
-    int key;
-    Node *tree=NULL;
-    while(cin >> key){
-        tree=insertAvl(tree,key);
+// int main(){
+//     int key;
+//     Node *tree=NULL;
+//     while(cin >> key){
+//         tree=insertAvl(tree,key);
 	
-    }
-    cout<<endl<<"tree in preorder (each node with respective balance):\n\n";
-    inorder(tree);
+//     }
+//     cout<<endl<<"tree in preorder (each node with respective balance):\n\n";
+//     inorder(tree);
 
-    return 0;
-}
+//     return 0;
+// }
