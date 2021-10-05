@@ -2,7 +2,6 @@
 #define MIN 1
 #define MAX 2
 #define SUM 3
-
 template<typename T>
 class segtree{
     private:

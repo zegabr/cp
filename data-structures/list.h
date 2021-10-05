@@ -1,3 +1,4 @@
+
 template<typename T>
 class Node{
     public:
@@ -15,7 +16,7 @@ class Deque{
         int sz = 0;
         Node<T>* frontNode = nullptr;
         Node<T>* backNode = nullptr;
-        
+
     public:
         int size(){
             return sz;

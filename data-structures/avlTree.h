@@ -1,4 +1,5 @@
 #include <iostream>
+
 using namespace std;
 
 struct node{
@@ -25,18 +26,18 @@ Node * insertAvl(Node *root,int key){
     }else if(key<root->key){
         root->left = insertAvl(root->left,key);
         root->h = calcHeight(root);
-        
-        
+
+
     }else if(key>root->key){
         root->right = insertAvl(root->right,key);
         root->h = calcHeight(root);
     }
     int bal = getHeight(root->right)-getHeight(root->left);
-     if(bal==2 || bal==-2){
-         cout << "number "<<root->key<<" is unbalanced\n";
-         //rotations here
-         if(key<root->key){
-             //left cases
+    if(bal==2 || bal==-2){
+        cout << "number "<<root->key<<" is unbalanced\n";
+        //rotations here
+        if(key<root->key){
+            //left cases
             if(key<root->left->key){
                 //left left case
                 Node *l = root->left;
@@ -46,7 +47,7 @@ Node * insertAvl(Node *root,int key){
                 //update heights root and l
                 root->h = calcHeight(root);
                 l->h = calcHeight(l);
-                
+
                 return l;
 
 
@@ -68,7 +69,7 @@ Node * insertAvl(Node *root,int key){
 
             }
 
-         }else{
+        }else{
             //right cases  
             if(key>root->right->key){
                 //right right case
@@ -79,7 +80,7 @@ Node * insertAvl(Node *root,int key){
                 //update heights root and r
                 root->h = calcHeight(root);
                 r->h=calcHeight(r);
-                
+
                 return r;
 
             }else{
@@ -99,22 +100,22 @@ Node * insertAvl(Node *root,int key){
 
 
             }           
-         }
-        
-     }
-     
-     
-        return root;
+        }
+
+    }
+
+
+    return root;
 
 }
 
 void inorder(Node *root) {
-	if(root != NULL) {
+    if(root != NULL) {
         int bal = getHeight(root->right)-getHeight(root->left);
-		cout << root->key <<" b"<<bal<< endl;
-		inorder(root->left);
-		inorder(root->right);
-	}
+        cout << root->key <<" b"<<bal<< endl;
+        inorder(root->left);
+        inorder(root->right);
+    }
 }
 
 // int main(){
@@ -122,7 +123,7 @@ void inorder(Node *root) {
 //     Node *tree=NULL;
 //     while(cin >> key){
 //         tree=insertAvl(tree,key);
-	
+
 //     }
 //     cout<<endl<<"tree in preorder (each node with respective balance):\n\n";
 //     inorder(tree);
