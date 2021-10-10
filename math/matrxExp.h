@@ -1,4 +1,5 @@
 
+#include <cstring>
 #define TAM 3 // base size
 long long mod = 1e9+9;
 long long base[TAM] = {0,1,2};//base cases
