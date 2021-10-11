@@ -1,7 +1,9 @@
 
-#define alfa 128
-
+#include<iostream>
+#include<algorithm>
 class Node{  
+    private:
+        static const int alfa = 128;
     public: 
         int data;
         int isword;//count many insertions
@@ -9,12 +11,14 @@ class Node{
         Node *child[alfa];
 
         Node() : data(0), isword(0), pref(0) 
-        {
-            fill(child, child + alfa, (Node *)NULL);
-        }
+    {
+        std::fill(child, child + alfa, (Node *)NULL);
+    }
 };
 
 class Trie{
+    private:
+        static const int alfa = 128;
     public:
         Node *root;
 
@@ -24,7 +28,7 @@ class Trie{
             freeChildren(root);
         }
 
-        void insert(string &s){
+        void insert(std::string &s){
             Node *cur = root;
             root->pref++;
             for(char &c : s){
@@ -39,7 +43,7 @@ class Trie{
             cur->isword++;
         }
 
-        int count(string &s, bool isPrefix = false){
+        int count(std::string &s, bool isPrefix = false){
             //count how many times s was inserted or how many words has s as prefix
             Node *cur = root;
             for(char &c : s){

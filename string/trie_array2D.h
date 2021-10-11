@@ -1,27 +1,29 @@
 
-#define maxsize 2111111
-#define alfa 128 //can use all ascii characters
-
+#include<vector>
+#include<iostream>
 class Trie{
+    private:
+        static const int maxsize = 2111111;
+        static const int alfa = 128; //can use all ascii characters
     public:
-        vector<vector<int>> trie;
-        vector<int> isword;
-        vector<int> pref;
-        vector<int> data;//used for debugging and removals
+        std::vector<std::vector<int>> trie;
+        std::vector<int> isword;
+        std::vector<int> pref;
+        std::vector<int> data;//used for debugging and removals
         int z;
 
         Trie() {
-            trie.assign(maxsize,vector<int>(alfa,0));
+            trie.assign(maxsize,std::vector<int>(alfa,0));
             isword.assign(maxsize,0);
             pref.assign(maxsize,0);
             data.assign(maxsize,0);
             z = 1;
         }
 
-        void insert(string &s) {
+        void insert(std::string &s) {
             int cur = 0, id;
             pref[cur]++;
-            for(int i = 0; i < len(s); i++) {
+            for(int i = 0; i < s.size(); i++) {
                 id = getid(s[i]);
                 if(!trie[cur][id]) {
                     reset(z);
@@ -34,10 +36,10 @@ class Trie{
             isword[cur]++;
         }
 
-        int count(string &s, bool prefixQuery=false) {
+        int count(std::string &s, bool prefixQuery=false) {
             //count final words or common prefixes
             int cur = 0, id;
-            for(int i = 0; i < len(s); i++) {
+            for(int i = 0; i < s.size(); i++) {
                 id = getid(s[i]);
                 if(!trie[cur][id]) return 0;
                 cur = trie[cur][id];
@@ -45,12 +47,12 @@ class Trie{
             return prefixQuery ? pref[cur] : isword[cur];
         }
 
-        void remove(string &s, bool removeAll=false){
+        void remove(std::string &s, bool removeAll=false){
             //remove one or all ocurrences of s
             int cur = 0, id;
-            vector<int> parentstack;
+            std::vector<int> parentstack;
             parentstack.push_back(cur);
-            for(int i = 0; i < len(s); i++) {
+            for(int i = 0; i < s.size(); i++) {
                 id = getid(s[i]);
                 if(!trie[cur][id]) return;
                 cur = trie[cur][id];
@@ -60,7 +62,7 @@ class Trie{
             int toRemove = removeAll ? isword[cur] : 1;
             isword[cur] -= toRemove;
 
-            while(len(parentstack)>1){
+            while(parentstack.size()>1){
                 cur = parentstack.back();
                 parentstack.pop_back();
                 pref[cur] -= toRemove;

@@ -1,7 +1,9 @@
 
-#define alfa 2
-
+#include<vector>
+#include<algorithm>
 class Node{  
+    private:
+        static const int alfa = 2;
     public: 
         int data;
         int isword;//count many insertions
@@ -9,7 +11,7 @@ class Node{
         Node *child[alfa];
 
         Node(){
-            fill(child, child + alfa, (Node *)NULL);
+            std::fill(child, child + alfa, (Node *)NULL);
             isword = 0;
             prefix_count = 0;
         }
