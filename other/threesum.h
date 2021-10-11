@@ -1,9 +1,12 @@
+#include<vector>
+#include<algorithm>
+#include<set>
 class ThreeSum{
     // TODO: returning vectors is too time consuming, must do all of it in the same method
     public:
-        vector<vector<int>> getTwoSum(vector<int> &nums, int start, int desiredSum){// O(n)
+        std::vector<std::vector<int>> getTwoSum(std::vector<int> &nums, int start, int desiredSum){// O(n)
             int l = start, r = nums.size() - 1;
-            vector<vector<int>> res;
+            std::vector<std::vector<int>> res;
             while(l < r){
                 int sum = nums[l] + nums[r];
                 if(sum == desiredSum){
@@ -15,20 +18,20 @@ class ThreeSum{
             return res;
         }
 
-        vector<vector<int>> threeSum(vector<int> &nums, int desiredSum){
+        std::vector<std::vector<int>> threeSum(std::vector<int> &nums, int desiredSum){
             if(nums.size() < 3) return {};
             sort(nums.begin(), nums.end());
 
-            set<vector<int>> aux; // to remove duplicates
+            std::set<std::vector<int>> aux; // to remove duplicates
 
             for(int i = 0; i < nums.size() - 2; i++){//O(n)
-                vector<vector<int>> pairs = getTwoSum(nums, i+1, desiredSum - nums[i]); //O(n)
+                std::vector<std::vector<int>> pairs = getTwoSum(nums, i+1, desiredSum - nums[i]); //O(n)
                 for(auto& p: pairs){
                     aux.insert({nums[i], p[0], p[1]});
                 }
             }
 
-            vector<vector<int>> res(aux.begin(), aux.end());
+            std::vector<std::vector<int>> res(aux.begin(), aux.end());
             return res;
         }
 };

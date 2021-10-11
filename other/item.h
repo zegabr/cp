@@ -10,4 +10,3 @@ class item {
             return x < other.x || x == other.x && y < other.y;
         }
 };
-

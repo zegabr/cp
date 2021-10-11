@@ -45,10 +45,10 @@ void putqueen(int coluna){
             if(pode(i,j)){
                 tab[i][j]=1;//poe rainha
                 sol[coluna]=i;//guarda solucao
-                
+
                 if(coluna==8){//colocou ultima rainha da solucao
                     printsol();
-                    
+
                 }else{//passar pra proxima coluna
                     putqueen(coluna+1);
 
@@ -58,9 +58,9 @@ void putqueen(int coluna){
         }
     }else if(coluna<8){//ainda tem rainhas para colocar
         putqueen(coluna+1);
-     }else if(coluna==8){//caso onde a fixa está na ultima coluna (coluna==fc==8), nao tirar rainha daqui
-         printsol();
-     }
+    }else if(coluna==8){//caso onde a fixa está na ultima coluna (coluna==fc==8), nao tirar rainha daqui
+        printsol();
+    }
 }
 
 int main()

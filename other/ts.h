@@ -1,6 +1,6 @@
 
 double f(double x){
-	//function that strictly grows up then strictly grows down or the inverse
+    //function that strictly grows up then strictly grows down or the inverse
 }
 double ternary_search(double l, double r) {
     double eps = 1e-9;              //set the error limit here
