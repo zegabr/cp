@@ -17,7 +17,7 @@ Stck *insert(Stck *s,int key){
         aux->next=s->topper;
         s->topper=aux;
     }
-        return s;
+    return s;
 }
 Stck *remove(Stck *s){
     if(s->topper==NULL){
@@ -46,7 +46,7 @@ int main(){
     Stck *s = new Stck();
 
     s=remove(s);
-    
+
     s=insert(s,5);
     printS(s);
     s=insert(s,3);
