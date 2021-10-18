@@ -4,11 +4,11 @@ def solve():
 	line = stdin.readline
 	# int(line()) return the only int in line
 	# map(T,line().split()) return various type T in line
-	
-	
-	
-	
-	
+
+
+
+
+
 	return
 
 #========================
