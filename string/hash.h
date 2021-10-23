@@ -19,7 +19,7 @@ class Hasher{
             for(int i = nexPosition; i < maxsize; i++){
                 POW[i].first = POW[i-1].first * base % mod;
                 POW[i].second = POW[i-1].second * base;
-            }   
+            }
         }
 
         Hash getPow(int i){
@@ -50,7 +50,7 @@ class Hasher{
             return Hash(a,b);
         }
 
-    public: 
+    public:
         // full std::string hash O(N)
         Hasher(std::string &s, bool reversed = false): isReversed(reversed) {
             int n = s.size();
@@ -84,7 +84,7 @@ class Hasher{
             return get(n-m,n-1);
         }
 
-    public: 
+    public:
         //rabin karp constructor
         Hasher(){}
 
