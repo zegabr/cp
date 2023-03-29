@@ -9,9 +9,9 @@ class Stonks{
 
         for(int num : prices){
             for(int i = 0; i < k; i++){
-                if(i == 0) 
+                if(i == 0)
                     buy[i] = std::max(buy[i], -num);
-                else 
+                else
                     buy[i] = std::max(buy[i], sell[i-1] - num);
 
                 sell[i] = std::max(sell[i], buy[i] + num);

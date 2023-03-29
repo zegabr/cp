@@ -1,15 +1,17 @@
 
 #include <cstring>
-#define TAM 3 // base size
-long long mod = 1e9+9;
-long long base[TAM] = {0,1,2};//base cases
-long long Tbase[TAM][TAM] = {//transformation
-    {0,1,0},
-    {0,0,1},
-    {1,1,1}
-};
 
-struct Matrix { 
+namespace MatrixExp{
+    const int TAM = 3; // base size
+    const long long mod = 1e9+9;
+    const long long base[TAM] = {0,1,2};//base cases
+    const long long Tbase[TAM][TAM] = {//transformation
+        {0,1,0},
+        {0,0,1},
+        {1,1,1}
+    };
+
+struct Matrix {
     long long mat[TAM][TAM];
     Matrix operator * (const Matrix &p) {
         Matrix ans;
@@ -21,10 +23,10 @@ struct Matrix {
     }
 };
 
-Matrix fexp(Matrix a, long long b) {
+inline Matrix fexp(Matrix a, long long b) {
     b-=TAM-1;//subtracts some value that gives right answer(generally is TAM-1 so it returns base cases if is less than TAM)
     Matrix ans;//identity matrix
-    for(int i = 0; i < TAM; i++) 
+    for(int i = 0; i < TAM; i++)
         for(int j = 0; j < TAM; j++)
             ans.mat[i][j] = (i == j);
     while(b) {
@@ -35,8 +37,8 @@ Matrix fexp(Matrix a, long long b) {
     return ans;
 }
 
-Matrix T;
-long long solve(long long n){
+inline long long solve(long long n){
+    Matrix T;
     n--;//depends on indexing
     if(n < TAM) return base[n];//base case
 
@@ -49,3 +51,5 @@ long long solve(long long n){
 
     return ans;
 }
+}
+

@@ -17,15 +17,15 @@ class SPFA : public WeightedGraph{
         inq[S]=1;
 
         while(q.size()){
-            int u = q.front(); 
+            int u = q.front();
             q.pop(); inq[u]=0;
             if(vis[u] > V) return -1;//has negative cycle
             for(auto child : G[u]){
-                int v = child.y, w = child.x;
+                int v = child.second, w = child.first;
                 if(dis[u]+w < dis[v]){
                     dis[v] = dis[u]+w;
                     if(!inq[v]){
-                        q.push(v); 
+                        q.push(v);
                         inq[v]=1;
                         vis[v]++;
                     }

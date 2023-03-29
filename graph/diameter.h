@@ -20,7 +20,7 @@ class Diameter: public Graph{
         if(distu==len){
             findnode[u]=1;
             return;
-        }	
+        }
         for(int v : g[u]){
             if(v!=par) dfs2(v,distu+1,u);
         }
@@ -33,7 +33,7 @@ class Diameter: public Graph{
                 center.push_back(par);
             }
             return;
-        }	
+        }
 
         for(int v : g[u]){
             if(v!=par) dfs3(v,distu+1,u);

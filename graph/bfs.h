@@ -15,6 +15,6 @@ class BFS : public Graph{
                     q.push(v);
                 }
             }
-        }  
+        }
     }
 };

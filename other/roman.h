@@ -1,9 +1,10 @@
 #include<map>
+#include <string>
 #include<tuple>
 #include<vector>
 namespace Roman{
 
-    std::string AtoR(int A) {
+    inline std::string AtoR(int A) {
         std::vector<std::pair<int,std::string>> vals = {
             {1000,  "M"},
             {900,   "CM"},
@@ -32,7 +33,7 @@ namespace Roman{
         return res;
     }
 
-    int RtoA(std::string R) {// TODO: understand this
+    inline int RtoA(std::string R) {// TODO: understand this
         std::map<char, int> RtoA;
         RtoA['I'] = 1;   RtoA['V'] = 5;   RtoA['X'] = 10;   RtoA['L'] = 50;
         RtoA['C'] = 100; RtoA['D'] = 500; RtoA['M'] = 1000;

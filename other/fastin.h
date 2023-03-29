@@ -1,7 +1,7 @@
 
 #include <iostream>
 namespace FastInput{
-    void sc(int &num){//scan int
+    inline void sc(int &num){//scan int
         num=0;
         bool neg=0;
         int c = getchar();
@@ -13,7 +13,7 @@ namespace FastInput{
         if(neg)num*=-1;
     }
 
-    void sc(long long &num){//scan ll
+    inline void sc(long long &num){//scan ll
         num=0ll;
         bool neg=0;
         int c = getchar();

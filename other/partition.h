@@ -1,7 +1,7 @@
 
 #include <vector>
 #include <algorithm>
-int partition(std::vector<int> &nums, int l, int r){
+inline int partition(std::vector<int> &nums, int l, int r){
     if(l >= r) return l;
 
     int randomPos = rand() % (r-l+1) + l;

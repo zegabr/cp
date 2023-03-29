@@ -10,7 +10,7 @@ class Kuhn : public Graph{
             matchr[i] = matchl[i] = -1;
     }
 
-    bool kuhn(int v){//dfs 
+    bool kuhn(int v){//dfs
         if(vis[v] == timer) return 0;
         vis[v] = timer;
         for(int to : g[v]){
@@ -37,6 +37,6 @@ class Kuhn : public Graph{
     //MAXIMUM INDEPENDENT SET = ms - MAXIMUM BIPARTITE MATCHING
     void printmatch(int n){
         for(int i = 0; i < n; i++)
-            std::cout << "match[" << i << "]=" << matchr[i] - n << std::endl;		
+            std::cout << "match[" << i << "]=" << matchr[i] - n << std::endl;
     }
 };

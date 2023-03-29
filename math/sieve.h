@@ -1,4 +1,5 @@
 
+#include <algorithm>
 #include <vector>
 class Sieve{
     public:
@@ -13,7 +14,7 @@ class Sieve{
             prime[0]=prime[1]=0;
             for (long long p=2; p*p<=P;p++) if(prime[p]){
                 for(long long i=p*p; i<=P; i+=p)
-                    prime[i]=0; 
+                    prime[i]=0;
             }
             primes.push_back(2);
             for(int i=3;i<=P;i+=2)
@@ -30,15 +31,3 @@ class Sieve{
             return 1;
         }
 };
-
-
-int solve(vector<int> input){
-	vector<int> sorted = input;
-	sort(input.begin(), input.end());
-	int res = 0;
-	
-	for(int i = 0 ; i < input.size(); i++)
-		res += (input[i] != sorted[i]);
-
-	return res;
-}

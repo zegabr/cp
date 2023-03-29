@@ -4,8 +4,8 @@ class Dijkstra : public WeightedGraph{
 
     void dijkstra(int S, int T){//O(E logV)
         std::priority_queue <
-            std::pair<int,int>, 
-            std::vector<std::pair<int,int>>, 
+            std::pair<int,int>,
+            std::vector<std::pair<int,int>>,
             std::greater<std::pair<int,int>>
                 > pq;//contains {dis[u], u}
         pq.push({0, S});
@@ -20,7 +20,7 @@ class Dijkstra : public WeightedGraph{
             for(auto child : G[u]){
                 int v, w;
                 std::tie(w, v) = child;
-                if(dis[v] > dis[u] + w){           
+                if(dis[v] > dis[u] + w){
                     dis[v] = dis[u] + w;
                     pq.push({dis[v], v});
                 }

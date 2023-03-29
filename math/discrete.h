@@ -13,7 +13,7 @@ namespace Discrete
             return (a + b - 1) / b;
             /**
              * ceil(a/b) =(a + b - 1) / b
-             * proof: if a = bk + 0, then 
+             * proof: if a = bk + 0, then
              * bk == (a+b-1), then ceil = k.
              * Otherwise, a = bk + r, 0 < r < b,
              * then (a+b-1) = (bk + r + b - 1) == b(k+1) + r.
@@ -21,24 +21,24 @@ namespace Discrete
              * */
         }
 
-    long long gcd(long long a, long long b){
+    inline long long gcd(long long a, long long b){
         if (b == 0)
             return a;
         return gcd(b, a % b);
     }
 
-    long long lcm(const long long &a, const long long &b){
+    inline long long lcm(const long long &a, const long long &b){
         return (a / std::__gcd(a, b)) * b;
     }
 
     /**
      * a ^ 6 = a ^ 110 == a ^ (0*2⁰+1*2¹+1*2²)
      * == a⁰ * a² * a⁴ == a⁰ * a² * (a²)²
-     * So, we keep squaring the base a, 
+     * So, we keep squaring the base a,
      * and multiply it by the answer every time we encounter a 1 bit in the power binary's representation
-     * 
+     *
      * */
-    long long fexp(long long a, long long b){ //O(logb)
+    inline long long fexp(long long a, long long b){ //O(logb)
         long long ans = 1;
         while (b){
             if (b & 1)
@@ -49,7 +49,7 @@ namespace Discrete
         return ans;
     }
 
-    long long fexp(long long a, long long b, long long mod){ //O(logb)
+    inline long long fexp(long long a, long long b, long long mod){ //O(logb)
         long long ans = 1;
         while (b){
             if (b & 1)
@@ -60,11 +60,11 @@ namespace Discrete
         return ans;
     }
 
-    long long invmod(long long a, long long mod){ //mod has to be prime
+    inline long long invmod(long long a, long long mod){ //mod has to be prime
         return fexp(a, mod - 2, mod);
     }
 
-    int dlog(int a, int b, int m){ //find x where a^x = b mod m, with a and m co-prime (discrete log)
+    inline int dlog(int a, int b, int m){ //find x where a^x = b mod m, with a and m co-prime (discrete log)
         int n = (int)sqrt(m + .0) + 1;
         int an = 1;
         for (int i = 0; i < n; i++)
@@ -87,8 +87,8 @@ namespace Discrete
         return -1;
     }
 
-    std::vector<long long> phi(P + 1);
-    void PHI(){ //get prime factors and calculate phi
+     inline std::vector<long long> PHI(){ //get prime factors and calculate phi
+        std::vector<long long> phi(P + 1);
         for (long long i = 1; i < P; i++)
             phi[i] = i;
         for (long long i = 2; i < P; i++){ //O(N)
@@ -100,9 +100,10 @@ namespace Discrete
                 }
             }
         }
+        return phi;
     }
 
-    long long PHI(long long n){ //calculates one phi
+    inline long long PHI(long long n){ //calculates one phi
         long long ans = n;
         for (long long i = 2; i * i <= n; i++){
             if (n % i == 0){
@@ -117,7 +118,7 @@ namespace Discrete
         return ans;
     }
 
-    int generator(int p){ //find a primitive root modulo p
+    inline int generator(int p){ //find a primitive root modulo p
         //talvez seja interessante fazer uma condicional aqui pra saber se o p tem raíz primitiva
         std::vector<int> fact;
         int tot = PHI(p), n = tot;
@@ -148,7 +149,7 @@ namespace Discrete
     // 	se k=ord(a,m), ord(a^t,m)=k/gcd(k,t);//logo se a for raíz primitiva, vc consegue ordem de qualquer potencia dele, logo de qualquer nmero q possui ordem
     // 	um número tem raíz primitiva se for da forma 2,4,p^k ou 2p^k com k inteiro positivo e p PRIMO ÍMPAR
     //====================================================
-    std::vector<int> droot(int k, int a, int n){ //find x where x^k==a mod n (discrete root)
+    inline std::vector<int> droot(int k, int a, int n){ //find x where x^k==a mod n (discrete root)
         if (a == 0){
             //0 is the only solution
             std::vector<int> ans = {0};
@@ -191,7 +192,7 @@ namespace Discrete
     // x eh inverso modular de a no modulo y (se d == 1)
     // y eh inverso modular de b no modulo x (se d == 1)
     //long long x,y,d;
-    void euclides(long long a, long long b, long long &x, long long &y, long long &d){
+    inline void euclides(long long a, long long b, long long &x, long long &y, long long &d){
         if (b == 0){
             x = 1;
             y = 0;
@@ -206,7 +207,7 @@ namespace Discrete
     }
 
     /////positive solution
-    bool makePositive(long long &x, long long &y, long long d, long long a, long long b){
+    inline bool makePositive(long long &x, long long &y, long long d, long long a, long long b){
         if (x < 0){
             //x+ t*b/d >= 0 ==> t >= -x*d/b = -x/(b/d)
             long long t = (-x + (b / d) - 1) / (b / d); //ceil de -x/(b/d)
@@ -225,7 +226,7 @@ namespace Discrete
     }
 
     //ax+by=k
-    int solve(long long a, long long b, long long k, long long &x, long long &y, long long &d){
+    inline int solve(long long a, long long b, long long k, long long &x, long long &y, long long &d){
         euclides(a, b, x, y, d);
         if (k % d != 0)
             return 0; // no solution at all
@@ -236,13 +237,13 @@ namespace Discrete
         return 1;	  //integer solution exists
     }
 
-    void minimizeX(long long a, long long b, long long &x, long long &y, long long &d){ //for positive solution
+    inline void minimizeX(long long a, long long b, long long &x, long long &y, long long &d){ //for positive solution
         long long t = x / (b / d);
         x -= b / d * t;
         y += a / d * t;
     }
 
-    void minimizeY(long long a, long long b, long long &x, long long &y, long long &d){ //for positive solution
+    inline void minimizeY(long long a, long long b, long long &x, long long &y, long long &d){ //for positive solution
         std::swap(a, b);
         std::swap(x, y);
         minimizeX(a, b, x, y, d);
@@ -251,15 +252,15 @@ namespace Discrete
     }
 
     // miller rabin
-    bool overflow(long long a, long long b){
+    inline bool overflow(long long a, long long b){
         return b && (a >= (1LL << 62) / b);
     }
 
-    long long add(long long a, long long b, long long mod){
+    inline long long add(long long a, long long b, long long mod){
         return (a + b) % mod;
     }
 
-    long long mul(long long a, long long b, long long mod){
+    inline long long mul(long long a, long long b, long long mod){
         if (!overflow(a, b))
             return (a * b) % mod;
         long long ans = 0;
@@ -272,13 +273,13 @@ namespace Discrete
         return ans;
     }
 
-    long long my_rand(){
+    inline long long my_rand(){
         long long ans = rand();
         ans = (ans << 31) | rand();
         return ans;
     }
 
-    bool miller(long long p, int precision){ //check primality
+    inline bool miller(long long p, int precision){ //check primality
         if (p < 2)
             return 0;
         if (p % 2 == 0)
@@ -299,7 +300,7 @@ namespace Discrete
         return 1;
     }
 
-    long long rho(long long n){ //find a prime factor
+    inline long long rho(long long n){ //find a prime factor
         if (n == 1 || miller(n, 10))
             return n;
         if (n % 2 == 0)

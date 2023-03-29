@@ -25,7 +25,7 @@ class LCA : public Graph {
                 b = up[b][i];
             }
         }
-        return up[a][0]; 
+        return up[a][0];
     }
 
     int distance(int u, int v) {
@@ -35,13 +35,13 @@ class LCA : public Graph {
 
     int getKthAncestor(int u, int k){
         if(k > lv[u]) return -1;
-        for (int i = 0; i <= lg; i++){ 
-            if (k & (1 << i)){ 
-                u = up[u][i]; 
-                if (u == -1) 
-                    break; 
-            } 
-        } 
-        return u; 
+        for (int i = 0; i <= lg; i++){
+            if (k & (1 << i)){
+                u = up[u][i];
+                if (u == -1)
+                    break;
+            }
+        }
+        return u;
     }
 };

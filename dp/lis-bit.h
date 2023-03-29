@@ -13,18 +13,19 @@ class LIS_BIT{
         }
 
         int get(int x){
-            int ans = 0;
+            int res = 0;
             for(;x;x-=x&-x)
-                ans = std::max(bit[x], ans);
+                res = std::max(bit[x], res);
+            return res;
         }
 
         int lis(std::vector<int> &v){
-            int ans =0, n = v.size();
+            int res =0, n = v.size();
             for(int i=0;i<n;i++){
                 dp[i] = 1 + get(v[i]);
                 update(v[i], dp[i]);
-                ans = std::max(ans, dp[i]);
+                res = std::max(res, dp[i]);
             }
-            return ans;
+            return res;
         }
 };

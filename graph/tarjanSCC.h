@@ -8,7 +8,7 @@ class TarjanSCC : public Graph{
     int sccCount, dfsId;
 
     void tarjanSCC(int u){
-        low[u] = num[u] = dfsId++; 
+        low[u] = num[u] = dfsId++;
         visitingStack.push_back(u);
         vis[u] = 1;
 
@@ -16,7 +16,7 @@ class TarjanSCC : public Graph{
             if(num[v] == 0) // never visited
                 tarjanSCC(v);
 
-            if(vis[v] == 1) 
+            if(vis[v] == 1)
                 low[u] = std::min(low[u], low[v]);
         }
 

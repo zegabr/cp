@@ -1,16 +1,16 @@
 
 #include<iostream>
 #include<algorithm>
-class Node{  
+class Node{
     private:
         static const int alfa = 128;
-    public: 
+    public:
         int data;
         int isword;//count many insertions
         int pref;
         Node *child[alfa];
 
-        Node() : data(0), isword(0), pref(0) 
+        Node() : data(0), isword(0), pref(0)
     {
         std::fill(child, child + alfa, (Node *)NULL);
     }

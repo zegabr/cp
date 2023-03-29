@@ -1,4 +1,5 @@
 
+#include <string>
 #include <vector>
 #include <stack>
 #include <algorithm>
@@ -45,7 +46,7 @@ class Parser{
             }
         }
 
-        int evaluate(string& s) {
+        int evaluate(std::string& s) {
             std::stack<int> st;
             std::stack<char> op;
             bool may_be_unary = true;

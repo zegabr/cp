@@ -1,6 +1,6 @@
 
 #include<algorithm>
-class {
+class MatrixChain{
     private:
         static const int ms = 2000;
         int c[ms], l[ms];

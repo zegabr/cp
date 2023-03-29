@@ -31,7 +31,7 @@ class Kosaraju : public Graph{
         comp.assign(n,-1);
         timer++;
         for(int i = 0; i < n; i++)
-            if(vis[i] < timer) 
+            if(vis[i] < timer)
                 dfs1(i);
 
         timer++;
