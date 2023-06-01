@@ -11,7 +11,7 @@ class node{
             next = NULL;
         }
 
-};	
+};
 
 template<class T>
 class queue{

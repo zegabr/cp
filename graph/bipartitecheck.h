@@ -16,7 +16,7 @@ class BFS : public Graph{
                         if(color[v] == color[u]){
                             return false;
                         }else{
-                            if(!color[v]){    
+                            if(!color[v]){
                                 q.push(v);
                                 color[v] = color[u] == 1 ? 2 : 1;
                             }

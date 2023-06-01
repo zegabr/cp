@@ -61,7 +61,7 @@ class BST{
         bool empty(){
             return root == NULL;
         }
-        void insert(int data){ root = insert(root, data);} 
+        void insert(int data){ root = insert(root, data);}
         void inorder(){ inorder(root);}
         void remove(int data) {root = remove(root, data);}
 };

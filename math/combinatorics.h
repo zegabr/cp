@@ -20,7 +20,7 @@ class Combinatorics {
   static const int ms = 10000;
   std::vector<std::vector<long long>> c;
 
-  void initcomb() { c.resize(ms + 1, std::vector<long long>(ms / 2 + 1, 0)); }
+  Combinatorics() { c.resize(ms + 1, std::vector<long long>(ms / 2 + 1, 0)); }
 
   long long comb(int n, int k) { // combinacao de n, escolhendo k
     if (k == 0 or k == n)

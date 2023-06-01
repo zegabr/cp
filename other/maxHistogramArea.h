@@ -11,7 +11,7 @@ class MaxHistogramArea{
             int res = 0;
             for(int i = 0;i < H.size(); i++){
                 while(pos.top() != -1 and H[i] < H[pos.top()]){
-                    int h = H[pos.top()]; 
+                    int h = H[pos.top()];
                     pos.pop();
                     res = std::max(res, h*( (i-1) - pos.top()));//here pos.top might be -1
                 }

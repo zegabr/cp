@@ -31,7 +31,7 @@ class Deque{
         }
 
         void push_back(T val){
-            Node<T> *newNode = new Node<T>(val); 
+            Node<T> *newNode = new Node<T>(val);
             if(size() == 0){
                 frontNode = backNode = newNode;
             }else{
@@ -43,7 +43,7 @@ class Deque{
         }
 
         void push_front(T val){
-            Node<T> *newNode = new Node<T>(val); 
+            Node<T> *newNode = new Node<T>(val);
             if(size() == 0){
                 frontNode = backNode = newNode;
             }else{
@@ -99,7 +99,7 @@ class Queue{
 
         T pop(){
             return deque->pop_front();
-        }   
+        }
 
         void push(T val){
             deque->push_back(val);
@@ -126,7 +126,7 @@ class Stack{
 
         T pop(){
             return deque->pop_front();
-        }   
+        }
 
         void push(T val){
             deque->push_front(val);

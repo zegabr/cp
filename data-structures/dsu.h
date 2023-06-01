@@ -2,7 +2,7 @@
 #include<vector>
 class DSU{
     std::vector<int> ds, sz;
-    public:	
+    public:
 
     DSU(int v){
         sz.assign(v+1, 1);
